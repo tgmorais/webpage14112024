@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Or use Montserrat as an alternative -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+  <title>VirtuaCrop - AI-Powered Software Solutions</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif; /* Or 'Montserrat', sans-serif */
+      line-height: 1.6;
+      color: #333;
+      background-color: #1a1a1a; /* Dark gray background */
+    }
+
+
+    /* Fullscreen Hero Section */
+    header.hero {
+      position: relative;
+      overflow: hidden;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #1a1a1a;
+    }
+
+    header.hero, .navbar, .navbar a, .hero-content h1 {
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    /* Background Video */
+    .hero video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Overlay Effect */
+    header.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), #1a1a1a);
+  z-index: 1;
+}
+
+    /* Navbar Styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 1rem 2rem;
+      position: absolute;
+      top: 0;
+      z-index: 2;
+      /* background: rgba(0, 0, 0, 0.3); */
+    }
+
+    .navbar .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin: 0 1rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Call-to-Action Button */
+    .cta-btn, .hero-btn {
+      background: #28a745;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .cta-btn:hover, .hero-btn:hover {
+      background: #218838;
+    }
+
+    /* Hero Content */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      padding: 1.5rem;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 1.7rem;
+      font-weight: bold;
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 4rem 2rem;
+    }
+
+  /* Features Section Styling */
+.features {
+  background-color: #1a1a1a; /* Dark gray background */
+  color: white; /* White text for contrast */
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* Feature Card Styling */
+.feature {
+  background: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  color: #28a745; /* Accent color */
+  margin-bottom: 1rem;
+}
+
+.feature p {
+  color: #e0e0e0; /* Light gray text */
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Feature Icon Styling */
+.feature-icon {
+  font-size: 2rem;
+  color: #28a745;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr; /* Stacks features vertically on smaller screens */
+  }
+}
+
+    .testimonials {
+      background: #e9ecef;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* Footer Styling */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      background: #333;
+      color: white;
+    }
+
+    .fade-in {
+  opacity: 0;
+  transform: translateY(20px); /* Slightly below its final position */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Active state for animated elements */
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0); /* Final position */
+}
+
+/* Chatbot Button */
+#chatbot {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.chatbot-button {
+  width: 50px;
+  height: 50px;
+  background-color: #28a745;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Chat Window */
+.chat-window {
+  display: none;
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  width: 300px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.chat-header {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header .close-chat {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.chat-content {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  line-height: 1.4;
+}
+
+.bot-message {
+  background-color: #e1f7e1;
+}
+
+.user-message {
+  background-color: #d1e7ff;
+  text-align: right;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-top: 1px solid #ddd;
+  outline: none;
+  font-size: 14px;
+}
+
+
+/* Language Selector Styling */
+.language-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.language-button {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+  padding: 0.5rem;
+}
+
+.language-button:hover {
+  color: #28a745;
+}
+
+.language-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0; /* Align to the right of the button */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  border-radius: 5px;
+  padding: 0.5rem;
+  z-index: 1000;
+  min-width: 120px; /* Ensure enough width */
+}
+
+.language-menu button {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.language-menu button:hover {
+  background-color: #28a745;
+  color: white;
+}
+
+.language-menu button:focus {
+  outline: none;
+}
+
+
+/* Footer Styling */
+.footer {
+  background-color: #1a1a1a; /* Dark background */
+  color: #e0e0e0; /* Light text */
+  padding: 3rem 2rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.footer-logo {
+  flex: 1 1 200px;
+  max-width: 250px;
+}
+
+.footer-logo img {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+.footer-logo p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.footer-links, .footer-contact, .footer-social {
+  flex: 1 1 200px;
+}
+
+.footer-links h4, .footer-contact h4, .footer-social h4 {
+  color: #28a745; /* Accent color */
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links ul li a {
+  color: #e0e0e0;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+  color: #28a745;
+}
+
+.footer-contact p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+}
+
+.footer-social {
+  text-align: center;
+}
+
+.footer-social .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.footer-social .social-icons a img {
+  width: 24px;
+  transition: transform 0.3s;
+}
+
+.footer-social .social-icons a:hover img {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Footer Bottom Styling */
+.footer-bottom {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 2rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+
+/* Responsive Design for Footer */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-logo, .footer-links, .footer-contact, .footer-social {
+    max-width: 100%;
+  }
+
+  .footer-logo img {
+    margin: 0 auto 1rem;
+  }
+}
+
+
+/* About Us Section */
+.about {
+  background-color: #f9f9f9; /* Light gray background for contrast */
+  color: #333;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+.about p {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+/* Highlights Section Styling */
+.about-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.highlight {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.highlight h3 {
+  color: #28a745; /* Accent color */
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.highlight p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.highlight:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .about {
+    padding: 2rem 1rem;
+  }
+
+  .about h2 {
+    font-size: 2rem;
+  }
+
+  .highlight h3 {
+    font-size: 1.1rem;
+  }
+
+  .highlight p {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Contact Section */
+.contact {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Contact Form Styling */
+.contact-form {
+  flex: 1 1 300px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  background-color: #28a745;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #218838;
+}
+
+/* Contact Info and Social Media */
+.contact-info {
+  flex: 1 1 300px;
+  text-align: left;
+}
+
+.contact-info h3 {
+  font-size: 1.5rem;
+  color: #28a745;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.contact-info h4 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #333;
+}
+
+.social-icons {
+  /* display: flex; */
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  color: #ffffff; /* White color */
+  font-size: 1.5rem; /* Adjust size as needed */
+  transition: color 0.3s, transform 0.3s;
+  margin-right: 0.5rem;
+}
+
+.social-icons a:hover {
+  color: #28a745; /* Optional accent color on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+
+/* Responsive Design for Contact Section */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-info, .contact-form {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .contact-info p, .contact-info h4 {
+    text-align: center;
+  }
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around; /* Evenly distribute space between items */
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Navbar Items */
+.nav-item {
+  position: relative;
+}
+
+/* Navbar Links Styling */
+.nav-links .nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links .nav-link:hover {
+  color: #28a745; /* Accent color on hover */
+}
+
+/* Products Dropdown Menu Styling */
+.products-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position below the Products button */
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+  border-radius: 5px;
+  padding: 0.5rem;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.products-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.products-menu a:hover {
+  background-color: #28a745; /* Highlight on hover */
+  color: white;
+}
+
+
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <header class="hero">
+    <video autoplay muted loop>
+      <source src="videos/7021961_Technology_Construction_3840x2160.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="VirtuaCrop Logo">
+      </div>
+      <ul class="nav-links">
+        <!-- <li><a href="#features">Features</a></li> -->
+        <li class="nav-item products-dropdown">
+          <a href="#" class="nav-link" onclick="toggleProductsMenu(event)">Products</a>
+          <div class="products-menu" id="productsMenu">
+            <a href="soilapp.html">SoilApp</a>
+            <a href="https://corn-count.web.app/">Grain Counter</a>
+            <a href="#mapviewer">MapViewer</a>
+          </div>
+        </li>
+        <a href="#about">About Us</a></li>
+        <!-- <li><a href="#testimonials">Testimonials</a></li> -->
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="language-selector">
+        <button class="language-button" onclick="toggleLanguageMenu()">
+          <i class="fa-solid fa-globe"></i>
+        </button>
+        <div class="language-menu" id="languageMenu">
+          <button onclick="setLanguage('en')">English</button>
+          <button onclick="setLanguage('pt')">Português</button>
+          <button onclick="setLanguage('es')">Español</button>
+          <button onclick="setLanguage('fr')">Français</button>
+        </div>
+      </div>
+    </nav>
+    <div class="hero-content">
+      <h1>Empowering Industries with Earth Observation &  AI-Driven Software Solutions</h1>
+    <p>VirtuaCrop develops cutting-edge software that leverages artificial intelligence and remote sensing to transform data into actionable insights.</p>
+    <!-- <button class="hero-btn">Learn More</button> -->
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section id="features" class="features fade-in">
+    <h2>Our Features</h2>
+    <div class="features-grid">
+      <div class="feature fade-in">
+        <div class="feature-icon">🌐</div>
+        <h3>Advanced AI Algorithms</h3>
+        <p>Utilize powerful machine learning models to analyze vast datasets, detect patterns, and provide predictive insights.</p>
+      </div>
+      <div class="feature fade-in">
+        <div class="feature-icon">📡</div>
+        <h3>Real-Time Data Monitoring</h3>
+        <p>Access real-time data through satellite and sensor imagery to monitor conditions and changes on a large scale.</p>
+      </div>
+      <div class="feature fade-in">
+        <div class="feature-icon">📊</div>
+        <h3>Predictive Analytics</h3>
+        <p>Integrate predictive models that help businesses optimize resources and make data-informed decisions.</p>
+      </div>
+    </div>
+
+  </section>
+  
+
+  
+  <!-- About Us Section -->
+  <section id="about" class="about fade-in">
+    <h2>About VirtuaCrop</h2>
+    <p>At VirtuaCrop, we are dedicated to transforming industries through advanced artificial intelligence and data-driven solutions. Our mission is to empower businesses with actionable insights that drive efficiency, optimize resources, and foster sustainable practices.</p>
+
+    <div class="about-highlights">
+      <div class="highlight">
+        <h3>Our Mission</h3>
+        <p>To lead the future of data intelligence by delivering innovative AI-powered solutions that provide businesses with the tools they need to thrive in a rapidly changing world.</p>
+      </div>
+      <div class="highlight">
+        <h3>Our Values</h3>
+        <p>We prioritize integrity, innovation, and sustainability in every project, ensuring that our solutions not only meet the needs of today but also shape the possibilities of tomorrow.</p>
+      </div>
+      <div class="highlight">
+        <h3>Our Expertise</h3>
+        <p>With a team of experts in artificial intelligence, machine learning, and remote sensing, we develop solutions that transform complex data into practical, impactful insights.</p>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- Testimonials Section -->
+  <!-- <section id="testimonials" class="testimonials fade-in">
+    <h2>What Our Partners Say</h2>
+    <div class="testimonial">
+      <p>"VirtuaCrop's technology has been instrumental in helping us build a robust data infrastructure for agriculture. Their insights are invaluable for our software solutions"</p>
+      <span>- Tech Partner, AgriSoft Solutions</span>
+    </div>
+  </section> -->
+  
+  <!-- Call to Action Section -->
+  <section id="contact" class="contact fade-in">
+    <h2>Get in Touch with VirtuaCrop</h2>
+    <p>We're here to answer any questions and discuss how our AI-driven solutions can benefit your business. Reach out today!</p>
+  
+    <!-- Contact Form -->
+    <!-- <div class="contact-container">
+      <div class="contact-form">
+        <form action="#" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit" class="cta-btn">Send Message</button>
+        </form>
+      </div>
+  
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p>Email: virtuacrop@virtuacrop.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <p>Address: 1234 Innovation Drive, Tech City, TX 75001</p>
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div> -->
+  </section>
+  
+
+  <!-- Footer -->
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Logo and About -->
+    <div class="footer-logo">
+      <img src="images/logo.png" alt="VirtuaCrop Logo">
+      <p>VirtuaCrop develops AI-driven software solutions</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <!-- <li><a href="#features">Features</a></li> -->
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About Us</a></li>
+        <!-- <li><a href="#testimonials">Testimonials</a></li> -->
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="footer-contact">
+      <h4>Contact Us</h4>
+      <p>Email: virtuacrop@virtuacrop.com</p>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Copyright -->
+  <div class="footer-bottom">
+    <p>&copy; 2024 VirtuaCrop. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+  <!-- Chatbot Button -->
+<div id="chatbot">
+  <div class="chatbot-button" onclick="toggleChat()">
+    💬 <!-- Chat Icon -->
+  </div>
+  <div class="chat-window">
+    <div class="chat-header">
+      <span>VirtuaCrop Chatbot</span>
+      <button onclick="toggleChat()" class="close-chat">&times;</button>
+    </div>
+    <div class="chat-content" id="chatContent">
+      <div class="chat-message bot-message">
+        Hi there! How can I assist you with VirtuaCrop today?
+      </div>
+    </div>
+    <input type="text" id="userInput" placeholder="Type your message.." onkeypress="handleKeyPress(event)">
+  </div>
+</div>
+
+
+  <script>
+
+    // Define translations for each text element in each language
+const translations = {
+  en: {
+    heroTitle: "Empowering Industries with Earth Observation & AI-Driven Software Solutions",
+    heroDescription: "VirtuaCrop develops cutting-edge software that leverages artificial intelligence and remote sensing to transform data into actionable insights",
+    learnMore: "Learn More",
+    featuresTitle: "Our Features",
+    feature1Title: "Advanced AI Algorithms",
+    feature1Description: "Utilize powerful machine learning models to analyze vast datasets, detect patterns, and provide predictive insights",
+    feature2Title: "Real-Time Data Monitoring",
+    feature2Description: "Access real-time data through satellite and sensor imagery to monitor conditions and changes on a large scale",
+    feature3Title: "Predictive Analytics",
+    feature3Description: "Integrate predictive models that help businesses optimize resources and make data-informed decisions",
+    aboutTitle: "About VirtuaCrop",
+    aboutDescription: "VirtuaCrop specializes in developing AI-powered software that leverages remote sensing and data analytics to drive sustainable, data-centric solutions across industries",
+    testimonialsTitle: "What Our Partners Say",
+    testimonial: "\"VirtuaCrop's technology has been instrumental in helping us build a robust data infrastructure. Their insights are invaluable for our solutions.\"",
+    ctaTitle: "Ready to Innovate with AI-Powered Software?",
+    ctaButton: "Partner with VirtuaCrop"
+  },
+  pt: {
+    heroTitle: "Potencializando Indústrias com Soluções de Software Baseadas em IA",
+    heroDescription: "VirtuaCrop desenvolve software de ponta que utiliza inteligência artificial e sensoriamento remoto para transformar dados em insights acionáveis",
+    learnMore: "Saiba Mais",
+    featuresTitle: "Nossas Funcionalidades",
+    feature1Title: "Algoritmos Avançados de IA",
+    feature1Description: "Utilize modelos avançados de aprendizado de máquina para analisar grandes volumes de dados, detectar padrões e fornecer insights preditivos",
+    feature2Title: "Monitoramento de Dados em Tempo Real",
+    feature2Description: "Acesse dados em tempo real por meio de imagens de satélite e sensores para monitorar condições e mudanças em grande escala",
+    feature3Title: "Análise Preditiva",
+    feature3Description: "Integre modelos preditivos que ajudam as empresas a otimizar recursos e tomar decisões baseadas em dados",
+    aboutTitle: "Sobre a VirtuaCrop",
+    aboutDescription: "A VirtuaCrop se especializa em desenvolver software que utiliza dados de sensoriamento remoto e análise de dados para soluções sustentáveis e orientadas por dados em diversas indústrias",
+    testimonialsTitle: "O Que Nossos Parceiros Dizem",
+    testimonial: "\"A tecnologia da VirtuaCrop foi fundamental para nos ajudar a construir uma infraestrutura robusta de dados. Seus insights são inestimáveis para nossas soluções.\"",
+    ctaTitle: "Pronto para Inovar com Software de IA?",
+    ctaButton: "Seja Parceiro da VirtuaCrop"
+  },
+  es: {
+    heroTitle: "Impulsando Industrias con Soluciones de Software impulsadas por IA",
+    heroDescription: "VirtuaCrop desarrolla software de vanguardia que utiliza inteligencia artificial y sensores remotos para transformar datos en conocimientos accionables",
+    learnMore: "Aprende Más",
+    featuresTitle: "Nuestras Características",
+    feature1Title: "Algoritmos Avanzados de IA",
+    feature1Description: "Aproveche modelos de aprendizaje automático para analizar grandes volúmenes de datos, detectar patrones y proporcionar información predictiva",
+    feature2Title: "Monitoreo de Datos en Tiempo Real",
+    feature2Description: "Acceda a datos en tiempo real a través de imágenes satelitales y sensores para monitorear condiciones y cambios a gran escala",
+    feature3Title: "Análisis Predictivo",
+    feature3Description: "Integre modelos predictivos que ayuden a las empresas a optimizar recursos y tomar decisiones basadas en datos",
+    aboutTitle: "Sobre VirtuaCrop",
+    aboutDescription: "VirtuaCrop se especializa en desarrollar software impulsado por IA que utiliza datos de sensores remotos y análisis de datos para soluciones sostenibles y centradas en datos en diversas industrias",
+    testimonialsTitle: "Lo Que Dicen Nuestros Socios",
+    testimonial: "\"La tecnología de VirtuaCrop ha sido fundamental para ayudarnos a construir una infraestructura robusta de datos. Sus conocimientos son invaluables para nuestras soluciones.\"",
+    ctaTitle: "¿Listo para Innovar con Software de IA?",
+    ctaButton: "Asociarse con VirtuaCrop"
+  },
+  fr: {
+    heroTitle: "Renforcer les Industries avec des Solutions Logicielles Basées sur l'IA",
+    heroDescription: "VirtuaCrop développe des logiciels de pointe utilisant l'intelligence artificielle et la télédétection pour transformer les données en informations exploitables",
+    learnMore: "En Savoir Plus",
+    featuresTitle: "Nos Caractéristiques",
+    feature1Title: "Algorithmes IA Avancés",
+    feature1Description: "Exploitez des modèles d'apprentissage automatique pour analyser de grandes quantités de données, détecter des motifs et fournir des informations prédictives",
+    feature2Title: "Suivi des Données en Temps Réel",
+    feature2Description: "Accédez à des données en temps réel grâce aux images satellites et aux capteurs pour surveiller les conditions et les changements à grande échelle",
+    feature3Title: "Analyse Prédictive",
+    feature3Description: "Intégrez des modèles prédictifs qui aident les entreprises à optimiser les ressources et à prendre des décisions basées sur les données",
+    aboutTitle: "À propos de VirtuaCrop",
+    aboutDescription: "VirtuaCrop est spécialisée dans le développement de logiciels qui utilisent des données de télédétection et l'analyse de données pour des solutions durables et axées sur les données dans divers secteurs",
+    testimonialsTitle: "Ce que Disent Nos Partenaires",
+    testimonial: "\"La technologie de VirtuaCrop a été essentielle pour nous aider à construire une infrastructure de données robuste. Leurs connaissances sont inestimables pour nos solutions.\"",
+    ctaTitle: "Prêt à Innover avec des Logiciels Basés sur l'IA?",
+    ctaButton: "Devenez Partenaire de VirtuaCrop"
+  }
+};
+
+
+// Function to switch language based on selected language code
+function setLanguage(lang) {
+  document.querySelector(".hero-content h1").textContent = translations[lang].heroTitle;
+  document.querySelector(".hero-content p").textContent = translations[lang].heroDescription;
+  // document.querySelector(".hero-btn").textContent = translations[lang].learnMore;
+  document.querySelector("#features h2").textContent = translations[lang].featuresTitle;
+  document.querySelector(".feature:nth-child(1) h3").textContent = translations[lang].feature1Title;
+  document.querySelector(".feature:nth-child(1) p").textContent = translations[lang].feature1Description;
+  document.querySelector(".feature:nth-child(2) h3").textContent = translations[lang].feature2Title;
+  document.querySelector(".feature:nth-child(2) p").textContent = translations[lang].feature2Description;
+  document.querySelector(".feature:nth-child(3) h3").textContent = translations[lang].feature3Title;
+  document.querySelector(".feature:nth-child(3) p").textContent = translations[lang].feature3Description;
+  document.querySelector("#about h2").textContent = translations[lang].aboutTitle;
+  document.querySelector("#about p").textContent = translations[lang].aboutDescription;
+  // document.querySelector("#testimonials h2").textContent = translations[lang].testimonialsTitle;
+  // document.querySelector("#testimonials .testimonial p").textContent = translations[lang].testimonial;
+  document.querySelector("#contact h2").textContent = translations[lang].ctaTitle;
+  // document.querySelector("#contact .cta-btn").textContent = translations[lang].ctaButton;
+}
+
+// Set default language to English
+window.addEventListener("load", () => setLanguage("en"));
+
+
+function toggleLanguageMenu() {
+  const languageMenu = document.getElementById("languageMenu");
+  languageMenu.style.display = languageMenu.style.display === "block" ? "none" : "block";
+}
+
+// Close the language menu when clicking outside of it
+window.addEventListener("click", function(event) {
+  const languageMenu = document.getElementById("languageMenu");
+  const languageButton = document.querySelector(".language-button");
+
+  if (event.target !== languageButton && !languageButton.contains(event.target)) {
+    languageMenu.style.display = "none";
+  }
+});
+
+
+
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Scroll Animation Function
+function scrollAnimation() {
+  const elements = document.querySelectorAll('.fade-in');
+
+  elements.forEach(element => {
+    const position = element.getBoundingClientRect();
+    if (position.top < window.innerHeight - 100) {
+      element.classList.add('visible');
+    }
+  });
+}
+
+// Run on page load and on scroll
+window.addEventListener('scroll', scrollAnimation);
+window.addEventListener('load', scrollAnimation);
+
+
+// Toggle Chat Window
+function toggleChat() {
+  const chatWindow = document.querySelector('.chat-window');
+  chatWindow.style.display = chatWindow.style.display === 'none' || chatWindow.style.display === '' ? 'block' : 'none';
+}
+
+// Handle User Message Submission
+function handleKeyPress(event) {
+  if (event.key === 'Enter') {
+    const userInput = document.getElementById('userInput').value;
+    if (userInput.trim() !== "") {
+      displayMessage(userInput, 'user-message');
+      document.getElementById('userInput').value = '';
+      botResponse(userInput);
+    }
+  }
+}
+
+// Display Message in Chat
+function displayMessage(message, className) {
+  const chatContent = document.getElementById('chatContent');
+  const messageElement = document.createElement('div');
+  messageElement.className = `chat-message ${className}`;
+  messageElement.textContent = message;
+  chatContent.appendChild(messageElement);
+  chatContent.scrollTop = chatContent.scrollHeight; // Auto-scroll to the latest message
+}
+
+// Simple Bot Response
+function botResponse(userMessage) {
+  let botMessage = "I'm here to help!";
+  
+  if (userMessage.toLowerCase().includes('features')) {
+    botMessage = "VirtuaCrop offers advanced AI algorithms, real-time remote sensing, and data-driven predictive analytics";
+  } else if (userMessage.toLowerCase().includes('pricing')) {
+    botMessage = "Please contact our sales team to discuss pricing options for VirtuaCrop";
+  } else if (userMessage.toLowerCase().includes('support')) {
+    botMessage = "You can reach out to our support team at virtuacrop@virtuacrop.com";
+  }
+  
+  setTimeout(() => displayMessage(botMessage, 'bot-message'), 500); // Simulate typing delay
+}
+
+
+function toggleProductsMenu(event) {
+  event.preventDefault(); // Prevents the link from navigating
+  const productsMenu = document.getElementById("productsMenu");
+  productsMenu.style.display = productsMenu.style.display === "block" ? "none" : "block";
+}
+
+// Close the products menu when clicking outside of it
+window.addEventListener("click", function(event) {
+  const productsMenu = document.getElementById("productsMenu");
+  const productsButton = document.querySelector(".products-dropdown .nav-link");
+
+  if (event.target !== productsButton && !productsButton.contains(event.target) &&
+      !productsMenu.contains(event.target)) {
+    productsMenu.style.display = "none";
+  }
+});
+
+
+  </script>
+</body>
+</html>
