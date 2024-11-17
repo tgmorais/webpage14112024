@@ -448,14 +448,14 @@ p, li {
       </li>
     </ul>
     <div class="language-selector">
-      <button class="language-button" onclick="toggleLanguageMenu()">
-        <i class="fa-solid fa-globe"></i>
+      <button class="language-button" onclick="toggleLanguageMenu()" style="font-size: 0.8rem; font-family: 'Rajdhani', sans-serif; border: 1px solid #333; border-radius: 5px; padding: 0.3rem 0.5rem; background-color: transparent; color: #333;">
+        EN
       </button>
       <div class="language-menu" id="languageMenu">
-        <button onclick="setLanguage('en')">English</button>
-        <button onclick="setLanguage('pt')">Português</button>
-        <button onclick="setLanguage('es')">Español</button>
-        <button onclick="setLanguage('fr')">Français</button>
+        <button style="font-size: 0.8rem; font-family: 'Rajdhani', sans-serif; padding: 0.3rem 0.5rem; background-color: transparent; color: white;" onclick="setLanguage('en')">English</button>
+        <button style="font-size: 0.8rem; font-family: 'Rajdhani', sans-serif; padding: 0.3rem 0.5rem; background-color: transparent; color: white;" onclick="setLanguage('pt')">Português</button>
+        <button style="font-size: 0.8rem; font-family: 'Rajdhani', sans-serif; padding: 0.3rem 0.5rem; background-color: transparent; color: white;" onclick="setLanguage('es')">Español</button>
+        <button style="font-size: 0.8rem; font-family: 'Rajdhani', sans-serif; padding: 0.3rem 0.5rem; background-color: transparent; color: white;" onclick="setLanguage('fr')">Français</button>
       </div>
     </div>
   </nav>
@@ -781,6 +781,10 @@ map.on('load', function () {
     const content = translations[lang];
 
     if (!content) return;
+
+    const languageButton = document.querySelector(".language-button");
+    languageButton.textContent = lang.toUpperCase(); // Set to "EN", "PT", "ES", "FR"
+
 
     // Update navbar
     const navbarLinks = document.querySelectorAll('.nav-links .nav-link');
