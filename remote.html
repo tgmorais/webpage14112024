@@ -84,12 +84,13 @@
       display: flex;
       justify-content: space-between;
       gap: 2rem;
-      /* flex: 1; */
+      flex: 1;
     }
 
 
+
     .about-highlights {
-      /* flex: 1; */
+      flex: 1;
       max-width: 700px; /* Limit width of highlights */
 
     }
@@ -111,21 +112,21 @@
     }
 
     .map-container {
-    width: 50%; /* Adjust width as needed */
-    height: 70vh; /* Adjust height as needed */
-    border-radius: 10px;
-    overflow: hidden;
-    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
-    flex-direction: column;
-    /* align-self: start; */
-  justify-content: center; /* Center content vertically */
-  flex: 1;
-  }
+  position: sticky; /* Makes it scroll within its container */
+  top: 0; /* Adjust this value to control how far down the map sticks */
+  width: 600px;
+  height: 800px;
+  overflow: auto; /* Allow the content inside to scroll if necessary */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+}
 
   #map {
     width: 100%;
-    height: 100%; /* Ensure it fills the container */
-    z-index: 1;
+    height: 80%; /* Ensure it fills the container */
+    z-index: 10000;
+    overflow: hidden;
+    border-radius: 10px;
   }
 
     footer {
@@ -366,17 +367,16 @@ ul.custom-bullets li::before {
 }
 }
 
-@media (max-width:  1/1) {
+@media (max-aspect-ratio: 1/1) {
   .map-container {
-    width: 100%;
-    height: 300px; /* Set appropriate height for mobile view */
+    width: 100%; /* Ensure it takes the full width */
+    height: 300px; /* Set an explicit height */
   }
-  
+
   #map {
     height: 100%; /* Ensure the map takes the full height of the container */
   }
 }
-
 
 h1, h2, h3 {
   font-family: 'Rajdhani', sans-serif; /* Apply Rajdhani font to h1 and h2 */
@@ -610,6 +610,16 @@ function toggleNavbar() {
   map.fitBounds(layerBounds);
 
   map.setZoom(15);
+
+// After the map initialization, add this code to handle resizing
+window.addEventListener('resize', function () {
+  map.invalidateSize();
+});
+
+// Call `invalidateSize` manually when the map container changes size
+map.on('load', function () {
+  map.invalidateSize();
+});
 
 
   </script>

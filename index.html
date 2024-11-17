@@ -597,11 +597,15 @@ input[type="text"] {
 
 .contact-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem; /* Space between columns */
+}
+
+
+iframe#form {
+  flex: 1; /* Allow this column to take available space */
+  max-width: 600px; /* Optional: limit the width of the iframe */
 }
 
 /* Contact Form Styling */
@@ -640,14 +644,17 @@ input[type="text"] {
 
 /* Contact Info and Social Media */
 .contact-info {
-  flex: 1 1 300px;
+  /* flex: 1 1 300px; */
+  /* flex: 1; */
   text-align: left;
+  max-width: 500px;
 }
 
 .contact-info h3 {
   font-size: 1.5rem;
   color: #28a745;
   margin-bottom: 0.5rem;
+  width: 500px;
 }
 
 .contact-info p {
@@ -680,22 +687,29 @@ input[type="text"] {
   transform: scale(1.1); /* Slight zoom effect on hover */
 }
 
+/* General iframe styling */
+iframe#form {
+  width: 100%; /* Ensure the iframe fills the container */
+  height: 400px; /* Default height for wider screens */
+  border: none; /* Remove border */
+}
 
-/* Responsive Design for Contact Section */
-@media (max-width: 768px) {
+/* Responsive adjustments for aspect ratio */
+@media (max-aspect-ratio: 1/1) {
   .contact-container {
-    flex-direction: column;
+    flex-direction: column; /* Stack columns vertically */
   }
 
-  .contact-info, .contact-form {
-    max-width: 100%;
-    text-align: center;
+  .contact-info, iframe#form {
+    max-width: 100%; /* Allow full width */
   }
 
-  .contact-info p, .contact-info h4 {
-    text-align: center;
+  iframe#form {
+    width: 100%; /* Ensure iframe takes full width */
+    height: 450px; /* Ensure iframe height is 450px */
   }
 }
+
 
 /* Navbar Items */
 .nav-item {
@@ -965,34 +979,13 @@ p {
   
   <!-- Call to Action Section -->
   <section id="contact" class="contact fade-in">
-    <h2>Get in Touch with VirtuaCrop</h2>
-    <p>We're here to answer any questions and discuss how our AI-driven solutions can benefit your business. Reach out today!</p>
-  
-    <!-- Contact Form -->
-    <!-- <div class="contact-container">
-      <div class="contact-form">
-        <form action="#" method="POST">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-          <button type="submit" class="cta-btn">Send Message</button>
-        </form>
-      </div>
-  
+    <div class="contact-container">
       <div class="contact-info">
-        <h3>Contact Information</h3>
-        <p>Email: virtuacrop@virtuacrop.com</p>
-        <p>Phone: +1 (555) 123-4567</p>
-        <p>Address: 1234 Innovation Drive, Tech City, TX 75001</p>
-        <h4>Follow Us</h4>
-        <div class="social-icons">
-          <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
+        <h2>Get in Touch with VirtuaCrop</h2>
+        <p>We're here to answer any questions and discuss how our Earth Observation & AI-driven solutions can benefit your business. Reach out today!</p>
       </div>
-    </div> -->
+      <iframe id="form" src="https://script.google.com/macros/s/AKfycbwAS3g9HP4Cp5omoQ1yb57yKcEGyXIaY1mtNVgdQ72mEtkqwLsBntM1Zpb0_R7gKLAx/exec"></iframe>
+    </div>
   </section>
   
 
@@ -1086,75 +1079,75 @@ p {
     valuesDescription: "We prioritize integrity, innovation, and sustainability in every project, ensuring that our solutions not only meet the needs of today but also shape the possibilities of tomorrow",
     expertiseTitle: "Our Expertise",
     expertiseDescription: "With a team of experts in artificial intelligence, machine learning, and remote sensing, we develop solutions that transform complex data into practical, impactful insights",
-    ctaTitle: "Ready to Innovate with AI-Powered Software?",
-    ctaDescription: "We're here to answer any questions and discuss how our AI-driven solutions can benefit your business. Reach out today!"
+    ctaTitle: "Ready to Innovate with?",
+    ctaDescription: "We're here to answer any questions and discuss how our Earth Observation & AI-driven solutions can benefit your business. Reach out today!"
   },
   pt: {
-    heroTitle: "Potencializando Indústrias com Soluções de Software Baseadas em IA",
-    heroDescription: "VirtuaCrop desenvolve software de ponta que utiliza inteligência artificial e sensoriamento remoto para transformar dados em insights acionáveis",
+    heroTitle: "Transformando Indústrias com Soluções de Software Baseadas em IA e Observação da Terra",
+    heroDescription: "A VirtuaCrop desenvolve software inovador que utiliza inteligência artificial e sensoriamento remoto para converter dados em insights acionáveis",
     learnMore: "Saiba Mais",
     featuresTitle: "Nossas Funcionalidades",
     feature1Title: "Algoritmos Avançados de IA",
-    feature1Description: "Utilize modelos avançados de aprendizado de máquina para analisar grandes volumes de dados, detectar padrões e fornecer insights preditivos",
+    feature1Description: "Aproveite poderosos modelos de aprendizado de máquina para analisar grandes volumes de dados, identificar padrões e fornecer insights preditivos",
     feature2Title: "Monitoramento de Dados em Tempo Real",
-    feature2Description: "Acesse dados em tempo real por meio de imagens de satélite e sensores para monitorar condições e mudanças em grande escala",
-    feature3Title: "Análise Preditiva",
+    feature2Description: "Tenha acesso a dados em tempo real por meio de imagens de satélite e sensores para monitorar condições e mudanças em larga escala",
+    feature3Title: "Análises Preditivas",
     feature3Description: "Integre modelos preditivos que ajudam as empresas a otimizar recursos e tomar decisões baseadas em dados",
     aboutTitle: "Sobre a VirtuaCrop",
-    aboutDescription: "Na VirtuaCrop, estamos comprometidos em transformar indústrias por meio de inteligência artificial avançada e soluções orientadas por dados. Nossa missão é capacitar empresas com insights acionáveis que aumentem a eficiência, otimizem recursos e promovam práticas sustentáveis",
+    aboutDescription: "Na VirtuaCrop, transformamos indústrias com inteligência artificial avançada e soluções orientadas por dados. Nossa missão é empoderar empresas com insights acionáveis que promovam eficiência, otimizem recursos e impulsionem práticas sustentáveis",
     missionTitle: "Nossa Missão",
-    missionDescription: "Liderar o futuro da inteligência de dados, entregando soluções inovadoras baseadas em IA que fornecem às empresas as ferramentas necessárias para prosperar em um mundo em rápida transformação",
+    missionDescription: "Liderar o futuro da inteligência de dados, oferecendo soluções inovadoras que equipam empresas para prosperar em um mundo em constante evolução",
     valuesTitle: "Nossos Valores",
-    valuesDescription: "Priorizamos integridade, inovação e sustentabilidade em cada projeto, garantindo que nossas soluções não apenas atendam às necessidades de hoje, mas também moldem as possibilidades de amanhã",
+    valuesDescription: "Priorizamos integridade, inovação e sustentabilidade, garantindo que nossas soluções atendam às demandas do presente e moldem o futuro",
     expertiseTitle: "Nossa Expertise",
-    expertiseDescription: "Com uma equipe de especialistas em inteligência artificial, aprendizado de máquina e sensoriamento remoto, desenvolvemos soluções que transformam dados complexos em insights práticos e impactantes",
-    ctaTitle: "Pronto para Inovar com Software Baseado em IA?",
-    ctaDescription: "Estamos aqui para responder a quaisquer perguntas e discutir como nossas soluções orientadas por IA podem beneficiar seu negócio. Entre em contato hoje!"
-  },
-  es: {
-    heroTitle: "Impulsando Industrias con Soluciones de Software impulsadas por IA",
-    heroDescription: "VirtuaCrop desarrolla software de vanguardia que utiliza inteligencia artificial y sensores remotos para transformar datos en conocimientos accionables",
-    learnMore: "Aprende Más",
+    expertiseDescription: "Com uma equipe de especialistas em IA, aprendizado de máquina e sensoriamento remoto, transformamos dados complexos em insights práticos e impactantes",
+    ctaTitle: "Pronto para Inovar?",
+    ctaDescription: "Estamos aqui para responder às suas perguntas e discutir como nossas soluções baseadas em IA e Observação da Terra podem beneficiar sua empresa. Entre em contato agora!"
+},
+es: {
+    heroTitle: "Transformando Industrias con Soluciones de Software Basadas en Observación de la Tierra e IA",
+    heroDescription: "VirtuaCrop desarrolla software de vanguardia que aprovecha la inteligencia artificial y la teledetección para transformar datos en información procesable",
+    learnMore: "Saber Más",
     featuresTitle: "Nuestras Características",
     feature1Title: "Algoritmos Avanzados de IA",
-    feature1Description: "Aproveche modelos de aprendizaje automático para analizar grandes volúmenes de datos, detectar patrones y proporcionar información predictiva",
+    feature1Description: "Utilice potentes modelos de aprendizaje automático para analizar grandes volúmenes de datos, identificar patrones y proporcionar información predictiva",
     feature2Title: "Monitoreo de Datos en Tiempo Real",
-    feature2Description: "Acceda a datos en tiempo real a través de imágenes satelitales y sensores para monitorear condiciones y cambios a gran escala",
+    feature2Description: "Acceda a datos en tiempo real a través de imágenes satelitales y sensores para supervisar condiciones y cambios a gran escala",
     feature3Title: "Análisis Predictivo",
-    feature3Description: "Integre modelos predictivos que ayuden a las empresas a optimizar recursos y tomar decisiones basadas en datos",
+    feature3Description: "Integre modelos predictivos que ayuden a las empresas a optimizar recursos y tomar decisiones fundamentadas en datos",
     aboutTitle: "Sobre VirtuaCrop",
-    aboutDescription: "En VirtuaCrop, estamos dedicados a transformar industrias mediante inteligencia artificial avanzada y soluciones basadas en datos. Nuestra misión es empoderar a las empresas con información procesable que impulse la eficiencia, optimice recursos y fomente prácticas sostenibles",
+    aboutDescription: "En VirtuaCrop, nos dedicamos a transformar industrias mediante inteligencia artificial avanzada y soluciones basadas en datos. Nuestra misión es capacitar a las empresas con información procesable que impulse la eficiencia, optimice recursos y fomente prácticas sostenibles",
     missionTitle: "Nuestra Misión",
-    missionDescription: "Liderar el futuro de la inteligencia de datos ofreciendo soluciones innovadoras basadas en IA que brinden a las empresas las herramientas necesarias para prosperar en un mundo en rápida transformación",
+    missionDescription: "Liderar el futuro de la inteligencia de datos con soluciones innovadoras basadas en IA, proporcionando a las empresas las herramientas para prosperar en un mundo dinámico",
     valuesTitle: "Nuestros Valores",
-    valuesDescription: "Priorizamos la integridad, la innovación y la sostenibilidad en cada proyecto, asegurando que nuestras soluciones no solo satisfagan las necesidades actuales, sino que también modelen las posibilidades del mañana",
+    valuesDescription: "Priorizamos la integridad, la innovación y la sostenibilidad, asegurando que nuestras soluciones respondan a las necesidades actuales y moldeen el futuro",
     expertiseTitle: "Nuestra Experiencia",
-    expertiseDescription: "Con un equipo de expertos en inteligencia artificial, aprendizaje automático y sensores remotos, desarrollamos soluciones que transforman datos complejos en conocimientos prácticos y efectivos",
-    ctaTitle: "¿Listo para Innovar con Software de IA?",
-    ctaDescription: "Estamos aquí para responder cualquier pregunta y discutir cómo nuestras soluciones basadas en IA pueden beneficiar a su negocio. ¡Contáctenos hoy!"
-  },
-  fr: {
-    heroTitle: "Renforcer les Industries avec des Solutions Logicielles Basées sur l'IA",
-    heroDescription: "VirtuaCrop développe des logiciels de pointe utilisant l'intelligence artificielle et la télédétection pour transformer les données en informations exploitables",
+    expertiseDescription: "Nuestro equipo de expertos en inteligencia artificial, aprendizaje automático y teledetección desarrolla soluciones que convierten datos complejos en conocimientos prácticos y efectivos",
+    ctaTitle: "¿Listo para Innovar?",
+    ctaDescription: "Estamos aquí para resolver tus dudas y explorar cómo nuestras soluciones basadas en IA y Observación de la Tierra pueden beneficiar a tu empresa. ¡Contáctanos hoy mismo!"
+},
+fr: {
+    heroTitle: "Transformer les Industries avec des Solutions Logicielles Basées sur l’Observation de la Terre et l’IA",
+    heroDescription: "VirtuaCrop développe des logiciels innovants utilisant l’intelligence artificielle et la télédétection pour convertir des données en informations exploitables",
     learnMore: "En Savoir Plus",
-    featuresTitle: "Nos Caractéristiques",
-    feature1Title: "Algorithmes IA Avancés",
-    feature1Description: "Exploitez des modèles d'apprentissage automatique pour analyser de grandes quantités de données, détecter des motifs et fournir des informations prédictives",
+    featuresTitle: "Nos Fonctionnalités",
+    feature1Title: "Algorithmes Avancés d’IA",
+    feature1Description: "Utilisez des modèles performants d’apprentissage automatique pour analyser des ensembles de données volumineux, détecter des tendances et fournir des informations prédictives",
     feature2Title: "Suivi des Données en Temps Réel",
-    feature2Description: "Accédez à des données en temps réel grâce aux images satellites et aux capteurs pour surveiller les conditions et les changements à grande échelle",
-    feature3Title: "Analyse Prédictive",
-    feature3Description: "Intégrez des modèles prédictifs qui aident les entreprises à optimiser les ressources et à prendre des décisions basées sur les données",
-    aboutTitle: "À propos de VirtuaCrop",
-    aboutDescription: "Chez VirtuaCrop, nous nous engageons à transformer les industries grâce à l'intelligence artificielle avancée et aux solutions basées sur les données. Notre mission est de fournir aux entreprises des informations exploitables qui augmentent l'efficacité, optimisent les ressources et favorisent des pratiques durables",
+    feature2Description: "Accédez à des données en temps réel grâce à des images satellites et capteurs pour surveiller les conditions et les changements à grande échelle",
+    feature3Title: "Analyses Prédictives",
+    feature3Description: "Intégrez des modèles prédictifs qui aident les entreprises à optimiser leurs ressources et à prendre des décisions éclairées",
+    aboutTitle: "À Propos de VirtuaCrop",
+    aboutDescription: "Chez VirtuaCrop, nous sommes déterminés à transformer les industries grâce à l’intelligence artificielle avancée et aux solutions basées sur les données. Notre mission est de fournir aux entreprises des informations exploitables qui augmentent leur efficacité, optimisent leurs ressources et encouragent des pratiques durables",
     missionTitle: "Notre Mission",
-    missionDescription: "Conduire l'avenir de l'intelligence des données en proposant des solutions innovantes basées sur l'IA, fournissant aux entreprises les outils nécessaires pour prospérer dans un monde en rapide évolution",
+    missionDescription: "Conduire l’avenir de l’intelligence des données avec des solutions innovantes basées sur l’IA, offrant aux entreprises les outils nécessaires pour prospérer dans un monde en mutation rapide",
     valuesTitle: "Nos Valeurs",
-    valuesDescription: "Nous privilégions l'intégrité, l'innovation et la durabilité dans chaque projet, garantissant que nos solutions répondent aux besoins d'aujourd'hui tout en façonnant les possibilités de demain",
+    valuesDescription: "Nous privilégions l’intégrité, l’innovation et la durabilité, veillant à ce que nos solutions répondent aux besoins actuels tout en façonnant les opportunités de demain",
     expertiseTitle: "Notre Expertise",
-    expertiseDescription: "Avec une équipe d'experts en intelligence artificielle, apprentissage automatique et télédétection, nous développons des solutions qui transforment des données complexes en informations pratiques et impactantes",
-    ctaTitle: "Prêt à Innover avec des Logiciels Basés sur l'IA?",
-    ctaDescription: "Nous sommes là pour répondre à toutes vos questions et discuter de la manière dont nos solutions basées sur l'IA peuvent bénéficier à votre entreprise. Contactez-nous dès aujourd'hui!"
-  }
+    expertiseDescription: "Avec une équipe d’experts en intelligence artificielle, apprentissage automatique et télédétection, nous transformons des données complexes en connaissances exploitables et percutantes",
+    ctaTitle: "Prêt à Innover?",
+    ctaDescription: "Nous sommes là pour répondre à vos questions et explorer comment nos solutions basées sur l’IA et l’Observation de la Terre peuvent bénéficier à votre entreprise. Contactez-nous dès aujourd’hui !"
+},
 };
 
 
