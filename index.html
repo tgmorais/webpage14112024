@@ -80,8 +80,8 @@
       padding: 1rem 2rem;
       position: absolute;
       top: 0;
-      z-index: 2;
-      /* background: rgba(0, 0, 0, 0.3); */
+      z-index: 1000;
+      /* backdrop-filter: blur(10px); Added blur effect */
     }
 
     .navbar .logo img {
@@ -89,9 +89,20 @@
     }
 
     .nav-links {
-      display: flex;
-      list-style: none;
-    }
+  display: flex;
+  flex-wrap: wrap; /* Allows the links to wrap into rows */
+  justify-content: space-around; /* Evenly distribute space between items */
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0.5rem; /* Optional: Add space between items */
+}
+
+
+.nav-links li {
+  margin: 0.5rem 1rem; /* Adjust margins to fit rows */
+}
 
     .nav-links li {
       margin: 0 1rem;
@@ -685,15 +696,6 @@ input[type="text"] {
   }
 }
 
-.nav-links {
-  display: flex;
-  justify-content: space-around; /* Evenly distribute space between items */
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 /* Navbar Items */
 .nav-item {
   position: relative;
@@ -749,9 +751,28 @@ p {
   font-weight: 400;
 }
 
-h4 {
-  font-family: 'Rajdhani', sans-serif; /* Apply Rajdhani font to h4 */
+
+/* Hamburger Menu Button */
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1rem; /* Match font size */
+  font-weight: bold;
+  color: #fff;
+  padding: 0.5rem 1rem; /* Match padding */
+  cursor: pointer;
+  transition: color 0.3s;
 }
+
+/* Hover Effect */
+.hamburger-menu:hover {
+  color: #28a745; /* Match hover color */
+}
+
+/* Media Query for Small Screens */
+
+
 
   </style>
 </head>
@@ -764,21 +785,41 @@ h4 {
     </video>
     <nav class="navbar">
       <div class="logo">
-        <img src="images/logo.png" alt="VirtuaCrop Logo">
+        <a href="index.html"><img src="images/logo.png" alt="VirtuaCrop Logo"></a>
       </div>
-      <ul class="nav-links">
-        <!-- <li><a href="#features">Features</a></li> -->
+        <ul class="nav-links" id="navbarLinks">
+          <li class="nav-item products-dropdown">
+          <a href="#" class="nav-link" onclick="toggleFeaturesMenu(event)">Features</a>
+          <div class="products-menu" id="featuresMenu">
+            <a href="remote.html">Remote Sensing Image Analysis</a>
+            <a href="image.html">Digital Image Analysis</a>
+          </div>
+        </li>
         <li class="nav-item products-dropdown">
-          <a href="#" class="nav-link" onclick="toggleProductsMenu(event)">Products</a>
+          <a href="#" class="nav-link" onclick="toggleProductsMenu(event)">Solutions</a>
           <div class="products-menu" id="productsMenu">
+            <a href="soilapp.html">VirtuaCrop - SoilApp</a>
+            <a href="https://corn-count.web.app/">Grain Counter</a>
+            <!-- <a href="#mapviewer">MapViewer</a> -->
+          </div>
+        </li>
+        <li class="nav-item products-dropdown">
+          <a href="index.html#about" class="nav-link">About us</a>
+          <!-- <div class="products-menu" id="productsMenu">
             <a href="soilapp.html">SoilApp</a>
             <a href="https://corn-count.web.app/">Grain Counter</a>
             <a href="#mapviewer">MapViewer</a>
-          </div>
+          </div> -->
         </li>
-        <a href="#about">About Us</a></li>
         <!-- <li><a href="#testimonials">Testimonials</a></li> -->
-        <li><a href="#contact">Contact</a></li>
+        <li class="nav-item products-dropdown">
+          <a href="index.html#contact" class="nav-link">Contact</a>
+          <!-- <div class="products-menu" id="productsMenu">
+            <a href="soilapp.html">SoilApp</a>
+            <a href="https://corn-count.web.app/">Grain Counter</a>
+            <a href="#mapviewer">MapViewer</a>
+          </div> -->
+        </li>
       </ul>
       <div class="language-selector">
         <button class="language-button" onclick="toggleLanguageMenu()">
@@ -792,9 +833,10 @@ h4 {
         </div>
       </div>
     </nav>
+
     <div class="hero-content">
       <h1>Empowering Industries with Earth Observation &  AI-Driven Software Solutions</h1>
-    <p>VirtuaCrop develops cutting-edge software that leverages artificial intelligence and remote sensing to transform data into actionable insights.</p>
+    <p>VirtuaCrop develops cutting-edge software that leverages artificial intelligence and remote sensing to transform data into actionable insights</p>
     <!-- <button class="hero-btn">Learn More</button> -->
     </div>
   </header>
@@ -804,19 +846,19 @@ h4 {
     <h2>Our Features</h2>
     <div class="features-grid">
       <div class="feature fade-in">
-        <div class="feature-icon">🌐</div>
+        <i class="fas fa-brain" style="font-size: 2rem; color: #28a745;"></i>
         <h3>Advanced AI Algorithms</h3>
-        <p>Utilize powerful machine learning models to analyze vast datasets, detect patterns, and provide predictive insights.</p>
+        <p>Utilize powerful machine learning models to analyze vast datasets, detect patterns, and provide predictive insights</p>
       </div>
       <div class="feature fade-in">
-        <div class="feature-icon">📡</div>
+        <i class="fas fa-satellite" style="font-size: 2rem; color: #28a745;"></i>
         <h3>Real-Time Data Monitoring</h3>
-        <p>Access real-time data through satellite and sensor imagery to monitor conditions and changes on a large scale.</p>
+        <p>Access real-time data through satellite and sensor imagery to monitor conditions and changes on a large scale</p>
       </div>
       <div class="feature fade-in">
-        <div class="feature-icon">📊</div>
+        <i class="fas fa-chart-line" style="font-size: 2rem; color: #28a745;"></i>
         <h3>Predictive Analytics</h3>
-        <p>Integrate predictive models that help businesses optimize resources and make data-informed decisions.</p>
+        <p>Integrate predictive models that help businesses optimize resources and make data-informed decisions</p>
       </div>
     </div>
 
@@ -827,24 +869,33 @@ h4 {
   <!-- About Us Section -->
   <section id="about" class="about fade-in">
     <h2>About VirtuaCrop</h2>
-    <p>At VirtuaCrop, we are dedicated to transforming industries through advanced artificial intelligence and data-driven solutions. Our mission is to empower businesses with actionable insights that drive efficiency, optimize resources, and foster sustainable practices.</p>
+    <p>At VirtuaCrop, we are dedicated to transforming industries through advanced artificial intelligence and data-driven solutions. Our mission is to empower businesses with actionable insights that drive efficiency, optimize resources, and foster sustainable practices</p>
 
-    <div class="about-highlights">
-      <div class="highlight">
-        <h3>Our Mission</h3>
-        <p>To lead the future of data intelligence by delivering innovative AI-powered solutions that provide businesses with the tools they need to thrive in a rapidly changing world.</p>
+    <div class="about-highlights" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+      <div class="highlight-row" style="display: flex; align-items: center; gap: 1rem;">
+        <i class="fas fa-bullseye" style="font-size: 3rem; color: #28a745;"></i>
+        <div>
+          <h3>Our Mission</h3>
+          <p>To lead the future of data intelligence by delivering innovative AI-powered solutions that provide businesses with the tools they need to thrive in a rapidly changing world</p>
+        </div>
       </div>
-      <div class="highlight">
-        <h3>Our Values</h3>
-        <p>We prioritize integrity, innovation, and sustainability in every project, ensuring that our solutions not only meet the needs of today but also shape the possibilities of tomorrow.</p>
+      <div class="highlight-row" style="display: flex; align-items: center; gap: 1rem;">
+        <i class="fas fa-handshake" style="font-size: 3rem; color: #28a745;"></i>
+        <div>
+          <h3>Our Values</h3>
+          <p>We prioritize integrity, innovation, and sustainability in every project, ensuring that our solutions not only meet the needs of today but also shape the possibilities of tomorrow</p>
+        </div>
       </div>
-      <div class="highlight">
-        <h3>Our Expertise</h3>
-        <p>With a team of experts in artificial intelligence, machine learning, and remote sensing, we develop solutions that transform complex data into practical, impactful insights.</p>
+      <div class="highlight-row" style="display: flex; align-items: center; gap: 1rem;">
+        <i class="fas fa-lightbulb" style="font-size: 3rem; color: #28a745;"></i>
+        <div>
+          <h3>Our Expertise</h3>
+          <p>With a team of experts in artificial intelligence, machine learning, and remote sensing, we develop solutions that transform complex data into practical, impactful insights</p>
+        </div>
       </div>
     </div>
-  </section>
-  
+</section>
+
   
   <!-- Testimonials Section -->
   <!-- <section id="testimonials" class="testimonials fade-in">
@@ -903,7 +954,7 @@ h4 {
       <h4>Quick Links</h4>
       <ul>
         <!-- <li><a href="#features">Features</a></li> -->
-        <li><a href="#products">Products</a></li>
+        <li><a href="#products">Solutions</a></li>
         <li><a href="#about">About Us</a></li>
         <!-- <li><a href="#testimonials">Testimonials</a></li> -->
         <li><a href="#contact">Contact</a></li>
@@ -920,23 +971,23 @@ h4 {
     <div class="footer-social">
       <h4>Follow Us</h4>
       <div class="social-icons">
-        <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/virtuacrop/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/virtuacrop" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/company/virtuacrop" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/virtuacrop/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </div>
   
   <!-- Copyright -->
   <div class="footer-bottom">
-    <p>&copy; 2024 VirtuaCrop. All Rights Reserved.</p>
+    <p>&copy; 2024 VirtuaCrop. All Rights Reserved</p>
   </div>
 </footer>
 
 
   <!-- Chatbot Button -->
-<div id="chatbot">
+<!-- <div id="chatbot">
   <div class="chatbot-button" onclick="toggleChat()">
     💬 <!-- Chat Icon -->
   </div>
@@ -952,13 +1003,13 @@ h4 {
     </div>
     <input type="text" id="userInput" placeholder="Type your message.." onkeypress="handleKeyPress(event)">
   </div>
-</div>
+</div> -->
 
 
   <script>
 
     // Define translations for each text element in each language
-const translations = {
+    const translations = {
   en: {
     heroTitle: "Empowering Industries with Earth Observation & AI-Driven Software Solutions",
     heroDescription: "VirtuaCrop develops cutting-edge software that leverages artificial intelligence and remote sensing to transform data into actionable insights",
@@ -971,11 +1022,15 @@ const translations = {
     feature3Title: "Predictive Analytics",
     feature3Description: "Integrate predictive models that help businesses optimize resources and make data-informed decisions",
     aboutTitle: "About VirtuaCrop",
-    aboutDescription: "VirtuaCrop specializes in developing AI-powered software that leverages remote sensing and data analytics to drive sustainable, data-centric solutions across industries",
-    testimonialsTitle: "What Our Partners Say",
-    testimonial: "\"VirtuaCrop's technology has been instrumental in helping us build a robust data infrastructure. Their insights are invaluable for our solutions.\"",
+    aboutDescription: "At VirtuaCrop, we are dedicated to transforming industries through advanced artificial intelligence and data-driven solutions. Our mission is to empower businesses with actionable insights that drive efficiency, optimize resources, and foster sustainable practices",
+    missionTitle: "Our Mission",
+    missionDescription: "To lead the future of data intelligence by delivering innovative AI-powered solutions that provide businesses with the tools they need to thrive in a rapidly changing world",
+    valuesTitle: "Our Values",
+    valuesDescription: "We prioritize integrity, innovation, and sustainability in every project, ensuring that our solutions not only meet the needs of today but also shape the possibilities of tomorrow",
+    expertiseTitle: "Our Expertise",
+    expertiseDescription: "With a team of experts in artificial intelligence, machine learning, and remote sensing, we develop solutions that transform complex data into practical, impactful insights",
     ctaTitle: "Ready to Innovate with AI-Powered Software?",
-    ctaButton: "Partner with VirtuaCrop"
+    ctaDescription: "We're here to answer any questions and discuss how our AI-driven solutions can benefit your business. Reach out today!"
   },
   pt: {
     heroTitle: "Potencializando Indústrias com Soluções de Software Baseadas em IA",
@@ -989,11 +1044,15 @@ const translations = {
     feature3Title: "Análise Preditiva",
     feature3Description: "Integre modelos preditivos que ajudam as empresas a otimizar recursos e tomar decisões baseadas em dados",
     aboutTitle: "Sobre a VirtuaCrop",
-    aboutDescription: "A VirtuaCrop se especializa em desenvolver software que utiliza dados de sensoriamento remoto e análise de dados para soluções sustentáveis e orientadas por dados em diversas indústrias",
-    testimonialsTitle: "O Que Nossos Parceiros Dizem",
-    testimonial: "\"A tecnologia da VirtuaCrop foi fundamental para nos ajudar a construir uma infraestrutura robusta de dados. Seus insights são inestimáveis para nossas soluções.\"",
-    ctaTitle: "Pronto para Inovar com Software de IA?",
-    ctaButton: "Seja Parceiro da VirtuaCrop"
+    aboutDescription: "Na VirtuaCrop, estamos comprometidos em transformar indústrias por meio de inteligência artificial avançada e soluções orientadas por dados. Nossa missão é capacitar empresas com insights acionáveis que aumentem a eficiência, otimizem recursos e promovam práticas sustentáveis",
+    missionTitle: "Nossa Missão",
+    missionDescription: "Liderar o futuro da inteligência de dados, entregando soluções inovadoras baseadas em IA que fornecem às empresas as ferramentas necessárias para prosperar em um mundo em rápida transformação",
+    valuesTitle: "Nossos Valores",
+    valuesDescription: "Priorizamos integridade, inovação e sustentabilidade em cada projeto, garantindo que nossas soluções não apenas atendam às necessidades de hoje, mas também moldem as possibilidades de amanhã",
+    expertiseTitle: "Nossa Expertise",
+    expertiseDescription: "Com uma equipe de especialistas em inteligência artificial, aprendizado de máquina e sensoriamento remoto, desenvolvemos soluções que transformam dados complexos em insights práticos e impactantes",
+    ctaTitle: "Pronto para Inovar com Software Baseado em IA?",
+    ctaDescription: "Estamos aqui para responder a quaisquer perguntas e discutir como nossas soluções orientadas por IA podem beneficiar seu negócio. Entre em contato hoje!"
   },
   es: {
     heroTitle: "Impulsando Industrias con Soluciones de Software impulsadas por IA",
@@ -1007,11 +1066,15 @@ const translations = {
     feature3Title: "Análisis Predictivo",
     feature3Description: "Integre modelos predictivos que ayuden a las empresas a optimizar recursos y tomar decisiones basadas en datos",
     aboutTitle: "Sobre VirtuaCrop",
-    aboutDescription: "VirtuaCrop se especializa en desarrollar software impulsado por IA que utiliza datos de sensores remotos y análisis de datos para soluciones sostenibles y centradas en datos en diversas industrias",
-    testimonialsTitle: "Lo Que Dicen Nuestros Socios",
-    testimonial: "\"La tecnología de VirtuaCrop ha sido fundamental para ayudarnos a construir una infraestructura robusta de datos. Sus conocimientos son invaluables para nuestras soluciones.\"",
+    aboutDescription: "En VirtuaCrop, estamos dedicados a transformar industrias mediante inteligencia artificial avanzada y soluciones basadas en datos. Nuestra misión es empoderar a las empresas con información procesable que impulse la eficiencia, optimice recursos y fomente prácticas sostenibles",
+    missionTitle: "Nuestra Misión",
+    missionDescription: "Liderar el futuro de la inteligencia de datos ofreciendo soluciones innovadoras basadas en IA que brinden a las empresas las herramientas necesarias para prosperar en un mundo en rápida transformación",
+    valuesTitle: "Nuestros Valores",
+    valuesDescription: "Priorizamos la integridad, la innovación y la sostenibilidad en cada proyecto, asegurando que nuestras soluciones no solo satisfagan las necesidades actuales, sino que también modelen las posibilidades del mañana",
+    expertiseTitle: "Nuestra Experiencia",
+    expertiseDescription: "Con un equipo de expertos en inteligencia artificial, aprendizaje automático y sensores remotos, desarrollamos soluciones que transforman datos complejos en conocimientos prácticos y efectivos",
     ctaTitle: "¿Listo para Innovar con Software de IA?",
-    ctaButton: "Asociarse con VirtuaCrop"
+    ctaDescription: "Estamos aquí para responder cualquier pregunta y discutir cómo nuestras soluciones basadas en IA pueden beneficiar a su negocio. ¡Contáctenos hoy!"
   },
   fr: {
     heroTitle: "Renforcer les Industries avec des Solutions Logicielles Basées sur l'IA",
@@ -1025,20 +1088,29 @@ const translations = {
     feature3Title: "Analyse Prédictive",
     feature3Description: "Intégrez des modèles prédictifs qui aident les entreprises à optimiser les ressources et à prendre des décisions basées sur les données",
     aboutTitle: "À propos de VirtuaCrop",
-    aboutDescription: "VirtuaCrop est spécialisée dans le développement de logiciels qui utilisent des données de télédétection et l'analyse de données pour des solutions durables et axées sur les données dans divers secteurs",
-    testimonialsTitle: "Ce que Disent Nos Partenaires",
-    testimonial: "\"La technologie de VirtuaCrop a été essentielle pour nous aider à construire une infrastructure de données robuste. Leurs connaissances sont inestimables pour nos solutions.\"",
+    aboutDescription: "Chez VirtuaCrop, nous nous engageons à transformer les industries grâce à l'intelligence artificielle avancée et aux solutions basées sur les données. Notre mission est de fournir aux entreprises des informations exploitables qui augmentent l'efficacité, optimisent les ressources et favorisent des pratiques durables",
+    missionTitle: "Notre Mission",
+    missionDescription: "Conduire l'avenir de l'intelligence des données en proposant des solutions innovantes basées sur l'IA, fournissant aux entreprises les outils nécessaires pour prospérer dans un monde en rapide évolution",
+    valuesTitle: "Nos Valeurs",
+    valuesDescription: "Nous privilégions l'intégrité, l'innovation et la durabilité dans chaque projet, garantissant que nos solutions répondent aux besoins d'aujourd'hui tout en façonnant les possibilités de demain",
+    expertiseTitle: "Notre Expertise",
+    expertiseDescription: "Avec une équipe d'experts en intelligence artificielle, apprentissage automatique et télédétection, nous développons des solutions qui transforment des données complexes en informations pratiques et impactantes",
     ctaTitle: "Prêt à Innover avec des Logiciels Basés sur l'IA?",
-    ctaButton: "Devenez Partenaire de VirtuaCrop"
+    ctaDescription: "Nous sommes là pour répondre à toutes vos questions et discuter de la manière dont nos solutions basées sur l'IA peuvent bénéficier à votre entreprise. Contactez-nous dès aujourd'hui!"
   }
 };
 
 
 // Function to switch language based on selected language code
 function setLanguage(lang) {
+  localStorage.setItem('lang', lang);
+  console.log(lang);
+
+  // Update Hero Section
   document.querySelector(".hero-content h1").textContent = translations[lang].heroTitle;
   document.querySelector(".hero-content p").textContent = translations[lang].heroDescription;
-  // document.querySelector(".hero-btn").textContent = translations[lang].learnMore;
+
+  // Update Features Section
   document.querySelector("#features h2").textContent = translations[lang].featuresTitle;
   document.querySelector(".feature:nth-child(1) h3").textContent = translations[lang].feature1Title;
   document.querySelector(".feature:nth-child(1) p").textContent = translations[lang].feature1Description;
@@ -1046,16 +1118,28 @@ function setLanguage(lang) {
   document.querySelector(".feature:nth-child(2) p").textContent = translations[lang].feature2Description;
   document.querySelector(".feature:nth-child(3) h3").textContent = translations[lang].feature3Title;
   document.querySelector(".feature:nth-child(3) p").textContent = translations[lang].feature3Description;
+
+  // Update About Us Section
   document.querySelector("#about h2").textContent = translations[lang].aboutTitle;
   document.querySelector("#about p").textContent = translations[lang].aboutDescription;
-  // document.querySelector("#testimonials h2").textContent = translations[lang].testimonialsTitle;
-  // document.querySelector("#testimonials .testimonial p").textContent = translations[lang].testimonial;
+  document.querySelector(".highlight-row:nth-child(1) h3").textContent = translations[lang].missionTitle;
+  document.querySelector(".highlight-row:nth-child(1) p").textContent = translations[lang].missionDescription;
+  document.querySelector(".highlight-row:nth-child(2) h3").textContent = translations[lang].valuesTitle;
+  document.querySelector(".highlight-row:nth-child(2) p").textContent = translations[lang].valuesDescription;
+  document.querySelector(".highlight-row:nth-child(3) h3").textContent = translations[lang].expertiseTitle;
+  document.querySelector(".highlight-row:nth-child(3) p").textContent = translations[lang].expertiseDescription;
+
+  // Update Contact Section
   document.querySelector("#contact h2").textContent = translations[lang].ctaTitle;
-  // document.querySelector("#contact .cta-btn").textContent = translations[lang].ctaButton;
+  document.querySelector("#contact p").textContent = translations[lang].ctaDescription;
 }
 
+
 // Set default language to English
-window.addEventListener("load", () => setLanguage("en"));
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = localStorage.getItem('lang') || 'en';
+  setLanguage(lang);
+});
 
 
 function toggleLanguageMenu() {
@@ -1076,14 +1160,14 @@ window.addEventListener("click", function(event) {
 
 
     // Smooth Scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
+    // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    //   anchor.addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     document.querySelector(this.getAttribute('href')).scrollIntoView({
+    //       behavior: 'smooth'
+    //     });
+    //   });
+    // });
 
     // Scroll Animation Function
 function scrollAnimation() {
@@ -1152,16 +1236,30 @@ function toggleProductsMenu(event) {
   productsMenu.style.display = productsMenu.style.display === "block" ? "none" : "block";
 }
 
-// Close the products menu when clicking outside of it
-window.addEventListener("click", function(event) {
-  const productsMenu = document.getElementById("productsMenu");
-  const productsButton = document.querySelector(".products-dropdown .nav-link");
+function toggleFeaturesMenu(event) {
+  event.preventDefault(); // Prevents the link from navigating
+  const productsMenu = document.getElementById("featuresMenu");
+  productsMenu.style.display = productsMenu.style.display === "block" ? "none" : "block";
+}
 
-  if (event.target !== productsButton && !productsButton.contains(event.target) &&
-      !productsMenu.contains(event.target)) {
-    productsMenu.style.display = "none";
-  }
-});
+
+
+function toggleNavbar() {
+  const navbarLinks = document.getElementById('navbarLinks');
+  navbarLinks.classList.toggle('show');
+}
+
+
+// Close the products menu when clicking outside of it
+// window.addEventListener("click", function(event) {
+//   const productsMenu = document.getElementById("productsMenu");
+//   const productsButton = document.querySelector(".products-dropdown .nav-link");
+
+//   if (event.target !== productsButton && !productsButton.contains(event.target) &&
+//       !productsMenu.contains(event.target)) {
+//     productsMenu.style.display = "none";
+//   }
+// });
 
 
   </script>

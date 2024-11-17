@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Photography Analysis - VirtuaCrop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+
+  <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(to right top, rgba(91, 58, 41, 0.2), rgba(74, 124, 42, 0.2));
+    }
+
+    header {
+      background: #28a745;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    h1, h2 {
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    nav.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 1rem 2rem;
+      position: fixed;
+      top: 0;
+      z-index: 2;
+      backdrop-filter: blur(10px);
+    }
+
+    nav .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin: 0 1rem;
+    }
+
+    .nav-links a {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #28a745;
+    }
+
+    section {
+      margin-top: 80px;
+      padding: 4rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .about {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      flex: 1;
+    }
+
+
+
+    .about-highlights {
+      flex: 1;
+      max-width: 700px; /* Limit width of highlights */
+
+    }
+
+    .highlight {
+      background-color: #ffffff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 1rem;
+      max-width: 700px; /* Limit width of highlights */
+
+    }
+
+    .highlight:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-container {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: space-between;
+      min-width: 200px;
+    }
+
+    .video-wrapper {
+      /* border-radius: 10px; */
+      overflow: hidden;
+      /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+      display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  flex: 1;
+    }
+    
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      /* background: #333; */
+    }
+
+    /* Custom Bullet Styling */
+    ul.custom-bullets {
+      list-style: none;
+      padding-left: 1.5rem;
+    }
+
+    ul.custom-bullets li {
+      position: relative;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    ul.custom-bullets li::before {
+      content: "\f058"; /* FontAwesome checkmark */
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      color: #28a745;
+      position: absolute;
+      left: -1.5rem;
+      top: 0;
+    }
+
+    video {
+  width: 100%;      /* Ensure the video fills the width of its container */
+  height: 100%;     /* Ensure the video fills the height of its container */
+  object-fit:contain; /* Ensures the video covers the container, cropping if needed */
+  border-radius: 10px; /* Optional: Adds rounded corners to match the wrapper */
+}
+
+/* Swiper Container */
+.swiper-container {
+  width: 100%;
+  height: auto; /* Adjust as needed */
+  position: relative;
+  /* margin: 20px 0; */
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); Shadow below */
+  border-radius: 10px; /* Optional rounded corners */
+  overflow: hidden; /* Ensures no content spills out */
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+ul.custom-bullets li {
+  margin: 0.5rem 0; /* Space between items */
+  padding-left: 2rem; /* Indent for icons */
+  position: relative;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+
+ul.custom-bullets li strong {
+  color: #333; /* Darker color for emphasis */
+}
+
+
+ul.custom-bullets li::before {
+  content: "\f058"; /* FontAwesome icon (checkmark) */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #28a745; /* Accent color */
+  font-size: 1rem;
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+}
+
+  
+/* Products Dropdown Menu Styling */
+.products-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position below the Products button */
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+  border-radius: 5px;
+  padding: 0.5rem;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.products-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.products-menu a:hover {
+  background-color: #28a745; /* Highlight on hover */
+  color: white;
+}
+
+/* Language Selector Styling */
+.language-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.language-button {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #1a1a1a;
+  padding: 0.5rem;
+}
+
+.language-button:hover {
+  color: #28a745;
+}
+
+.language-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0; /* Align to the right of the button */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  border-radius: 5px;
+  padding: 0.5rem;
+  z-index: 1000;
+  min-width: 120px; /* Ensure enough width */
+}
+
+.language-menu button {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.language-menu button:hover {
+  background-color: #28a745;
+  color: white;
+}
+
+.language-menu button:focus {
+  outline: none;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around; /* Evenly distribute space between items */
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Navbar Items */
+.nav-item {
+  position: relative;
+}
+
+/* Navbar Links Styling */
+.nav-links .nav-link {
+  /* color: white; */
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links .nav-link:hover {
+  color: #28a745; /* Accent color on hover */
+}
+
+/* Products Dropdown Menu Styling */
+.products-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position below the Products button */
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+  border-radius: 5px;
+  padding: 0.5rem;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.products-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+
+@media (max-aspect-ratio: 1/1) {
+  .about {
+    flex-direction: column; /* Stack the columns vertically */
+    align-items: center; /* Center the content */
+  }
+
+  .about-highlights, 
+  .video-wrapper {
+    width: 100%; /* Take up full width */
+    max-width: none; /* Remove any width restrictions */
+  }
+}
+
+/* Default Navbar */
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+/* Default Navbar */
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+/* Hamburger Menu Button */
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1rem; /* Match font size */
+  font-weight: bold;
+  color: #333;
+  padding: 0.5rem 1rem; /* Match padding */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+/* Hover Effect */
+.hamburger-menu:hover {
+  color: #28a745; /* Match hover color */
+}
+
+@media (max-aspect-ratio: 1/1) {
+    .nav-links {
+    display: none; /* Hide the nav links by default */
+    flex-direction: column; /* Stack links vertically when shown */
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    top: 60px; /* Adjust to match the navbar height */
+    position: absolute;
+    right: 0;
+    left: 0; /* Center horizontally */
+    margin: 0 auto; /* Center the menu container */
+    width: 200px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    padding: 1rem;
+    z-index: 10;
+    border-radius: 10px;
+    align-items: center; /* Center items inside the menu */
+  }
+
+  .nav-links a {
+    color: white; /* Make text white */
+    text-decoration: none; /* Remove underline */
+    text-align: center; /* Center text inside links */
+    display: block;
+    width: 100%; /* Ensure full width for better alignment */
+  }
+
+  .nav-links a:hover {
+    color: #fff; /* Optional hover color */
+  }
+
+  .nav-links.show {
+    display: flex; /* Show the nav links when active */
+  }
+
+  .hamburger-menu {
+    display: block; /* Show the hamburger menu on small screens */
+  }
+
+  .products-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position below the Products button */
+  left: 0;
+  background-color: rgba(0, 0, 0, 1); /* Dark semi-transparent background */
+  border-radius: 5px;
+  padding: 0.5rem;
+  min-width: 150px;
+  z-index: 1000;
+}
+}
+
+h1, h2 {
+  font-family: 'Rajdhani', sans-serif; /* Apply Rajdhani font to h1 and h2 */
+}
+
+
+p, li {
+  font-family: 'Rajdhani', sans-serif; /* Apply Rajdhani font to h1 and h2 */
+  font-weight: 400;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="images/logo.png" alt="VirtuaCrop Logo"></a>
+    </div>
+    <button class="hamburger-menu" onclick="toggleNavbar()">
+        ☰
+      </button>
+      <ul class="nav-links" id="navbarLinks">
+        <li class="nav-item products-dropdown">
+        <a href="#" class="nav-link" onclick="toggleFeaturesMenu(event)">Features</a>
+        <div class="products-menu" id="featuresMenu">
+          <a href="remote.html">Remote Sensing Image Analysis</a>
+          <a href="image.html">Digital Image Analysis</a>
+        </div>
+      </li>
+      <li class="nav-item products-dropdown">
+        <a href="#" class="nav-link" onclick="toggleProductsMenu(event)">Solutions</a>
+        <div class="products-menu" id="productsMenu">
+            <a href="soilapp.html">VirtuaCrop - SoilApp</a>
+          <a href="https://corn-count.web.app/">Grain Counter</a>
+          <!-- <a href="#mapviewer">MapViewer</a> -->
+        </div>
+      </li>
+      <li class="nav-item products-dropdown">
+        <a href="index.html#about" class="nav-link">About us</a>
+        <!-- <div class="products-menu" id="productsMenu">
+          <a href="soilapp.html">SoilApp</a>
+          <a href="https://corn-count.web.app/">Grain Counter</a>
+          <a href="#mapviewer">MapViewer</a>
+        </div> -->
+      </li>
+      <!-- <li><a href="#testimonials">Testimonials</a></li> -->
+      <li class="nav-item products-dropdown">
+        <a href="index.html#contact" class="nav-link">Contact</a>
+        <!-- <div class="products-menu" id="productsMenu">
+          <a href="soilapp.html">SoilApp</a>
+          <a href="https://corn-count.web.app/">Grain Counter</a>
+          <a href="#mapviewer">MapViewer</a>
+        </div> -->
+      </li>
+    </ul>
+    <div class="language-selector">
+      <button class="language-button" onclick="toggleLanguageMenu()">
+        <i class="fa-solid fa-globe"></i>
+      </button>
+      <div class="language-menu" id="languageMenu">
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('pt')">Português</button>
+        <button onclick="setLanguage('es')">Español</button>
+        <button onclick="setLanguage('fr')">Français</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <section class="about">
+    <div class="about-highlights">
+      <h2>Digital Photography Analysis</h2>
+      <p style="margin-bottom: 16px;">
+        Analyze digital photographs to extract valuable information using advanced computer vision techniques. From fruit counting in orchards to identifying grains on a cob, our solutions deliver precision insights.
+      </p>
+      <div class="highlight">
+        <h3>Key Features</h3>
+        <ul class="custom-bullets">
+        <li><strong>Plant Analysis:</strong> Detect plant nutrient deficiency, pest and diseases, and weed infestation for optimized management.</li>
+          <li><strong>Fruit Counting:</strong> Automatically detect and count fruits on trees.</li>
+          <li><strong>Grain Analysis:</strong> Identify and count grains on a cob with high accuracy.</li>
+          <li><strong>Segmentation:</strong> Differentiate between fruits, leaves, and background.</li>
+          <li><strong>Object Detection:</strong> Detect and label multiple objects in an image.</li>
+        </ul>
+      </div>
+      <div class="highlight">
+        <h3>Applications</h3>
+        <ul class="custom-bullets">
+          <li><strong>Agriculture:</strong> Optimize harvest estimation and quality control.</li>
+          <li><strong>Food Processing:</strong> Automate sorting and counting processes.</li>
+          <li><strong>Research:</strong> Facilitate plant science and growth studies.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="video-wrapper">
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+          <img src="images/maize.png" alt="Maize" style="width: 90%;  border-radius: 10px;"></a>
+        </div>
+          <div class="swiper-slide">
+            <video autoplay muted loop>
+                <source src="videos/cob_count.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <video autoplay muted loop>
+                <source src="videos/maca_count.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+          </div>
+          <!-- Add more slides as needed -->
+        </div>
+      
+        <!-- Swiper Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      
+        <!-- Swiper Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 VirtuaCrop. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      loop: true, // Infinite loop
+      autoplay: {
+        delay: 3000, // Auto-slide every 3 seconds
+        disableOnInteraction: false, // Continue autoplay after manual navigation
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      effect: 'slide', // Change to 'fade', 'cube', 'coverflow', etc., if desired
+    });
+
+
+    function toggleProductsMenu(event) {
+  event.preventDefault(); // Prevents the link from navigating
+  const productsMenu = document.getElementById("productsMenu");
+  productsMenu.style.display = productsMenu.style.display === "block" ? "none" : "block";
+}
+
+function toggleFeaturesMenu(event) {
+  event.preventDefault(); // Prevents the link from navigating
+  const productsMenu = document.getElementById("featuresMenu");
+  productsMenu.style.display = productsMenu.style.display === "block" ? "none" : "block";
+}
+
+
+
+function toggleNavbar() {
+  const navbarLinks = document.getElementById('navbarLinks');
+  navbarLinks.classList.toggle('show');
+}
+
+  </script>
+  
+</body>
+</html>

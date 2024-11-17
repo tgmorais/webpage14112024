@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Permissions-Policy" content="camera=(self)">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Corn Cob Grain Counter - VirtuaCrop</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(to right top, rgba(91, 58, 41, 0.2), rgba(74, 124, 42, 0.2)); /* Darker gradient with opacity */
+    }
+
+    header {
+      background: #28a745;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    h1, h2 {
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  position: fixed; /* Fixes navbar to the top */
+  top: 0;
+  z-index: 2;
+  backdrop-filter: blur(10px); /* Added blur effect */
+}
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  padding: 4rem 2rem;
+  background-color: transparent;
+  color: #333;
+  /* margin-top: 80px; Adjust this value to control spacing below navbar */
+}
+
+    .about-highlights {
+      display: flex;
+      flex-direction: column; /* Stack highlights vertically */
+      gap: 2rem; /* Space between highlights */
+      max-width: 700px; /* Limit width of highlights */
+    }
+
+    .highlight {
+      background-color: #ffffff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+      max-width: 700px;
+    }
+
+    .highlight:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .app-container {
+      flex: 1; /* Allow the app container to take remaining space */
+      flex-direction: column;
+      padding-left: 2rem; /* Space between highlights and app */
+      display: flex;
+      justify-content: center; /* Center the smartphone frame */
+      align-items: center; /* Center vertically */
+    }
+
+    .smartphone-frame {
+      width: 375px; /* Width of the smartphone frame */
+      height: 667px; /* Height of the smartphone frame */
+      border: 16px solid #333; /* Frame border */
+      border-radius: 36px; /* Rounded corners */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+      position: relative; /* Position for the inner iframe */
+      overflow: hidden; /* Hide overflow */
+      background-color: #fff; /* Background color of the frame */
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 20px; /* Rounded corners for the iframe */
+      position: absolute; /* Positioning inside the frame */
+      top: 0;
+      left: 0;
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      /* background: #333; */
+      color: white;
+    }
+
+    /* Fade-in Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-aspect-ratio: 1/1) {
+      .about {
+        flex-direction: column; /* Stack columns vertically on small screens */
+        padding: 2rem 1rem;
+      }
+
+      .about-highlights {
+        max-width: 100%; /* Allow highlights to take full width */
+      }
+
+      .highlight h3 {
+        font-size: 1.1rem;
+      }
+
+      .highlight p {
+        font-size: 0.9rem;
+      }
+
+      .smartphone-frame {
+        width: 90%; /* Make the frame responsive */
+        height: auto; /* Adjust height automatically */
+      }
+    }
+
+    .cta-btn {
+      background: #28a745; /* Green background */
+      color: white; /* White text */
+      padding: 0.75rem 1.5rem; /* Increased padding for a larger button */
+      border: none; /* No border */
+      border-radius: 5px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+      transition: background 0.3s ease, transform 0.2s ease; /* Smooth transition for background and transform */
+      font-size: 1rem; /* Font size */
+      font-weight: bold; /* Bold text */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+      margin-top: 1rem; /* Space above the button */
+    }
+
+    .cta-btn:hover {
+      background: #218838; /* Darker green on hover */
+      transform: translateY(-2px); /* Slight lift effect on hover */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    }
+
+    .cta-btn:active {
+      transform: translateY(0); /* Reset lift effect on click */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Reset shadow on click */
+    }
+
+
+    
+
+    .navbar .logo img {
+      height: 50px;
+    }
+
+
+    .nav-links li {
+      margin: 0 1rem;
+    }
+
+    .nav-links a {
+      color: #1a1a1a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Call-to-Action Button */
+    .cta-btn, .hero-btn {
+      background: #28a745;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .cta-btn:hover, .hero-btn:hover {
+      background: #218838;
+    }
+
+    /* Hero Content */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      padding: 1.5rem;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 1.7rem;
+      font-weight: bold;
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 4rem 2rem;
+    }
+
+    
+/* Products Dropdown Menu Styling */
+.products-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position below the Products button */
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+  border-radius: 5px;
+  padding: 0.5rem;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.products-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.products-menu a:hover {
+  background-color: #28a745; /* Highlight on hover */
+  color: white;
+}
+
+/* Language Selector Styling */
+.language-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.language-button {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #1a1a1a;
+  padding: 0.5rem;
+}
+
+.language-button:hover {
+  color: #28a745;
+}
+
+.language-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0; /* Align to the right of the button */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  border-radius: 5px;
+  padding: 0.5rem;
+  z-index: 1000;
+  min-width: 120px; /* Ensure enough width */
+}
+
+.language-menu button {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.language-menu button:hover {
+  background-color: #28a745;
+  color: white;
+}
+
+.language-menu button:focus {
+  outline: none;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around; /* Evenly distribute space between items */
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Navbar Items */
+.nav-item {
+  position: relative;
+}
+
+/* Navbar Links Styling */
+.nav-links .nav-link {
+  /* color: white; */
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links .nav-link:hover {
+  color: #28a745; /* Accent color on hover */
+}
+
+/* Products Dropdown Menu Styling */
+.products-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position below the Products button */
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+  border-radius: 5px;
+  padding: 0.5rem;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.products-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .smartphone-frame {
+    width: 90%; /* Adjust width to be responsive */
+    height: calc(70vh - 62px); /* Maintain aspect ratio and fit within viewport height */
+  }
+
+  iframe {
+    height: calc(100% - 32px); /* Ensure iframe scales correctly */
+  }
+}
+
+
+/* Hamburger Menu Button */
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1rem; /* Match font size */
+  font-weight: bold;
+  color: #333;
+  padding: 0.5rem 1rem; /* Match padding */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+/* Hover Effect */
+.hamburger-menu:hover {
+  color: #28a745; /* Match hover color */
+}
+
+
+@media (max-aspect-ratio: 1/1) {
+    .nav-links {
+    display: none; /* Hide the nav links by default */
+    flex-direction: column; /* Stack links vertically when shown */
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    top: 60px; /* Adjust to match the navbar height */
+    position: absolute;
+    right: 0;
+    left: 0; /* Center horizontally */
+    margin: 0 auto; /* Center the menu container */
+    width: 200px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    padding: 1rem;
+    z-index: 10;
+    border-radius: 10px;
+    align-items: center; /* Center items inside the menu */
+  }
+
+  .nav-links a {
+    color: white; /* Make text white */
+    text-decoration: none; /* Remove underline */
+    text-align: center; /* Center text inside links */
+    display: block;
+    width: 100%; /* Ensure full width for better alignment */
+  }
+
+  .nav-links a:hover {
+    color: #fff; /* Optional hover color */
+  }
+
+  .nav-links.show {
+    display: flex; /* Show the nav links when active */
+  }
+
+  .hamburger-menu {
+    display: block; /* Show the hamburger menu on small screens */
+  }
+
+  .products-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position below the Products button */
+  left: 0;
+  background-color: rgba(0, 0, 0, 1); /* Dark semi-transparent background */
+  border-radius: 5px;
+  padding: 0.5rem;
+  min-width: 150px;
+  z-index: 1000;
+}
+}
+
+h1, h2 {
+  font-family: 'Rajdhani', sans-serif; /* Apply Rajdhani font to h1 and h2 */
+}
+
+
+p, li {
+  font-family: 'Rajdhani', sans-serif; /* Apply Rajdhani font to h1 and h2 */
+  font-weight: 400;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="images/logo.png" alt="VirtuaCrop Logo"></a>
+    </div>
+    <button class="hamburger-menu" onclick="toggleNavbar()">
+        ☰
+      </button>
+      <ul class="nav-links" id="navbarLinks">
+        <li class="nav-item products-dropdown">
+        <a href="#" class="nav-link" onclick="toggleFeaturesMenu(event)">Features</a>
+        <div class="products-menu" id="featuresMenu">
+          <a href="remote.html">Remote Sensing Image Analysis</a>
+          <a href="image.html">Digital Image Analysis</a>
+        </div>
+      </li>
+      <li class="nav-item products-dropdown">
+        <a href="#" class="nav-link" onclick="toggleProductsMenu(event)">Solutions</a>
+        <div class="products-menu" id="productsMenu">
+          <a href="soilapp.html">VirtuaCrop - SoilApp</a>
+          <a href="https://corn-count.web.app/">Grain Counter</a>
+          <!-- <a href="#mapviewer">MapViewer</a> -->
+        </div>
+      </li>
+      <li class="nav-item products-dropdown">
+        <a href="index.html#about" class="nav-link">About us</a>
+        <!-- <div class="products-menu" id="productsMenu">
+          <a href="soilapp.html">SoilApp</a>
+          <a href="https://corn-count.web.app/">Grain Counter</a>
+          <a href="#mapviewer">MapViewer</a>
+        </div> -->
+      </li>
+      <!-- <li><a href="#testimonials">Testimonials</a></li> -->
+      <li class="nav-item products-dropdown">
+        <a href="index.html#conatct" class="nav-link">Contact</a>
+        <!-- <div class="products-menu" id="productsMenu">
+          <a href="soilapp.html">SoilApp</a>
+          <a href="https://corn-count.web.app/">Grain Counter</a>
+          <a href="#mapviewer">MapViewer</a>
+        </div> -->
+      </li>
+    </ul>
+    <div class="language-selector">
+      <button class="language-button" onclick="toggleLanguageMenu()">
+        <i class="fa-solid fa-globe"></i>
+      </button>
+      <div class="language-menu" id="languageMenu">
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('pt')">Português</button>
+        <button onclick="setLanguage('es')">Español</button>
+        <button onclick="setLanguage('fr')">Français</button>
+      </div>
+    </div>
+  </nav>
+
+<div style="margin-top: 100px; text-align: start; margin-left: 20px;">
+  <h1>Corn Grain Counter</h1>
+</div>
+
+  <section class="about fade-in">
+    <div class="about-highlights">
+      <h2>About the App</h2>
+      <p>Introducing our innovative prototype app that utilizes artificial intelligence to accurately count corn cob grains, enhancing efficiency in agricultural practices.</p>
+
+      <div class="highlight">
+        <h3>Key Features</h3>
+        <p>Our app leverages advanced AI algorithms to provide real-time grain counting, ensuring precise data collection for farmers and agronomists.</p>
+      </div>
+      <div class="highlight">
+        <h3>User-Friendly Interface</h3>
+        <p>The app is designed with a simple and intuitive interface, making it easy for users to navigate and access essential features.</p>
+      </div>
+      <div class="highlight">
+        <h3>Data Analytics</h3>
+        <p>Gain insights from the collected data with built-in analytics tools that help optimize farming strategies and improve yield.</p>
+      </div>
+    </div>
+
+    <div class="app-container">
+      <div class="smartphone-frame" style="margin-top: 20px;">
+        <iframe id="cornCountApp" src="https://corn-count.web.app/" allow="camera"></iframe>
+      </div>
+      <button id="fullscreenButton" class="cta-btn">Open in Fullscreen</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 VirtuaCrop. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll Animation Function
+    function scrollAnimation() {
+      const elements = document.querySelectorAll('.fade-in');
+
+      elements.forEach(element => {
+        const position = element.getBoundingClientRect();
+        if (position.top < window.innerHeight - 100) {
+          element.classList.add('visible');
+        }
+      });
+    }
+
+    // Run on page load and on scroll
+    window.addEventListener('scroll', scrollAnimation);
+    window.addEventListener('load', scrollAnimation);
+
+    // Function to open the iframe in fullscreen
+    document.getElementById('fullscreenButton').addEventListener('click', function() {
+      const iframe = document.getElementById('cornCountApp');
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.mozRequestFullScreen) { // Firefox
+        iframe.mozRequestFullScreen();
+      } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) { // IE/Edge
+        iframe.msRequestFullscreen();
+      }
+    });
+
+
+function toggleProductsMenu(event) {
+  event.preventDefault(); // Prevents the link from navigating
+  const productsMenu = document.getElementById("productsMenu");
+  productsMenu.style.display = productsMenu.style.display === "block" ? "none" : "block";
+}
+
+function toggleFeaturesMenu(event) {
+  event.preventDefault(); // Prevents the link from navigating
+  const productsMenu = document.getElementById("featuresMenu");
+  productsMenu.style.display = productsMenu.style.display === "block" ? "none" : "block";
+}
+
+
+function toggleNavbar() {
+  const navbarLinks = document.getElementById('navbarLinks');
+  navbarLinks.classList.toggle('show');
+}
+
+
+  </script>
+</body>
+</html>
