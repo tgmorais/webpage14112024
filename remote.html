@@ -84,12 +84,12 @@
       display: flex;
       justify-content: space-between;
       gap: 2rem;
-      flex: 1;
+      /* flex: 1; */
     }
 
 
     .about-highlights {
-      flex: 1;
+      /* flex: 1; */
       max-width: 700px; /* Limit width of highlights */
 
     }
@@ -246,6 +246,7 @@ ul.custom-bullets li::before {
   outline: none;
 }
 
+
 .nav-links {
   display: flex;
   justify-content: space-around; /* Evenly distribute space between items */
@@ -313,7 +314,6 @@ ul.custom-bullets li::before {
 .hamburger-menu:hover {
   color: #28a745; /* Match hover color */
 }
-
 
 @media (max-aspect-ratio: 1/1) {
     .nav-links {
@@ -407,10 +407,10 @@ p, li {
 <body>
   <!-- Navbar -->
   <nav class="navbar">
+    <button class="hamburger-menu" onclick="toggleNavbar()">
+        ☰
+      </button>
     <div class="logo">
-        <button class="hamburger-menu" onclick="toggleNavbar()">
-            ☰
-          </button>
       <a href="index.html"><img src="images/logo.png" alt="VirtuaCrop Logo"></a>
     </div>
       <ul class="nav-links" id="navbarLinks">
@@ -425,7 +425,7 @@ p, li {
         <a href="#" class="nav-link" onclick="toggleProductsMenu(event)">Solutions</a>
         <div class="products-menu" id="productsMenu">
             <a href="soilapp.html">VirtuaCrop - SoilApp</a>
-          <a href="https://corn-count.web.app/">Grain Counter</a>
+          <a href="corn-counter.html">Grain Counter</a>
           <!-- <a href="#mapviewer">MapViewer</a> -->
         </div>
       </li>
