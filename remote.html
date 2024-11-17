@@ -424,7 +424,7 @@ p, li {
       <li class="nav-item products-dropdown">
         <a href="#" class="nav-link" onclick="toggleProductsMenu(event)">Solutions</a>
         <div class="products-menu" id="productsMenu">
-            <a href="soilapp.html">VirtuaCrop - SoilApp</a>
+          <a href="soilapp.html">VirtuaCrop - SoilApp</a>
           <a href="corn-counter.html">Grain Counter</a>
           <!-- <a href="#mapviewer">MapViewer</a> -->
         </div>
@@ -619,6 +619,230 @@ window.addEventListener('resize', function () {
 // Call `invalidateSize` manually when the map container changes size
 map.on('load', function () {
   map.invalidateSize();
+});
+
+  const translations = {
+    en: {
+      navbar: {
+        features: "Features",
+        solutions: "Solutions",
+        about: "About Us",
+        contact: "Contact"
+      },
+      dropdownLinks: {
+        remote: "Remote Sensing Image Analysis",
+        digital: "Digital Image Analysis",
+        soilApp: "VirtuaCrop - SoilApp",
+        grainCounter: "Grain Counter"
+      },
+      pageTitle: "Advanced Remote Sensing Image Analysis",
+      description1: "Explore cutting-edge techniques in remote sensing image analysis, leveraging data from satellites, aerial photos, and drones.",
+      description2: "From object detection to segmentation, our solutions transform imagery into actionable insights for a variety of industries.",
+      dataSourcesTitle: "Data Sources",
+      dataSources: [
+        "Satellite Imagery: Captures broad-scale, multi-spectral data for land use and environmental analysis.",
+        "Aerial Photography: Provides medium-scale, detailed imagery for precise mapping.",
+        "Drone (UAV): Offers localized data for specific analysis, such as crop health or urban features."
+      ],
+      aiTechniquesTitle: "AI Techniques",
+      aiTechniques: [
+        "Object Detection: Identifying objects like buildings, roads, or vegetation.",
+        "Image Segmentation: Classifying pixels to map land use, vegetation types, and more.",
+        "Tree Counting: Accurately quantifying individual trees in high-resolution data.",
+        "Crop Weed Identification: Detecting weeds for precision agriculture solutions."
+      ],
+      applicationsTitle: "Applications",
+      applications: [
+        "Precision Agriculture",
+        "Urban Planning",
+        "Environmental Monitoring",
+        "Forestry and Resource Management"
+      ],
+      mapExample: "Example of application (Semantic segmentation)"
+    },
+    pt: {
+      navbar: {
+        features: "Funcionalidades",
+        solutions: "Soluções",
+        about: "Sobre Nós",
+        contact: "Contato"
+      },
+      dropdownLinks: {
+        remote: "Análise de Imagens de Deteção Remota",
+        digital: "Análise de Imagens Digitais",
+        soilApp: "VirtuaCrop - SoilApp",
+        grainCounter: "Contador de Grãos"
+      },
+      pageTitle: "Análise Avançada de Imagens de Sensoriamento Remoto",
+      description1: "Explore técnicas avançadas na análise de imagens de sensoriamento remoto, aproveitando dados de satélites, fotos aéreas e drones.",
+      description2: "De detecção de objetos a segmentação, nossas soluções transformam imagens em insights acionáveis para várias indústrias.",
+      dataSourcesTitle: "Fontes de Dados",
+      dataSources: [
+        "Imagens de Satélite: Captura dados multiespectrais de ampla escala para análise de uso do solo e meio ambiente.",
+        "Fotografia Aérea: Fornece imagens detalhadas de média escala para mapeamento preciso.",
+        "Drone (UAV): Oferece dados localizados para análises específicas, como saúde de culturas ou recursos urbanos."
+      ],
+      aiTechniquesTitle: "Técnicas de IA",
+      aiTechniques: [
+        "Detecção de Objetos: Identificação de objetos como edifícios, estradas ou vegetação.",
+        "Segmentação de Imagens: Classificação de pixels para mapear uso do solo, tipos de vegetação e mais.",
+        "Contagem de Árvores: Quantificação precisa de árvores individuais em dados de alta resolução.",
+        "Identificação de Ervas Daninhas: Detecção de ervas daninhas para soluções de agricultura de precisão."
+      ],
+      applicationsTitle: "Aplicações",
+      applications: [
+        "Agricultura de Precisão",
+        "Planejamento Urbano",
+        "Monitoramento Ambiental",
+        "Gestão Florestal e de Recursos"
+      ],
+      mapExample: "Exemplo de aplicação (Segmentação semântica)"
+    },
+    es: {
+      navbar: {
+        features: "Funciones",
+        solutions: "Soluciones",
+        about: "Sobre Nosotros",
+        contact: "Contacto"
+      },
+      dropdownLinks: {
+        remote: "Análisis de Imágenes de Teledetección",
+        digital: "Análisis de Imágenes Digitales",
+        soilApp: "VirtuaCrop - SoilApp",
+        grainCounter: "Contador de Granos"
+      },
+      pageTitle: "Análisis Avanzado de Imágenes de Teledetección",
+      description1: "Explore técnicas de vanguardia en el análisis de imágenes de teledetección, aprovechando datos de satélites, fotos aéreas y drones.",
+      description2: "Desde la detección de objetos hasta la segmentación, nuestras soluciones transforman imágenes en información procesable para una variedad de industrias.",
+      dataSourcesTitle: "Fuentes de Datos",
+      dataSources: [
+        "Imágenes Satelitales: Capturan datos multiespectrales a gran escala para el análisis del uso del suelo y el medio ambiente.",
+        "Fotografía Aérea: Proporciona imágenes detalladas a escala media para un mapeo preciso.",
+        "Drone (UAV): Ofrece datos localizados para análisis específicos, como la salud de cultivos o características urbanas."
+      ],
+      aiTechniquesTitle: "Técnicas de IA",
+      aiTechniques: [
+        "Detección de Objetos: Identificación de objetos como edificios, carreteras o vegetación.",
+        "Segmentación de Imágenes: Clasificación de píxeles para mapear uso del suelo, tipos de vegetación y más.",
+        "Conteo de Árboles: Cuantificación precisa de árboles individuales en datos de alta resolución.",
+        "Identificación de Malezas: Detección de malezas para soluciones de agricultura de precisión."
+      ],
+      applicationsTitle: "Aplicaciones",
+      applications: [
+        "Agricultura de Precisión",
+        "Planificación Urbana",
+        "Monitoreo Ambiental",
+        "Gestión Forestal y de Recursos"
+      ],
+      mapExample: "Ejemplo de aplicación (Segmentación semántica)"
+    },
+    fr: {
+      navbar: {
+        features: "Fonctionnalités",
+        solutions: "Solutions",
+        about: "À Propos",
+        contact: "Contact"
+      },
+      dropdownLinks: {
+        remote: "Analyse d'Images de Télédétection",
+        digital: "Analyse d'Images Numériques",
+        soilApp: "VirtuaCrop - SoilApp",
+        grainCounter: "Compteur de Grains"
+      },
+      pageTitle: "Analyse Avancée d'Images de Télédétection",
+      description1: "Explorez des techniques de pointe dans l'analyse d'images de télédétection, en exploitant des données provenant de satellites, de photos aériennes et de drones.",
+      description2: "De la détection d'objets à la segmentation, nos solutions transforment les images en informations exploitables pour diverses industries.",
+      dataSourcesTitle: "Sources de Données",
+      dataSources: [
+        "Images Satellitaires: Capturent des données multispectrales à grande échelle pour l'analyse de l'utilisation des terres et de l'environnement.",
+        "Photographie Aérienne: Fournit des images détaillées à échelle moyenne pour une cartographie précise.",
+        "Drone (UAV): Offre des données localisées pour des analyses spécifiques, telles que la santé des cultures ou les caractéristiques urbaines."
+      ],
+      aiTechniquesTitle: "Techniques d'IA",
+      aiTechniques: [
+        "Détection d'Objets: Identification d'objets comme les bâtiments, les routes ou la végétation.",
+        "Segmentation d'Images: Classification des pixels pour cartographier l'utilisation des terres, les types de végétation et plus.",
+        "Comptage des Arbres: Quantification précise des arbres individuels dans des données haute résolution.",
+        "Identification des Mauvaises Herbes: Détection des mauvaises herbes pour des solutions d'agriculture de précision."
+      ],
+      applicationsTitle: "Applications",
+      applications: [
+        "Agriculture de Précision",
+        "Urbanisme",
+        "Surveillance Environnementale",
+        "Gestion des Forêts et des Ressources"
+      ],
+      mapExample: "Exemple d'application (Segmentation sémantique)"
+    }
+  };
+
+  function updateContent() {
+    const lang = localStorage.getItem('lang') || 'en';
+    const content = translations[lang];
+
+    if (!content) return;
+
+    // Update navbar
+    const navbarLinks = document.querySelectorAll('.nav-links .nav-link');
+    navbarLinks[0].textContent = content.navbar.features;
+    navbarLinks[1].textContent = content.navbar.solutions;
+    navbarLinks[2].textContent = content.navbar.about;
+    navbarLinks[3].textContent = content.navbar.contact;
+
+    // Update dropdown links
+    const featuresMenuLinks = document.querySelectorAll('#featuresMenu a');
+    featuresMenuLinks[0].textContent = content.dropdownLinks.remote;
+    featuresMenuLinks[1].textContent = content.dropdownLinks.digital;
+
+    const solutionsMenuLinks = document.querySelectorAll('#productsMenu a');
+    solutionsMenuLinks[0].textContent = content.dropdownLinks.soilApp;
+    solutionsMenuLinks[1].textContent = content.dropdownLinks.grainCounter;
+
+    // Update page content
+    document.querySelector('.about-highlights h2').textContent = content.pageTitle;
+    const paragraphs = document.querySelectorAll('.about-highlights p');
+    paragraphs[0].textContent = content.description1;
+    paragraphs[1].textContent = content.description2;
+
+    const dataSourceList = document.querySelector('.highlight:nth-of-type(1) ul');
+    dataSourceList.innerHTML = content.dataSources.map(item => `<li>${formatText(item)}</li>`).join('');
+
+    const aiTechniquesList = document.querySelector('.highlight:nth-of-type(2) ul');
+    aiTechniquesList.innerHTML = content.aiTechniques.map(item => `<li>${formatText(item)}</li>`).join('');
+
+    const applicationsList = document.querySelector('.highlight:nth-of-type(3) ul');
+    applicationsList.innerHTML = content.applications.map(app => `<li>${app}</li>`).join('');
+
+    document.querySelector('.map-container h3').textContent = content.mapExample;
+  }
+
+  function formatText(text) {
+    const [boldPart, ...rest] = text.split(':');
+    return `<strong>${boldPart.trim()}</strong>: ${rest.join(':').trim()}`;
+  }
+
+  function setLanguage(lang) {
+    localStorage.setItem('lang', lang);
+    updateContent();
+  }
+
+  document.addEventListener('DOMContentLoaded', updateContent);
+
+
+    
+  function toggleLanguageMenu() {
+  const languageMenu = document.getElementById("languageMenu");
+  languageMenu.style.display = languageMenu.style.display === "block" ? "none" : "block";
+}
+
+// Close the language menu when clicking outside of it
+window.addEventListener("click", function(event) {
+  const languageMenu = document.getElementById("languageMenu");
+  const languageButton = document.querySelector(".language-button");
+
+  if (event.target !== languageButton && !languageButton.contains(event.target)) {
+    languageMenu.style.display = "none";
+  }
 });
 
 

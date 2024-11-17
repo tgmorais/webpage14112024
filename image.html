@@ -592,23 +592,214 @@ p, li {
 
 
     function toggleProductsMenu(event) {
-  event.preventDefault(); // Prevents the link from navigating
-  const productsMenu = document.getElementById("productsMenu");
-  productsMenu.style.display = productsMenu.style.display === "block" ? "none" : "block";
+      event.preventDefault(); // Prevents the link from navigating
+      const productsMenu = document.getElementById("productsMenu");
+      productsMenu.style.display = productsMenu.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleFeaturesMenu(event) {
+      event.preventDefault(); // Prevents the link from navigating
+      const productsMenu = document.getElementById("featuresMenu");
+      productsMenu.style.display = productsMenu.style.display === "block" ? "none" : "block";
+    }
+
+
+
+    function toggleNavbar() {
+      const navbarLinks = document.getElementById('navbarLinks');
+      navbarLinks.classList.toggle('show');
+    }
+
+  // Language translations
+  const translations = {
+    en: {
+      navbar: {
+        features: "Features",
+        solutions: "Solutions",
+        about: "About Us",
+        contact: "Contact"
+      },
+      dropdownLinks: {
+        remote: "Remote Sensing Image Analysis",
+        digital: "Digital Image Analysis",
+        soilApp: "VirtuaCrop - SoilApp",
+        grainCounter: "Grain Counter"
+      },
+      title: "Digital Photography Analysis",
+      description: "Analyze digital photographs to extract valuable information using advanced computer vision techniques. From fruit counting in orchards to identifying grains on a cob, our solutions deliver precision insights.",
+      keyFeatures: "Key Features",
+      features: [
+        "Plant Analysis: Detect plant nutrient deficiency, pest and diseases, and weed infestation for optimized management.",
+        "Fruit Counting: Automatically detect and count fruits on trees.",
+        "Grain Analysis: Identify and count grains on a cob with high accuracy.",
+        "Segmentation: Differentiate between fruits, leaves, and background.",
+        "Object Detection: Detect and label multiple objects in an image."
+      ],
+      applications: "Applications",
+      applicationList: [
+        "Agriculture: Optimize harvest estimation and quality control.",
+        "Food Processing: Automate sorting and counting processes.",
+        "Research: Facilitate plant science and growth studies."
+      ]
+    },
+    pt: {
+      navbar: {
+        features: "Funcionalidades",
+        solutions: "Soluções",
+        about: "Sobre Nós",
+        contact: "Contato"
+      },
+      dropdownLinks: {
+        remote: "Análise de Imagens de Deteção Remota",
+        digital: "Análise de Imagens Digitais",
+        soilApp: "VirtuaCrop - SoilApp",
+        grainCounter: "Contador de Grãos"
+      },
+      title: "Análise de Fotografia Digital",
+      description: "Analise fotografias digitais para extrair informações valiosas utilizando técnicas avançadas de visão computacional. Desde a contagem de frutos em pomares até a identificação de grãos em uma espiga, nossas soluções oferecem insights precisos.",
+      keyFeatures: "Características Principais",
+      features: [
+        "Análise de Plantas: Detectar deficiência de nutrientes, pragas e doenças, e infestação de ervas daninhas para uma gestão otimizada.",
+        "Contagem de Frutas: Detectar e contar automaticamente frutas nas árvores.",
+        "Análise de Grãos: Identificar e contar grãos em uma espiga com alta precisão.",
+        "Segmentação: Diferenciar entre frutos, folhas e fundo.",
+        "Detecção de Objetos: Detectar e rotular vários objetos em uma imagem."
+      ],
+      applications: "Aplicações",
+      applicationList: [
+        "Agricultura: Otimizar estimativas de colheita e controle de qualidade.",
+        "Processamento de Alimentos: Automatizar processos de classificação e contagem.",
+        "Pesquisa: Facilitar estudos de crescimento e ciência de plantas."
+      ]
+    },
+    es: {
+      navbar: {
+        features: "Funciones",
+        solutions: "Soluciones",
+        about: "Sobre Nosotros",
+        contact: "Contacto"
+      },
+      dropdownLinks: {
+        remote: "Análisis de Imágenes de Teledetección",
+        digital: "Análisis de Imágenes Digitales",
+        soilApp: "VirtuaCrop - SoilApp",
+        grainCounter: "Contador de Granos"
+      },
+      title: "Análisis de Fotografía Digital",
+      description: "Analice fotografías digitales para extraer información valiosa utilizando técnicas avanzadas de visión por computadora. Desde el conteo de frutas en huertos hasta la identificación de granos en una mazorca, nuestras soluciones ofrecen información precisa.",
+      keyFeatures: "Características Clave",
+      features: [
+        "Análisis de Plantas: Detectar deficiencia de nutrientes, plagas y enfermedades, e infestación de malezas para una gestión optimizada.",
+        "Conteo de Frutas: Detectar y contar automáticamente frutas en los árboles.",
+        "Análisis de Granos: Identificar y contar granos en una mazorca con alta precisión.",
+        "Segmentación: Diferenciar entre frutas, hojas y fondo.",
+        "Detección de Objetos: Detectar y etiquetar múltiples objetos en una imagen."
+      ],
+      applications: "Aplicaciones",
+      applicationList: [
+        "Agricultura: Optimizar la estimación de cosechas y el control de calidad.",
+        "Procesamiento de Alimentos: Automatizar los procesos de clasificación y conteo.",
+        "Investigación: Facilitar estudios de crecimiento y ciencia de plantas."
+      ]
+    },
+    fr: {
+      navbar: {
+        features: "Fonctionnalités",
+        solutions: "Solutions",
+        about: "À Propos",
+        contact: "Contact"
+      },
+      dropdownLinks: {
+        remote: "Analyse d'Images de Télédétection",
+        digital: "Analyse d'Images Numériques",
+        soilApp: "VirtuaCrop - SoilApp",
+        grainCounter: "Compteur de Grains"
+      },
+      title: "Analyse de Photographie Numérique",
+      description: "Analysez des photographies numériques pour extraire des informations précieuses en utilisant des techniques avancées de vision par ordinateur. De la comptabilisation des fruits dans les vergers à l'identification des grains sur un épi, nos solutions offrent des informations précises.",
+      keyFeatures: "Caractéristiques Clés",
+      features: [
+        "Analyse des Plantes: Détecter les carences en nutriments, les ravageurs et maladies, et les infestations de mauvaises herbes pour une gestion optimisée.",
+        "Comptage des Fruits: Détecter et compter automatiquement les fruits sur les arbres.",
+        "Analyse des Grains: Identifier et compter les grains sur un épi avec une grande précision.",
+        "Segmentation: Différencier entre fruits, feuilles et arrière-plan.",
+        "Détection d'Objets: Detecter et étiqueter plusieurs objets dans une image."
+      ],
+      applications: "Applications",
+      applicationList: [
+        "Agriculture: Optimiser l'estimation des récoltes et le contrôle de qualité.",
+        "Transformation Alimentaire: Automatiser les processus de tri et de comptage.",
+        "Recherche: Faciliter les études de croissance et de science des plantes."
+      ]
+    }
+  };
+
+  // Helper function to wrap text before colon in <strong>
+  function formatText(text) {
+    const [boldPart, ...rest] = text.split(':');
+    return `<strong>${boldPart.trim()}</strong>: ${rest.join(':').trim()}`;
+  }
+
+  // Update content dynamically based on the language
+  function updateContent() {
+    const lang = localStorage.getItem('lang') || 'en';
+    const content = translations[lang];
+
+    if (!content) return;
+
+    const navbarLinks = document.querySelectorAll('.nav-links .nav-link');
+    navbarLinks[0].textContent = content.navbar.features;
+    navbarLinks[1].textContent = content.navbar.solutions;
+    navbarLinks[2].textContent = content.navbar.about;
+    navbarLinks[3].textContent = content.navbar.contact;
+
+    // Update dropdown links
+    const featuresMenuLinks = document.querySelectorAll('#featuresMenu a');
+    featuresMenuLinks[0].textContent = content.dropdownLinks.remote;
+    featuresMenuLinks[1].textContent = content.dropdownLinks.digital;
+
+    const solutionsMenuLinks = document.querySelectorAll('#productsMenu a');
+    solutionsMenuLinks[0].textContent = content.dropdownLinks.soilApp;
+    solutionsMenuLinks[1].textContent = content.dropdownLinks.grainCounter;
+
+
+    // Update content dynamically
+    document.querySelector('h2').textContent = content.title;
+    document.querySelector('.about-highlights p').textContent = content.description;
+
+    const featureList = document.querySelector('.about-highlights .highlight:nth-of-type(1) ul');
+    featureList.innerHTML = content.features.map(feature => `<li>${formatText(feature)}</li>`).join('');
+
+    const applicationList = document.querySelector('.about-highlights .highlight:nth-of-type(2) ul');
+    applicationList.innerHTML = content.applicationList.map(app => `<li>${formatText(app)}</li>`).join('');
+  }
+
+  // Set language in localStorage and update content
+  function setLanguage(lang) {
+    localStorage.setItem('lang', lang);
+    updateContent();
+  }
+
+  // Initialize content on page load
+  document.addEventListener('DOMContentLoaded', updateContent);
+
+
+  function toggleLanguageMenu() {
+  const languageMenu = document.getElementById("languageMenu");
+  languageMenu.style.display = languageMenu.style.display === "block" ? "none" : "block";
 }
 
-function toggleFeaturesMenu(event) {
-  event.preventDefault(); // Prevents the link from navigating
-  const productsMenu = document.getElementById("featuresMenu");
-  productsMenu.style.display = productsMenu.style.display === "block" ? "none" : "block";
-}
+// Close the language menu when clicking outside of it
+window.addEventListener("click", function(event) {
+  const languageMenu = document.getElementById("languageMenu");
+  const languageButton = document.querySelector(".language-button");
+
+  if (event.target !== languageButton && !languageButton.contains(event.target)) {
+    languageMenu.style.display = "none";
+  }
+});
 
 
-
-function toggleNavbar() {
-  const navbarLinks = document.getElementById('navbarLinks');
-  navbarLinks.classList.toggle('show');
-}
 
   </script>
   

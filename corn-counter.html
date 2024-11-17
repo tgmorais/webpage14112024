@@ -369,11 +369,11 @@
 @media (max-aspect-ratio: 1/1) {
   .smartphone-frame {
     width: 90%; /* Adjust width to be responsive */
-    height: calc(70vh - 62px); /* Maintain aspect ratio and fit within viewport height */
+    height: 500px; /* Maintain aspect ratio and fit within viewport height */
   }
 
   iframe {
-    height: calc(100% - 32px); /* Ensure iframe scales correctly */
+    height: 500px; /* Ensure iframe scales correctly */
   }
 }
 
@@ -542,7 +542,7 @@ p, li {
       <div class="smartphone-frame" style="margin-top: 20px;">
         <iframe id="cornCountApp" src="https://corn-count.web.app/" allow="camera"></iframe>
       </div>
-      <button id="fullscreenButton" class="cta-btn">Open in Fullscreen</button>
+      <!-- <button id="fullscreenButton" class="cta-btn">Open in Fullscreen</button> -->
     </div>
   </section>
 
@@ -568,18 +568,18 @@ p, li {
     window.addEventListener('load', scrollAnimation);
 
     // Function to open the iframe in fullscreen
-    document.getElementById('fullscreenButton').addEventListener('click', function() {
-      const iframe = document.getElementById('cornCountApp');
-      if (iframe.requestFullscreen) {
-        iframe.requestFullscreen();
-      } else if (iframe.mozRequestFullScreen) { // Firefox
-        iframe.mozRequestFullScreen();
-      } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, and Opera
-        iframe.webkitRequestFullscreen();
-      } else if (iframe.msRequestFullscreen) { // IE/Edge
-        iframe.msRequestFullscreen();
-      }
-    });
+    // document.getElementById('fullscreenButton').addEventListener('click', function() {
+    //   const iframe = document.getElementById('cornCountApp');
+    //   if (iframe.requestFullscreen) {
+    //     iframe.requestFullscreen();
+    //   } else if (iframe.mozRequestFullScreen) { // Firefox
+    //     iframe.mozRequestFullScreen();
+    //   } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+    //     iframe.webkitRequestFullscreen();
+    //   } else if (iframe.msRequestFullscreen) { // IE/Edge
+    //     iframe.msRequestFullscreen();
+    //   }
+    // });
 
 
 function toggleProductsMenu(event) {
@@ -599,6 +599,164 @@ function toggleNavbar() {
   const navbarLinks = document.getElementById('navbarLinks');
   navbarLinks.classList.toggle('show');
 }
+
+const translations = {
+    en: {
+      navbar: {
+        features: "Features",
+        solutions: "Solutions",
+        about: "About Us",
+        contact: "Contact"
+      },
+      dropdownLinks: {
+        remote: "Remote Sensing Image Analysis",
+        digital: "Digital Image Analysis",
+        soilApp: "VirtuaCrop - SoilApp",
+        grainCounter: "Grain Counter"
+      },
+      title: "Corn Grain Counter",
+      aboutApp: "About the App",
+      aboutDescription: "Introducing our innovative prototype app that utilizes artificial intelligence to accurately count corn cob grains, enhancing efficiency in agricultural practices.",
+      featuresTitle: "Key Features",
+      featuresDescription: "Our app leverages advanced AI algorithms to provide real-time grain counting, ensuring precise data collection for farmers and agronomists.",
+      userInterfaceTitle: "User-Friendly Interface",
+      userInterfaceDescription: "The app is designed with a simple and intuitive interface, making it easy for users to navigate and access essential features.",
+      analyticsTitle: "Data Analytics",
+      analyticsDescription: "Gain insights from the collected data with built-in analytics tools that help optimize farming strategies and improve yield.",
+      fullscreenButton: "Open in Fullscreen"
+    },
+    pt: {
+      navbar: {
+        features: "Funcionalidades",
+        solutions: "Soluções",
+        about: "Sobre Nós",
+        contact: "Contato"
+      },
+      dropdownLinks: {
+        remote: "Análise de Imagens de Deteção Remota",
+        digital: "Análise de Imagens Digitais",
+        soilApp: "VirtuaCrop - SoilApp",
+        grainCounter: "Contador de Grãos"
+      },
+      title: "Contador de Grãos de Milho",
+      aboutApp: "Sobre o App",
+      aboutDescription: "Apresentamos nosso aplicativo protótipo inovador que utiliza inteligência artificial para contar grãos de milho com precisão, aumentando a eficiência nas práticas agrícolas.",
+      featuresTitle: "Características Principais",
+      featuresDescription: "Nosso aplicativo utiliza algoritmos avançados de IA para fornecer contagem de grãos em tempo real, garantindo coleta precisa de dados para agricultores e agrônomos.",
+      userInterfaceTitle: "Interface Fácil de Usar",
+      userInterfaceDescription: "O aplicativo foi projetado com uma interface simples e intuitiva, facilitando a navegação e o acesso aos recursos essenciais.",
+      analyticsTitle: "Análise de Dados",
+      analyticsDescription: "Obtenha insights dos dados coletados com ferramentas de análise integradas que ajudam a otimizar estratégias agrícolas e melhorar a produção.",
+      fullscreenButton: "Abrir em Tela Cheia"
+    },
+    es: {
+      navbar: {
+        features: "Funciones",
+        solutions: "Soluciones",
+        about: "Sobre Nosotros",
+        contact: "Contacto"
+      },
+      dropdownLinks: {
+        remote: "Análisis de Imágenes de Teledetección",
+        digital: "Análisis de Imágenes Digitales",
+        soilApp: "VirtuaCrop - SoilApp",
+        grainCounter: "Contador de Granos"
+      },
+      title: "Contador de Granos de Maíz",
+      aboutApp: "Sobre la App",
+      aboutDescription: "Presentamos nuestra innovadora aplicación prototipo que utiliza inteligencia artificial para contar con precisión los granos de mazorca de maíz, mejorando la eficiencia en las prácticas agrícolas.",
+      featuresTitle: "Características Clave",
+      featuresDescription: "Nuestra aplicación utiliza algoritmos avanzados de IA para proporcionar conteo de granos en tiempo real, asegurando una recopilación de datos precisa para agricultores y agrónomos.",
+      userInterfaceTitle: "Interfaz Fácil de Usar",
+      userInterfaceDescription: "La aplicación está diseñada con una interfaz simple e intuitiva, lo que facilita la navegación y el acceso a las funciones esenciales.",
+      analyticsTitle: "Análisis de Datos",
+      analyticsDescription: "Obtenga información de los datos recopilados con herramientas de análisis integradas que ayudan a optimizar estrategias agrícolas y mejorar el rendimiento.",
+      fullscreenButton: "Abrir en Pantalla Completa"
+    },
+    fr: {
+      navbar: {
+        features: "Fonctionnalités",
+        solutions: "Solutions",
+        about: "À Propos",
+        contact: "Contact"
+      },
+      dropdownLinks: {
+        remote: "Analyse d'Images de Télédétection",
+        digital: "Analyse d'Images Numériques",
+        soilApp: "VirtuaCrop - SoilApp",
+        grainCounter: "Compteur de Grains"
+      },
+      title: "Compteur de Grains de Maïs",
+      aboutApp: "À propos de l'application",
+      aboutDescription: "Nous présentons notre application prototype innovante qui utilise l'intelligence artificielle pour compter avec précision les grains de maïs, améliorant ainsi l'efficacité des pratiques agricoles.",
+      featuresTitle: "Caractéristiques Clés",
+      featuresDescription: "Notre application utilise des algorithmes d'IA avancés pour fournir un comptage des grains en temps réel, assurant une collecte de données précise pour les agriculteurs et les agronomes.",
+      userInterfaceTitle: "Interface Conviviale",
+      userInterfaceDescription: "L'application est conçue avec une interface simple et intuitive, facilitant la navigation et l'accès aux fonctionnalités essentielles.",
+      analyticsTitle: "Analyse des Données",
+      analyticsDescription: "Obtenez des informations à partir des données collectées grâce à des outils d'analyse intégrés qui aident à optimiser les stratégies agricoles et à améliorer les rendements.",
+      fullscreenButton: "Ouvrir en Plein Écran"
+    }
+  };
+
+  function updateContent() {
+    const lang = localStorage.getItem('lang') || 'en';
+    const content = translations[lang];
+
+    if (!content) return;
+
+    const navbarLinks = document.querySelectorAll('.nav-links .nav-link');
+    navbarLinks[0].textContent = content.navbar.features;
+    navbarLinks[1].textContent = content.navbar.solutions;
+    navbarLinks[2].textContent = content.navbar.about;
+    navbarLinks[3].textContent = content.navbar.contact;
+
+    // Update dropdown links
+    const featuresMenuLinks = document.querySelectorAll('#featuresMenu a');
+    featuresMenuLinks[0].textContent = content.dropdownLinks.remote;
+    featuresMenuLinks[1].textContent = content.dropdownLinks.digital;
+
+    const solutionsMenuLinks = document.querySelectorAll('#productsMenu a');
+    solutionsMenuLinks[0].textContent = content.dropdownLinks.soilApp;
+    solutionsMenuLinks[1].textContent = content.dropdownLinks.grainCounter;
+
+    document.querySelector('h1').textContent = content.title;
+    document.querySelector('.about-highlights h2').textContent = content.aboutApp;
+    document.querySelector('.about-highlights p').textContent = content.aboutDescription;
+
+    const highlights = document.querySelectorAll('.highlight');
+    highlights[0].querySelector('h3').textContent = content.featuresTitle;
+    highlights[0].querySelector('p').textContent = content.featuresDescription;
+    highlights[1].querySelector('h3').textContent = content.userInterfaceTitle;
+    highlights[1].querySelector('p').textContent = content.userInterfaceDescription;
+    highlights[2].querySelector('h3').textContent = content.analyticsTitle;
+    highlights[2].querySelector('p').textContent = content.analyticsDescription;
+
+    // document.getElementById('fullscreenButton').textContent = content.fullscreenButton;
+  }
+
+  function setLanguage(lang) {
+    localStorage.setItem('lang', lang);
+    updateContent();
+  }
+
+  document.addEventListener('DOMContentLoaded', updateContent);
+
+  
+  function toggleLanguageMenu() {
+  const languageMenu = document.getElementById("languageMenu");
+  languageMenu.style.display = languageMenu.style.display === "block" ? "none" : "block";
+}
+
+// Close the language menu when clicking outside of it
+window.addEventListener("click", function(event) {
+  const languageMenu = document.getElementById("languageMenu");
+  const languageButton = document.querySelector(".language-button");
+
+  if (event.target !== languageButton && !languageButton.contains(event.target)) {
+    languageMenu.style.display = "none";
+  }
+});
 
 
   </script>
