@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VirtuaCrop</title>
+    <meta
+      name="description"
+      content="VirtuaCrop generates agribusiness data products using Earth Observation + AI: biomass, protein content, soil properties, SOC, NDVI time series, and automatic weather alerts days in advance."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/georaster@1.6.4/dist/georaster.browser.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/georaster-layer-for-leaflet@3.10.0/dist/georaster-layer-for-leaflet.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chroma-js@2.4.2/chroma.min.js"></script>
+    <script defer src="leaflet-side-by-side.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="https://unpkg.com/georaster"></script>
+    <script src="config.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body data-page="home">
+    <div class="bg-orb bg-orb-a" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-b" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container header-wrap">
+        <a class="brand" href="#top" aria-label="VirtuaCrop">
+          <img class="brand-logo" src="Logo_final.png" alt="VirtuaCrop" width="3307" height="1418" />
+        </a>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#how" data-i18n="navHow">How it works</a>
+          <a href="#solutions" data-i18n="navSolutions">Solutions</a>
+          <a href="#cases" data-i18n="navCases">Use cases</a>
+          <a href="#contact" data-i18n="navContact">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="lang-switch" role="group" aria-label="Language switcher">
+            <button type="button" class="lang-btn" data-lang-toggle="pt">PT</button>
+            <button type="button" class="lang-btn" data-lang-toggle="en">EN</button>
+          </div>
+          <a href="#contact" class="btn btn-outline" data-i18n="navContactBtn">Talk to us</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero container">
+        <div class="hero-copy reveal">
+          <p class="eyebrow" data-i18n="heroEyebrow">Data generation for agribusiness</p>
+          <h1 data-i18n="heroTitle">Earth Observation + AI to generate actionable data for agribusiness operations.</h1>
+          <p class="hero-lead" data-i18n="heroDescription">
+            We transform satellite and aerial data into technical products: productivity/biomass, protein content, soil organic carbon, soil properties, NDVI time series, and automatic weather alerts days in advance.
+          </p>
+          <div class="hero-cta">
+            <button type="button" class="btn btn-primary" data-calendly-open data-calendly-source="hero" data-i18n="heroBookCallCta">
+              Book a call
+            </button>
+            <a href="#contact" class="btn btn-outline" data-i18n="heroPrimaryCta">Tell us what you need</a>
+            <a href="#solutions" class="btn btn-outline" data-i18n="heroSecondaryCta">Explore solutions</a>
+          </div>
+
+          <div class="kpi-strip">
+            <p class="kpi-strip-title" data-i18n="kpiStripTitle">Outcome KPIs (replace with verified values)</p>
+            <ul class="hero-kpi-grid" aria-label="KPI placeholders">
+              <li class="kpi-card">
+                <span class="kpi-value" data-i18n="kpiMetric1Value">Metric value</span>
+                <span class="kpi-label" data-i18n="kpiMetric1Label">Metric label</span>
+              </li>
+              <li class="kpi-card">
+                <span class="kpi-value" data-i18n="kpiMetric2Value">Metric value</span>
+                <span class="kpi-label" data-i18n="kpiMetric2Label">Metric label</span>
+              </li>
+              <li class="kpi-card">
+                <span class="kpi-value" data-i18n="kpiMetric3Value">Metric value</span>
+                <span class="kpi-label" data-i18n="kpiMetric3Label">Metric label</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="hero-flow-shell" data-hero-flow>
+            <svg
+              class="hero-flow-svg"
+              viewBox="0 0 920 430"
+              role="img"
+              aria-labelledby="hero-flow-title hero-flow-desc"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title id="hero-flow-title" data-i18n="heroFlowSvgTitle">EO to AI to output workflow</title>
+              <desc id="hero-flow-desc" data-i18n="heroFlowSvgDesc">
+                Data sources feed the VirtuaCrop AI core, then output technical agribusiness datasets.
+              </desc>
+              <defs>
+                <linearGradient id="line-input-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#d76855" />
+                  <stop offset="100%" stop-color="#bf5243" />
+                </linearGradient>
+                <linearGradient id="line-output-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#2ca178" />
+                  <stop offset="100%" stop-color="#13ba8b" />
+                </linearGradient>
+                <radialGradient id="flow-glow-gradient" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#ffa08f" stop-opacity="0.35" />
+                  <stop offset="100%" stop-color="#ffa08f" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <circle class="flow-glow" cx="460" cy="214" r="175" fill="url(#flow-glow-gradient)" />
+              <path class="flow-line flow-line-input" d="M225 80 C286 80 292 184 340 184" />
+              <path class="flow-line flow-line-input" d="M225 185 C286 185 292 200 340 200" />
+              <path class="flow-line flow-line-input" d="M225 290 C286 290 292 216 340 216" />
+              <path class="flow-line flow-line-output flow-line-output-main" d="M580 205 C654 205 640 205 692 205" />
+              <circle class="flow-node flow-node-input" cx="340" cy="200" r="9" />
+              <circle class="flow-node flow-node-output" cx="692" cy="205" r="10" />
+            </svg>
+
+            <article class="flow-card flow-card-input flow-card-input-a" style="--flow-delay: 0.1s">
+              <span class="flow-input-icon" aria-hidden="true">
+                <svg class="flow-input-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m8.8 8 6.9 6.9-2.4 2.4-6.9-6.9z" />
+                  <path d="m9.9 6.9-2.1 2.1m8.4 8.4-2.1 2.1" />
+                  <path d="m4.2 19.8 3.2-3.2m9.2-9.2 3.2-3.2" />
+                  <path d="m11.4 10.6 2 2" />
+                </svg>
+              </span>
+              <p data-i18n="heroFlowInput1">Satellite</p>
+            </article>
+            <article class="flow-card flow-card-input flow-card-input-b" style="--flow-delay: 0.2s">
+              <span class="flow-input-icon" aria-hidden="true">
+                <svg class="flow-input-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.2 18h8a3 3 0 0 0 .2-6A4.6 4.6 0 0 0 6.8 10a3.5 3.5 0 0 0 .4 8Z" />
+                  <path d="M12 5.1V3.5m-4.7 3 1.1 1.1m7.2-1.1-1.1 1.1" />
+                </svg>
+              </span>
+              <p data-i18n="heroFlowInput2">Weather</p>
+            </article>
+            <article class="flow-card flow-card-input flow-card-input-c" style="--flow-delay: 0.3s">
+              <span class="flow-input-icon" aria-hidden="true">
+                <svg class="flow-input-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.5 18.5h15" />
+                  <path d="M6.5 18.5V13l5.5-3 5.5 3v5.5" />
+                  <path d="M9.2 15.4h5.6m-5.6 2.2h5.6" />
+                </svg>
+              </span>
+              <p data-i18n="heroFlowInput3">Field data</p>
+            </article>
+
+            <article class="flow-card flow-card-core" style="--flow-delay: 0.45s">
+              <div class="flow-core-head">
+                <span class="flow-core-tag" data-i18n="heroFlowCoreTag">AI processing</span>
+                <span class="flow-core-state" aria-hidden="true"></span>
+              </div>
+              <div class="flow-core-processing" aria-hidden="true">
+                <div class="flow-core-chip"></div>
+                <div class="flow-core-pulse"></div>
+                <div class="flow-core-grid">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </article>
+            <div class="flow-bridge" aria-hidden="true"></div>
+
+            <article class="flow-card flow-card-output flow-card-output-report" style="--flow-delay: 0.7s">
+              <div class="flow-output-head">
+                <span class="flow-report-badge" aria-hidden="true">
+                  <svg class="flow-report-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 2.5h8l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4A1.5 1.5 0 0 1 6.5 2.5H7Z" />
+                    <path d="M15 2.5V7h4" />
+                    <path d="M8.5 11h7M8.5 14h7M8.5 17h5" />
+                  </svg>
+                </span>
+                <div class="flow-output-copy">
+                  <span class="flow-output-kicker" data-i18n="heroFlowOutputKicker">Single deliverable</span>
+                  <p class="flow-output-title" data-i18n="heroFlowOutputTitle">Integrated technical report</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="trusted" class="section container reveal">
+        <div class="section-head">
+          <p class="eyebrow" data-i18n="trustedEyebrow">Trusted by</p>
+          <h2 data-i18n="trustedTitle">Organizations and partners we collaborate with.</h2>
+          <p class="section-lead" data-i18n="trustedLead">Selected entities connected to projects and collaborations.</p>
+        </div>
+
+        <div class="trusted-grid" aria-label="Trusted organizations">
+          <a class="trusted-card" href="https://www.esa.int/" target="_blank" rel="noopener noreferrer" aria-label="European Space Agency">
+            <img
+              class="trusted-logo-esa"
+              src="assets/logos/esa.jpg"
+              alt="European Space Agency logo"
+              loading="lazy"
+              width="220"
+              height="80"
+            />
+            <span>European Space Agency</span>
+          </a>
+          <a
+            class="trusted-card"
+            href="https://www.euspa.europa.eu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="EU Agency for the Space Programme"
+          >
+            <img
+              src="assets/logos/euspa.svg"
+              alt="EU Agency for the Space Programme logo"
+              loading="lazy"
+              width="220"
+              height="80"
+            />
+            <span>EU Agency for the Space Programme</span>
+          </a>
+          <a class="trusted-card" href="https://www.terraprima.pt/" target="_blank" rel="noopener noreferrer" aria-label="Terraprima">
+            <img src="assets/logos/terraprima.png" alt="Terraprima logo" loading="lazy" width="220" height="80" />
+            <span>Terraprima</span>
+          </a>
+          <a class="trusted-card" href="https://wisecrop.com/" target="_blank" rel="noopener noreferrer" aria-label="Wisecrop">
+            <img src="assets/logos/wisecrop.png" alt="Wisecrop logo" loading="lazy" width="220" height="80" />
+            <span>Wisecrop</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="how" class="section container reveal">
+        <div class="section-head">
+          <p class="eyebrow" data-i18n="howEyebrow">How it works</p>
+          <h2 data-i18n="howTitle">From multi-source EO data to usable technical datasets.</h2>
+          <p class="section-lead" data-i18n="howLead">
+            A workflow designed to convert Earth Observation into operational agribusiness data.
+          </p>
+        </div>
+
+        <div class="card-grid three">
+          <article class="card">
+            <h3 data-i18n="howStep1Title">1. Data fusion</h3>
+            <p data-i18n="howStep1Body">
+              We integrate Sentinel-2, very high-resolution satellite data, aerial photography, and UAV (drone) data.
+            </p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="howStep2Title">2. AI interpretation</h3>
+            <p data-i18n="howStep2Body">
+              We apply AI models to estimate biomass, protein content, SOC, soil properties, and NDVI dynamics.
+            </p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="howStep3Title">3. Data delivery</h3>
+            <p data-i18n="howStep3Body">
+              We deliver maps, time series, and tabular outputs for operational and technical decisions.
+            </p>
+          </article>
+        </div>
+
+        <article class="support-visual how-visual reveal">
+          <div class="support-copy">
+            <h3 data-i18n="howVisualTitle">Operational fusion in one control layer</h3>
+            <p data-i18n="howVisualCaption">
+              Source harmonization, AI scoring, and quality checks stay connected before delivery.
+            </p>
+          </div>
+          <svg class="support-svg" viewBox="0 0 640 240" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="support-bg-grad-v2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f9fdfb" />
+                <stop offset="100%" stop-color="#edf7f2" />
+              </linearGradient>
+              <linearGradient id="support-core-grad-v2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="100%" stop-color="#e4f3eb" />
+              </linearGradient>
+              <linearGradient id="support-flow-in-v2" x1="188" y1="120" x2="238" y2="120">
+                <stop offset="0%" stop-color="#dc6f5c" />
+                <stop offset="100%" stop-color="#cf5e49" />
+              </linearGradient>
+              <linearGradient id="support-flow-out-v2" x1="418" y1="120" x2="468" y2="120">
+                <stop offset="0%" stop-color="#2faa82" />
+                <stop offset="100%" stop-color="#2a986f" />
+              </linearGradient>
+              <filter id="support-glow-v2" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2.8" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <rect x="2" y="2" width="636" height="236" rx="22" fill="url(#support-bg-grad-v2)" stroke="#caded4" stroke-width="2" />
+
+            <g opacity="0.35">
+              <path d="M34 90 H606" stroke="#dbeae2" stroke-width="1.5" />
+              <path d="M34 150 H606" stroke="#dbeae2" stroke-width="1.5" />
+              <path d="M214 34 V206" stroke="#dbeae2" stroke-width="1.5" />
+              <path d="M434 34 V206" stroke="#dbeae2" stroke-width="1.5" />
+            </g>
+
+            <g>
+              <rect x="34" y="40" width="158" height="42" rx="12" fill="#ffffff" stroke="#c3d9cf" stroke-width="2" />
+              <circle cx="54" cy="61" r="6" fill="#d56c57" />
+              <rect x="68" y="53" width="84" height="6" rx="3" fill="#d7e8df" />
+              <rect x="68" y="63" width="64" height="6" rx="3" fill="#e5f1eb" />
+            </g>
+            <g>
+              <rect x="34" y="99" width="158" height="42" rx="12" fill="#ffffff" stroke="#c3d9cf" stroke-width="2" />
+              <circle cx="54" cy="120" r="6" fill="#d56c57" />
+              <rect x="68" y="112" width="84" height="6" rx="3" fill="#d7e8df" />
+              <rect x="68" y="122" width="58" height="6" rx="3" fill="#e5f1eb" />
+            </g>
+            <g>
+              <rect x="34" y="158" width="158" height="42" rx="12" fill="#ffffff" stroke="#c3d9cf" stroke-width="2" />
+              <circle cx="54" cy="179" r="6" fill="#d56c57" />
+              <rect x="68" y="171" width="84" height="6" rx="3" fill="#d7e8df" />
+              <rect x="68" y="181" width="72" height="6" rx="3" fill="#e5f1eb" />
+            </g>
+
+            <rect x="232" y="50" width="194" height="140" rx="18" fill="#f4fbf8" stroke="#adcbbd" stroke-width="2" />
+            <rect x="252" y="70" width="154" height="100" rx="14" fill="url(#support-core-grad-v2)" stroke="#9fc4b4" stroke-width="2" />
+            <circle cx="329" cy="120" r="26" fill="#ffffff" stroke="#8dbca8" stroke-width="2.5" />
+            <circle cx="329" cy="120" r="9" fill="#2da37c" filter="url(#support-glow-v2)" />
+            <path d="M282 94 C294 82 312 76 329 76 C346 76 364 82 376 94" fill="none" stroke="#b8d8ca" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M282 146 C294 158 312 164 329 164 C346 164 364 158 376 146" fill="none" stroke="#b8d8ca" stroke-width="2.5" stroke-linecap="round" />
+
+            <g>
+              <rect x="468" y="52" width="138" height="34" rx="10" fill="#f2fbf7" stroke="#a9d4bf" stroke-width="2" />
+              <rect x="486" y="63" width="70" height="6" rx="3" fill="#b6dcc8" />
+              <rect x="486" y="73" width="50" height="6" rx="3" fill="#d6ecdf" />
+            </g>
+            <g>
+              <rect x="468" y="103" width="138" height="34" rx="10" fill="#f2fbf7" stroke="#a9d4bf" stroke-width="2" />
+              <rect x="486" y="114" width="70" height="6" rx="3" fill="#b6dcc8" />
+              <rect x="486" y="124" width="56" height="6" rx="3" fill="#d6ecdf" />
+            </g>
+            <g>
+              <rect x="468" y="154" width="138" height="34" rx="10" fill="#f2fbf7" stroke="#a9d4bf" stroke-width="2" />
+              <rect x="486" y="165" width="70" height="6" rx="3" fill="#b6dcc8" />
+              <rect x="486" y="175" width="44" height="6" rx="3" fill="#d6ecdf" />
+            </g>
+
+            <path d="M192 61 C220 61 214 90 232 90" fill="none" stroke="url(#support-flow-in-v2)" stroke-width="3.8" stroke-linecap="round" />
+            <path d="M192 120 C222 120 214 120 232 120" fill="none" stroke="url(#support-flow-in-v2)" stroke-width="3.8" stroke-linecap="round" />
+            <path d="M192 179 C220 179 214 150 232 150" fill="none" stroke="url(#support-flow-in-v2)" stroke-width="3.8" stroke-linecap="round" />
+
+            <path d="M426 94 C450 94 448 69 468 69" fill="none" stroke="url(#support-flow-out-v2)" stroke-width="3.8" stroke-linecap="round" />
+            <path d="M426 120 C452 120 448 120 468 120" fill="none" stroke="url(#support-flow-out-v2)" stroke-width="3.8" stroke-linecap="round" />
+            <path d="M426 146 C450 146 448 171 468 171" fill="none" stroke="url(#support-flow-out-v2)" stroke-width="3.8" stroke-linecap="round" />
+
+            <circle cx="232" cy="90" r="4.5" fill="#cf5e49" />
+            <circle cx="232" cy="120" r="4.5" fill="#cf5e49" />
+            <circle cx="232" cy="150" r="4.5" fill="#cf5e49" />
+            <circle cx="426" cy="94" r="4.5" fill="#2a986f" />
+            <circle cx="426" cy="120" r="4.5" fill="#2a986f" />
+            <circle cx="426" cy="146" r="4.5" fill="#2a986f" />
+          </svg>
+        </article>
+      </section>
+
+      <section id="solutions" class="section container reveal">
+        <div class="section-head">
+          <p class="eyebrow" data-i18n="solutionsEyebrow">Solutions</p>
+          <h2 data-i18n="solutionsTitle">Data products for agribusiness operations at scale.</h2>
+          <p class="section-lead" data-i18n="solutionsLead">
+            Technical outputs for monitoring and operational planning.
+          </p>
+        </div>
+
+        <div class="card-grid four">
+          <article class="card card-tone-a">
+            <div class="solution-media" aria-hidden="true">
+              <span class="solution-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 19h16" />
+                  <path d="M6.5 14.5 9.6 11.5 12.5 13.6 17.5 8.7" />
+                  <path d="m15.8 8.7h1.9v1.9" />
+                  <rect x="6" y="15" width="2.5" height="3.8" rx="0.8" />
+                  <rect x="10.5" y="13" width="2.5" height="5.8" rx="0.8" />
+                  <rect x="15" y="10.8" width="2.5" height="8" rx="0.8" />
+                </svg>
+              </span>
+              <span class="solution-picture">
+                <svg viewBox="0 0 164 44" xmlns="http://www.w3.org/2000/svg">
+                  <rect class="pic-base" x="0.5" y="0.5" width="163" height="43" rx="10.5" />
+                  <path
+                    class="pic-fill"
+                    d="M0 31 C20 26 39 36 58 30 C77 24 94 23 111 28 C128 33 144 24 164 18 V44 H0 Z"
+                  />
+                  <path class="pic-line" d="M12 30 L40 24 L66 28 L98 17 L152 22" />
+                  <circle class="pic-dot" cx="98" cy="17" r="3" />
+                </svg>
+              </span>
+            </div>
+            <h3 data-i18n="solution1Title">Productivity/Biomass and protein</h3>
+            <p data-i18n="solution1Body">
+              Estimate productivity, biomass, and quality to compare parcels and support management decisions.
+            </p>
+            <div class="solution-actions">
+              <button id="open-biomass-map" type="button" class="btn btn-quiet solution-action-btn" data-i18n="solution1MapBtn">
+                Ver
+              </button>
+            </div>
+          </article>
+          <article class="card card-tone-b">
+            <div class="solution-media" aria-hidden="true">
+              <span class="solution-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 8.5h16" />
+                  <path d="M4 12h16" />
+                  <path d="M4 15.5h16" />
+                  <path d="M7 19c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0" />
+                </svg>
+              </span>
+              <span class="solution-picture">
+                <svg viewBox="0 0 164 44" xmlns="http://www.w3.org/2000/svg">
+                  <rect class="pic-base" x="0.5" y="0.5" width="163" height="43" rx="10.5" />
+                  <path class="pic-fill" d="M0 27 C24 20 48 25 70 22 C95 18 121 23 164 14 V44 H0 Z" />
+                  <rect class="pic-fill-alt" x="14" y="10" width="42" height="7" rx="3.5" />
+                  <rect class="pic-fill-alt" x="14" y="20" width="78" height="7" rx="3.5" />
+                  <rect class="pic-fill-alt" x="14" y="30" width="118" height="6" rx="3" />
+                  <path class="pic-line-soft" d="M112 11 H150" />
+                </svg>
+              </span>
+            </div>
+            <h3 data-i18n="solution2Title">Soil property estimation</h3>
+            <p data-i18n="solution2Body">
+              Generate soil property layers for technical zoning and agronomic strategy support.
+            </p>
+            <div class="solution-actions">
+              <button id="open-soil-map" type="button" class="btn btn-quiet solution-action-btn" data-i18n="solution2MapBtn">
+                Ver
+              </button>
+            </div>
+          </article>
+          <article class="card card-tone-c">
+            <div class="solution-media" aria-hidden="true">
+              <span class="solution-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 19h16" />
+                  <path d="M7 17v-3" />
+                  <path d="M11 17v-6" />
+                  <path d="M15 17v-4" />
+                  <path d="M5 10.5 9 8.5 12.5 11 18.5 6.5" />
+                </svg>
+              </span>
+              <span class="solution-picture">
+                <svg viewBox="0 0 164 44" xmlns="http://www.w3.org/2000/svg">
+                  <rect class="pic-base" x="0.5" y="0.5" width="163" height="43" rx="10.5" />
+                  <path class="pic-fill" d="M0 35 C24 28 49 38 76 29 C102 21 126 29 164 20 V44 H0 Z" />
+                  <rect class="pic-fill-alt" x="18" y="24" width="10" height="12" rx="2.5" />
+                  <rect class="pic-fill-alt" x="34" y="20" width="10" height="16" rx="2.5" />
+                  <rect class="pic-fill-alt" x="50" y="16" width="10" height="20" rx="2.5" />
+                  <path class="pic-line" d="M14 29 L40 23 L66 26 L98 15 L148 19" />
+                  <circle class="pic-dot" cx="98" cy="15" r="2.8" />
+                </svg>
+              </span>
+            </div>
+            <h3 data-i18n="solution3Title">NDVI time series</h3>
+            <p data-i18n="solution3Body">
+              Build NDVI histories for performance analysis, seasonality tracking, and change detection, with 2.5 m spatial-resolution imagery (based on Sentinel-2 super-resolution).
+            </p>
+            <div class="solution-actions">
+              <button id="open-ndvi-compare" type="button" class="btn btn-quiet solution-action-btn" data-i18n="solution3MapBtn">
+                See
+              </button>
+            </div>
+          </article>
+          <article class="card card-tone-d">
+            <div class="solution-media" aria-hidden="true">
+              <span class="solution-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 14a3.5 3.5 0 0 1 3.4-3.5 4.2 4.2 0 0 1 8 .8 2.9 2.9 0 0 1 .6 5.7H7.3A2.8 2.8 0 0 1 6 14Z" />
+                  <path d="M13.2 14.4 11 18h2.6l-1.7 3.4" />
+                </svg>
+              </span>
+              <span class="solution-picture">
+                <svg viewBox="0 0 164 44" xmlns="http://www.w3.org/2000/svg">
+                  <rect class="pic-base" x="0.5" y="0.5" width="163" height="43" rx="10.5" />
+                  <path class="pic-fill" d="M0 34 C22 30 43 39 66 33 C90 27 120 34 164 24 V44 H0 Z" />
+                  <path
+                    class="pic-line-soft"
+                    d="M28 18 C28 14 31 12 34 12 C35 9 38 8 41 8 C45 8 48 10 49 13 C52 13 55 15 55 18 C55 21 52 23 49 23 H34 C31 23 28 21 28 18 Z"
+                  />
+                  <path class="pic-line" d="M113 13 L104 26 H114 L107 35" />
+                  <circle class="pic-dot" cx="132" cy="13" r="2.6" />
+                </svg>
+              </span>
+            </div>
+            <h3 data-i18n="solution4Title">Automatic weather alerts days in advance</h3>
+            <p data-i18n="solution4Body">
+              Receive automated weather alerts several days in advance to plan operations and reduce weather risk.
+            </p>
+            <div class="solution-actions">
+              <button id="open-weather-alerts" type="button" class="btn btn-quiet solution-action-btn" data-i18n="solution4Btn">
+                See
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div id="productivity-modal" class="cookie-modal productivity-modal hidden" aria-hidden="true">
+        <div class="cookie-modal-card productivity-modal-card" role="dialog" aria-modal="true" aria-labelledby="productivity-modal-title">
+          <div class="productivity-modal-head">
+            <h2 id="productivity-modal-title" data-i18n="productivityModalTitle">Produtividade estimada</h2>
+            <button id="close-productivity-modal" type="button" class="btn btn-quiet" data-i18n="cookieClose">Fechar</button>
+          </div>
+
+          <div class="productivity-tabs" role="tablist" aria-label="Visualização de produtividade">
+            <button id="productivity-tab-map" type="button" class="productivity-tab is-active" role="tab" aria-selected="true" data-i18n="productivityTabMap">
+              Mapa
+            </button>
+            <button id="productivity-tab-series" type="button" class="productivity-tab" role="tab" aria-selected="false" data-i18n="productivityTabSeries">
+              Série temporal
+            </button>
+          </div>
+
+          <section id="productivity-map-panel" class="productivity-panel" role="tabpanel" aria-labelledby="productivity-tab-map">
+            <div id="biomass-map" class="productivity-map">
+              <div class="productivity-legend">
+                <div id="productivity-legend-title"><strong>Biomassa estimada</strong> (kg DM/ha)</div>
+                <div class="productivity-legend-bar productivity-legend-classes">
+                  <span class="legend-class class-1"></span>
+                  <span class="legend-class class-2"></span>
+                  <span class="legend-class class-3"></span>
+                  <span class="legend-class class-4"></span>
+                  <span class="legend-class class-5"></span>
+                </div>
+                <div class="productivity-legend-ticks">
+                  <span id="legend-c1">0 - 700</span>
+                  <span id="legend-c2">700 - 1400</span>
+                  <span id="legend-c3">1400 - 2100</span>
+                  <span id="legend-c4">2100 - 2800</span>
+                  <span id="legend-c5">2800 - 3500</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="productivity-series-panel"
+            class="productivity-panel hidden"
+            role="tabpanel"
+            aria-labelledby="productivity-tab-series"
+          >
+            <p id="biomass-series-summary" class="productivity-inline-note"></p>
+            <div class="productivity-chart-wrap">
+              <canvas id="biomass-series-chart" aria-label="Série temporal de biomassa estimada" role="img"></canvas>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div id="ndvi-compare-modal" class="cookie-modal productivity-modal ndvi-compare-modal hidden" aria-hidden="true">
+        <div class="cookie-modal-card productivity-modal-card ndvi-compare-modal-card" role="dialog" aria-modal="true" aria-labelledby="ndvi-compare-title">
+          <div class="productivity-modal-head">
+            <h2 id="ndvi-compare-title" data-i18n="ndviCompareModalTitle">NDVI comparison: 10m vs 2.5m</h2>
+            <button id="close-ndvi-compare-modal" type="button" class="btn btn-quiet" data-i18n="cookieClose">Close</button>
+          </div>
+
+          <div class="productivity-tabs" role="tablist" aria-label="NDVI views">
+            <button id="ndvi-tab-map" type="button" class="productivity-tab is-active" role="tab" aria-selected="true" data-i18n="productivityTabMap">
+              Map
+            </button>
+            <button id="ndvi-tab-series" type="button" class="productivity-tab" role="tab" aria-selected="false" data-i18n="productivityTabSeries">
+              Time series
+            </button>
+          </div>
+
+          <section id="ndvi-compare-map-panel" class="productivity-panel" role="tabpanel" aria-labelledby="ndvi-tab-map">
+            <div class="ndvi-compare-controls">
+              <label for="ndvi-compare-min" data-i18n="ndviCompareMinLabel">Min</label>
+              <input id="ndvi-compare-min" type="number" step="0.01" value="0.0" />
+              <label for="ndvi-compare-max" data-i18n="ndviCompareMaxLabel">Max</label>
+              <input id="ndvi-compare-max" type="number" step="0.01" value="1.0" />
+              <button id="ndvi-compare-apply" type="button" class="btn btn-quiet" data-i18n="ndviCompareApply">Apply</button>
+            </div>
+
+            <div class="ndvi-compare-map-wrap">
+              <div id="ndvi-compare-map" class="productivity-map ndvi-compare-map"></div>
+              <div class="ndvi-map-side-label ndvi-map-side-label-left" data-i18n="ndviCompareLeftLabel">NDVI 10m</div>
+              <div class="ndvi-map-side-label ndvi-map-side-label-right" data-i18n="ndviCompareRightLabel">NDVI-SR 2.5m</div>
+              <div id="ndvi-compare-legend" class="productivity-legend ndvi-compare-legend"></div>
+              <div id="ndvi-compare-loading" class="ndvi-compare-loading hidden">Loading...</div>
+              <div id="ndvi-compare-error" class="ndvi-compare-error hidden" role="status" aria-live="polite"></div>
+            </div>
+          </section>
+
+          <section id="ndvi-series-panel" class="productivity-panel hidden" role="tabpanel" aria-labelledby="ndvi-tab-series">
+            <p id="ndvi-series-summary" class="productivity-inline-note"></p>
+            <div class="productivity-chart-wrap ndvi-series-chart-wrap">
+              <canvas id="ndvi-series-chart" aria-label="NDVI time series" role="img"></canvas>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div id="weather-alerts-modal" class="cookie-modal productivity-modal hidden" aria-hidden="true">
+        <div class="cookie-modal-card productivity-modal-card weather-alerts-modal-card" role="dialog" aria-modal="true" aria-labelledby="weather-alerts-title">
+          <div class="productivity-modal-head">
+            <h2 id="weather-alerts-title" data-i18n="weatherAlertsModalTitle">Weather alerts preview</h2>
+            <button id="close-weather-alerts-modal" type="button" class="btn btn-quiet" data-i18n="cookieClose">Close</button>
+          </div>
+          <p class="productivity-inline-note" data-i18n="weatherAlertsModalLead">
+            Fictitious examples of what automated weather warnings can look like.
+          </p>
+
+          <div class="weather-alerts-list">
+            <article class="weather-alert-card">
+              <div class="weather-alert-card-head">
+                <span class="weather-alert-severity severity-high" data-i18n="weatherAlertSeverityHigh">High</span>
+                <time datetime="2026-04-14T06:00:00Z" data-i18n="weatherAlert1When">Apr 14, 2026 • 06:00 UTC</time>
+              </div>
+              <h3 data-i18n="weatherAlert1Title">Heavy rain expected (48 mm / 24h)</h3>
+              <p data-i18n="weatherAlert1Body">Field DHL-03: high runoff risk. Consider postponing fertilization and limiting machinery traffic.</p>
+            </article>
+
+            <article class="weather-alert-card">
+              <div class="weather-alert-card-head">
+                <span class="weather-alert-severity severity-medium" data-i18n="weatherAlertSeverityMedium">Medium</span>
+                <time datetime="2026-04-16T12:00:00Z" data-i18n="weatherAlert2When">Apr 16, 2026 • 12:00 UTC</time>
+              </div>
+              <h3 data-i18n="weatherAlert2Title">Strong wind window (gusts up to 62 km/h)</h3>
+              <p data-i18n="weatherAlert2Body">Parcels CRR-North: avoid spraying during peak gust period between 12:00 and 18:00.</p>
+            </article>
+
+            <article class="weather-alert-card">
+              <div class="weather-alert-card-head">
+                <span class="weather-alert-severity severity-low" data-i18n="weatherAlertSeverityLow">Low</span>
+                <time datetime="2026-04-18T05:30:00Z" data-i18n="weatherAlert3When">Apr 18, 2026 • 05:30 UTC</time>
+              </div>
+              <h3 data-i18n="weatherAlert3Title">Light frost probability (15%)</h3>
+              <p data-i18n="weatherAlert3Body">Southern block: monitor sensitive crops and keep frost mitigation resources on standby.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <section id="cases" class="section container reveal">
+        <div class="section-head">
+          <p class="eyebrow" data-i18n="casesEyebrow">Use cases</p>
+          <h2 data-i18n="casesTitle">Data outputs for real agribusiness workflows.</h2>
+          <p class="section-lead" data-i18n="casesLead">Examples of direct use of VirtuaCrop EO + AI data products.</p>
+        </div>
+
+        <div class="case-grid">
+          <article class="case-card">
+            <h3 data-i18n="case1Title">Parcel-level productivity management</h3>
+            <p data-i18n="case1Body">
+              Use biomass and protein estimates to compare parcels and support field management decisions.
+            </p>
+          </article>
+          <article class="case-card">
+            <h3 data-i18n="case2Title">Large-scale soil characterization</h3>
+            <p data-i18n="case2Body">
+              Use soil property maps to identify spatial variability and prioritize technical actions.
+            </p>
+          </article>
+          <article class="case-card">
+            <h3 data-i18n="case3Title">Historical NDVI performance tracking</h3>
+            <p data-i18n="case3Body">
+              Track vegetation dynamics over time to support technical reporting and business planning.
+            </p>
+          </article>
+        </div>
+
+        <article class="support-visual cases-visual reveal">
+          <div class="support-copy">
+            <h3 data-i18n="casesVisualTitle">Deployment-ready data outputs</h3>
+            <p data-i18n="casesVisualCaption">
+              Map layers, time series, and parcel insights are prepared for business and technical teams.
+            </p>
+          </div>
+          <svg class="support-svg" viewBox="0 0 640 240" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect class="support-frame" x="2" y="2" width="636" height="236" rx="22" />
+            <rect class="support-panel" x="36" y="38" width="170" height="164" rx="14" />
+            <path class="support-map-line" d="M58 72 L98 54 L140 82 L180 62" />
+            <path class="support-map-line" d="M58 122 L98 102 L140 132 L180 112" />
+            <circle class="support-map-point" cx="140" cy="82" r="6" />
+            <rect class="support-panel" x="236" y="38" width="172" height="164" rx="14" />
+            <path class="support-chart-line" d="M258 160 L288 126 L320 138 L350 90 L386 112" />
+            <rect class="support-bar" x="260" y="78" width="20" height="74" rx="8" />
+            <rect class="support-bar" x="292" y="96" width="20" height="56" rx="8" />
+            <rect class="support-bar" x="324" y="114" width="20" height="38" rx="8" />
+            <rect class="support-panel support-panel-highlight" x="438" y="38" width="166" height="164" rx="14" />
+            <rect class="support-chip support-chip-out" x="460" y="68" width="122" height="26" rx="9" />
+            <rect class="support-chip support-chip-out" x="460" y="108" width="122" height="26" rx="9" />
+            <rect class="support-chip support-chip-out" x="460" y="148" width="122" height="26" rx="9" />
+          </svg>
+        </article>
+      </section>
+
+      <section id="contact" class="section container contact-section reveal">
+        <div class="contact-copy">
+          <p class="eyebrow" data-i18n="contactEyebrow">Contact</p>
+          <h2 data-i18n="contactTitle">Need support or want to discuss your scenario?</h2>
+          <p class="section-lead" data-i18n="contactLead">
+            Send a message and our team will review your request and get back to you.
+          </p>
+          <a href="mailto:virtuacrop@virtuacrop.com" class="text-link">virtuacrop@virtuacrop.com</a>
+        </div>
+
+        <div class="contact-panel">
+          <aside class="booking-card" aria-labelledby="booking-title">
+            <p class="eyebrow booking-eyebrow" data-i18n="bookingEyebrow">Book a call</p>
+            <h3 id="booking-title" data-i18n="bookingTitle">Prefer to speak now?</h3>
+            <p class="booking-lead" data-i18n="bookingLead">Pick an available slot and we will meet directly.</p>
+            <div class="booking-actions">
+              <button type="button" class="btn btn-primary" data-calendly-open data-calendly-source="contact" data-i18n="bookingPrimaryCta">
+                Book a call
+              </button>
+              <a href="#contact-form" class="btn btn-outline" data-i18n="bookingSecondaryCta">Send a message instead</a>
+            </div>
+          </aside>
+
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="field">
+              <label for="name" data-i18n="formNameLabel">Name</label>
+              <input id="name" name="name" type="text" required data-i18n-placeholder="formNamePlaceholder" />
+            </div>
+            <div class="field">
+              <label for="email" data-i18n="formEmailLabel">Email</label>
+              <input id="email" name="email" type="email" required data-i18n-placeholder="formEmailPlaceholder" />
+            </div>
+            <div class="field">
+              <label for="company" data-i18n="formCompanyLabel">Company</label>
+              <input id="company" name="company" type="text" required data-i18n-placeholder="formCompanyPlaceholder" />
+            </div>
+            <div class="field full">
+              <label for="message" data-i18n="formMessageLabel">Message</label>
+              <textarea id="message" name="message" rows="5" required data-i18n-placeholder="formMessagePlaceholder"></textarea>
+            </div>
+
+            <div class="field full consent-field">
+              <label class="consent-check" for="privacy_consent">
+                <input id="privacy_consent" name="privacy_consent" type="checkbox" required />
+                <span data-i18n-html="formPrivacyConsent">
+                  I agree with the <a href="privacy.html">Privacy Policy</a> and allow VirtuaCrop to process my contact request.
+                </span>
+              </label>
+            </div>
+
+            <input type="hidden" id="utm_source" name="utm_source" />
+            <input type="hidden" id="utm_medium" name="utm_medium" />
+            <input type="hidden" id="utm_campaign" name="utm_campaign" />
+            <input type="hidden" id="utm_term" name="utm_term" />
+            <input type="hidden" id="utm_content" name="utm_content" />
+            <input type="hidden" id="referrer" name="referrer" />
+            <input type="hidden" id="page_url" name="page_url" />
+            <input type="hidden" id="page_title" name="page_title" />
+            <input type="hidden" id="form_lang" name="form_lang" />
+
+            <div class="field full form-actions">
+              <button type="submit" class="btn btn-primary" id="form-submit" data-i18n="formSubmit">Send message</button>
+              <p id="form-status" class="form-status" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p class="footer-tagline" data-i18n="footerTagline">EO + AI data products designed for agribusiness decisions.</p>
+        <div class="footer-links">
+          <a data-lang-href="privacy.html" data-i18n="footerPrivacy" href="privacy.html">Privacy Policy</a>
+          <a data-lang-href="cookies.html" data-i18n="footerCookies" href="cookies.html">Cookie Policy</a>
+          <button id="manage-cookies" class="footer-button" type="button" data-i18n="footerManageCookies">Manage cookies</button>
+          <a href="#top" data-i18n="footerBackTop">Back to top</a>
+        </div>
+        <p class="footer-meta" data-i18n="footerRights">© VirtuaCrop - 2026. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <section id="cookie-banner" class="cookie-banner hidden" role="region" aria-label="Cookie consent">
+      <div class="cookie-copy">
+        <p class="cookie-title" data-i18n="cookieTitle">Cookie settings</p>
+        <p data-i18n="cookieBody">
+          We use essential cookies for core functionality and optional analytics cookies to improve this site. You can update preferences anytime.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button id="cookie-reject" class="btn btn-quiet" type="button" data-i18n="cookieReject">Reject</button>
+        <button id="cookie-preferences" class="btn btn-outline" type="button" data-i18n="cookiePreferences">Preferences</button>
+        <button id="cookie-accept" class="btn btn-primary" type="button" data-i18n="cookieAccept">Accept</button>
+      </div>
+    </section>
+
+    <div id="cookie-modal" class="cookie-modal hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+      <div class="cookie-modal-card">
+        <h2 id="cookie-modal-title" data-i18n="cookieModalTitle">Cookie preferences</h2>
+        <p data-i18n="cookieModalBody">Select which categories you allow. Essential cookies are always active.</p>
+
+        <div class="consent-option">
+          <label>
+            <input type="checkbox" checked disabled />
+            <span data-i18n="cookieEssentialLabel">Essential cookies</span>
+          </label>
+          <p data-i18n="cookieEssentialBody">Required for language settings, security, and core website behavior.</p>
+        </div>
+
+        <div class="consent-option">
+          <label for="consent-analytics">
+            <input type="checkbox" id="consent-analytics" />
+            <span data-i18n="cookieAnalyticsLabel">Analytics cookies</span>
+          </label>
+          <p data-i18n="cookieAnalyticsBody">Help us understand traffic and improve the website experience.</p>
+        </div>
+
+        <div class="modal-actions">
+          <button id="cookie-save" class="btn btn-primary" type="button" data-i18n="cookieSave">Save preferences</button>
+          <button id="cookie-close" class="btn btn-outline" type="button" data-i18n="cookieClose">Close</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Política de Cookies | VirtuaCrop</title>
+    <meta name="description" content="Política de cookies da VirtuaCrop." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body data-page="cookies">
+    <header class="site-header">
+      <div class="container header-wrap">
+        <a class="brand" data-lang-href="index.html" href="index.html" aria-label="VirtuaCrop">
+          <img class="brand-logo" src="Logo_final.png" alt="VirtuaCrop" width="3307" height="1418" />
+        </a>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a data-lang-href="index.html" href="index.html" data-i18n="navHome">Home</a>
+          <a data-lang-href="index.html#contact" href="index.html#contact" data-i18n="navContact">Contact</a>
+          <a data-lang-href="privacy.html" href="privacy.html" data-i18n="footerPrivacy">Privacy Policy</a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="lang-switch" role="group" aria-label="Language switcher">
+            <button type="button" class="lang-btn" data-lang-toggle="pt">PT</button>
+            <button type="button" class="lang-btn" data-lang-toggle="en">EN</button>
+          </div>
+          <a data-lang-href="index.html#contact" href="index.html#contact" class="btn btn-primary" data-i18n="navContactBtn">Talk to us</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top" class="legal-main container">
+      <section class="section legal-section">
+        <p class="eyebrow" data-i18n="cookiesEyebrow">Legal</p>
+        <h1 data-i18n="cookiesTitle">Cookie Policy</h1>
+        <p class="section-lead" data-i18n="cookiesLead">Definition of essential and analytics cookies used on this website.</p>
+
+        <div class="legal-copy">
+          <div data-lang-block="pt">
+            <h3>1. O que são cookies</h3>
+            <p>
+              Cookies são pequenos ficheiros guardados no seu browser para melhorar a experiência de navegação e suportar
+              funcionalidades do website.
+            </p>
+
+            <h3>2. Categorias utilizadas neste website</h3>
+            <ul>
+              <li>
+                <strong>Essenciais:</strong> necessários para funcionamento básico do website (incluindo preferências de idioma e
+                estado de consentimento).
+              </li>
+              <li>
+                <strong>Analytics (opcional):</strong> utilizados para medir tráfego e desempenho com Google Analytics 4, apenas após
+                consentimento.
+              </li>
+            </ul>
+
+            <h3>3. Como gerir preferências</h3>
+            <p>
+              Pode aceitar, rejeitar ou personalizar cookies no banner inicial. Em qualquer momento, pode voltar a alterar em
+              "Gerir cookies" no rodapé.
+            </p>
+
+            <h3>4. Cookies de terceiros</h3>
+            <p>
+              Quando analytics está ativo, a medição pode envolver cookies do Google Analytics. Consulte também a
+              <a data-lang-href="privacy.html" href="privacy.html">Política de Privacidade</a>.
+            </p>
+
+            <h3>5. Atualizações</h3>
+            <p>Esta política pode ser atualizada. Última atualização: 2026-04-09.</p>
+          </div>
+
+          <div data-lang-block="en" class="hidden">
+            <h3>1. What cookies are</h3>
+            <p>
+              Cookies are small files stored in your browser to improve navigation experience and support website functionality.
+            </p>
+
+            <h3>2. Categories used on this website</h3>
+            <ul>
+              <li>
+                <strong>Essential:</strong> required for core website operation (including language preference and consent state).
+              </li>
+              <li>
+                <strong>Analytics (optional):</strong> used to measure traffic and performance with Google Analytics 4, only after
+                consent.
+              </li>
+            </ul>
+
+            <h3>3. How to manage preferences</h3>
+            <p>
+              You can accept, reject, or customize cookies in the initial banner. You can change your choices anytime via
+              "Manage cookies" in the footer.
+            </p>
+
+            <h3>4. Third-party cookies</h3>
+            <p>
+              When analytics is enabled, measurement may involve Google Analytics cookies. See also the
+              <a data-lang-href="privacy.html" href="privacy.html">Privacy Policy</a>.
+            </p>
+
+            <h3>5. Updates</h3>
+            <p>This policy may be updated. Last update: 2026-04-09.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p class="footer-tagline" data-i18n="footerTagline">EO + AI data products designed for agribusiness decisions.</p>
+        <div class="footer-links">
+          <a data-lang-href="index.html" href="index.html" data-i18n="navHome">Home</a>
+          <a data-lang-href="privacy.html" href="privacy.html" data-i18n="footerPrivacy">Privacy Policy</a>
+          <button id="manage-cookies" class="footer-button" type="button" data-i18n="footerManageCookies">Manage cookies</button>
+          <a href="#top" data-i18n="footerBackTop">Back to top</a>
+        </div>
+        <p class="footer-meta" data-i18n="footerRights">© VirtuaCrop - 2026. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <section id="cookie-banner" class="cookie-banner hidden" role="region" aria-label="Cookie consent">
+      <div class="cookie-copy">
+        <p class="cookie-title" data-i18n="cookieTitle">Cookie settings</p>
+        <p data-i18n="cookieBody">We use essential cookies and optional analytics cookies.</p>
+      </div>
+      <div class="cookie-actions">
+        <button id="cookie-reject" class="btn btn-quiet" type="button" data-i18n="cookieReject">Reject</button>
+        <button id="cookie-preferences" class="btn btn-outline" type="button" data-i18n="cookiePreferences">Preferences</button>
+        <button id="cookie-accept" class="btn btn-primary" type="button" data-i18n="cookieAccept">Accept</button>
+      </div>
+    </section>
+
+    <div id="cookie-modal" class="cookie-modal hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+      <div class="cookie-modal-card">
+        <h2 id="cookie-modal-title" data-i18n="cookieModalTitle">Cookie preferences</h2>
+        <p data-i18n="cookieModalBody">Select which categories you allow. Essential cookies are always active.</p>
+
+        <div class="consent-option">
+          <label>
+            <input type="checkbox" checked disabled />
+            <span data-i18n="cookieEssentialLabel">Essential cookies</span>
+          </label>
+          <p data-i18n="cookieEssentialBody">Required for language settings, security, and core website behavior.</p>
+        </div>
+
+        <div class="consent-option">
+          <label for="consent-analytics">
+            <input type="checkbox" id="consent-analytics" />
+            <span data-i18n="cookieAnalyticsLabel">Analytics cookies</span>
+          </label>
+          <p data-i18n="cookieAnalyticsBody">Help us understand traffic and improve the website experience.</p>
+        </div>
+
+        <div class="modal-actions">
+          <button id="cookie-save" class="btn btn-primary" type="button" data-i18n="cookieSave">Save preferences</button>
+          <button id="cookie-close" class="btn btn-outline" type="button" data-i18n="cookieClose">Close</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
