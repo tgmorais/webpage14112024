@@ -14,6 +14,7 @@
   const CONSENT_KEY = "vc_consent";
   const UTM_KEY = "vc_utm";
   const SUPPORTED_LANGS = ["pt", "en"];
+  const PORTUGUESE_COUNTRY_CODES = new Set(["PT", "BR", "AO", "MZ"]);
   const UTM_FIELDS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
   let currentLang = "en";
@@ -31,9 +32,11 @@
         navHow: "Como funciona",
         navSolutions: "Soluções",
         navCases: "Casos",
+        navProjects: "Projetos",
         navContact: "Contacto",
         navBookCallBtn: "Marcar chamada",
         navContactBtn: "Fale connosco",
+        footerFundingLabel: "Cofinanciado por",
         footerTagline: "Produtos de dados EO + IA para decisões de agribusiness.",
         footerPrivacy: "Política de Privacidade",
         footerCookies: "Política de Cookies",
@@ -196,6 +199,33 @@
         cookiesEyebrow: "Legal",
         cookiesTitle: "Política de Cookies",
         cookiesLead: "Definição de cookies essenciais e analytics utilizados neste website."
+      },
+      projects: {
+        metaTitle: "Projetos | VirtuaCrop",
+        metaDescription: "Projetos de I&D e iniciativas cofinanciadas em que a VirtuaCrop participa.",
+        projectsEyebrow: "Projetos",
+        projectsTitle: "Projetos cofinanciados e de I&D em curso.",
+        projectsLead: "Esta página centraliza os projetos da VirtuaCrop.",
+        project1Status: "Projeto em execução",
+        project1Title: "AVALON - Avaliar, Optimizar e Remunerar para a Sustentabilidade em Sistemas de Ruminantes",
+        project1Summary1:
+          "O AVALON desenvolve soluções para avaliação de sustentabilidade, otimização técnico-económica-ambiental e remuneração por desempenho climático.",
+        project1Summary2:
+          "O foco está na produção de ruminantes em pastoreio em condições mediterrânicas, com integração entre atividades agrícolas e florestais.",
+        projectLabelProgram: "Programa",
+        project1Program: "PORTUGAL 2030, Cofinanciado pela UE",
+        projectLabelNumber: "Número do projeto",
+        project1Number: "COMPETE2030-FEDER-02288900",
+        projectLabelPeriod: "Período",
+        project1Period: "01/07/2025 - 30/06/2028",
+        projectLabelFunding: "Financiamento",
+        project1Funding: "Custo total: 1 789 789,33 EUR | Incentivo não reembolsável: 1 297 809,12 EUR",
+        project1ConsortiumTitle: "Co-promotores e parceiros principais",
+        project1Partner1: "Terraprima - Serviços Ambientais (líder)",
+        project1Partner2: "VirtuaCrop",
+        project1Partner3: "Instituto Superior Técnico (IST-ID)",
+        project1Partner4: "Faculdade de Medicina Veterinária (FMV)",
+        project1SourceLink: "Ver página oficial do projeto"
       }
     },
     en: {
@@ -206,9 +236,11 @@
         navHow: "How it works",
         navSolutions: "Solutions",
         navCases: "Use cases",
+        navProjects: "Projects",
         navContact: "Contact",
         navBookCallBtn: "Book a call",
         navContactBtn: "Talk to us",
+        footerFundingLabel: "Co-financed by",
         footerTagline: "EO + AI data products designed for agribusiness decisions.",
         footerPrivacy: "Privacy Policy",
         footerCookies: "Cookie Policy",
@@ -369,6 +401,33 @@
         cookiesEyebrow: "Legal",
         cookiesTitle: "Cookie Policy",
         cookiesLead: "Definition of essential and analytics cookies used on this website."
+      },
+      projects: {
+        metaTitle: "Projects | VirtuaCrop",
+        metaDescription: "R&D and co-financed projects where VirtuaCrop participates.",
+        projectsEyebrow: "Projects",
+        projectsTitle: "Co-financed and R&D projects in progress.",
+        projectsLead: "This page centralizes VirtuaCrop projects.",
+        project1Status: "Project in progress",
+        project1Title: "AVALON - Evaluate, Optimise and Remunerate for Sustainability in Grazing Systems",
+        project1Summary1:
+          "AVALON develops solutions for sustainability assessment, technical-economic-environmental optimization, and remuneration for climate performance.",
+        project1Summary2:
+          "Its focus is ruminant production under Mediterranean grazing conditions, integrating agricultural and forestry activities.",
+        projectLabelProgram: "Program",
+        project1Program: "PORTUGAL 2030, Co-financed by the European Union",
+        projectLabelNumber: "Project number",
+        project1Number: "COMPETE2030-FEDER-02288900",
+        projectLabelPeriod: "Period",
+        project1Period: "01/07/2025 - 30/06/2028",
+        projectLabelFunding: "Funding",
+        project1Funding: "Total cost: EUR 1,789,789.33 | Non-repayable incentive: EUR 1,297,809.12",
+        project1ConsortiumTitle: "Lead and key partners",
+        project1Partner1: "Terraprima - Environmental Services (lead)",
+        project1Partner2: "VirtuaCrop",
+        project1Partner3: "Instituto Superior Tecnico (IST-ID)",
+        project1Partner4: "Faculty of Veterinary Medicine (FMV)",
+        project1SourceLink: "View official project page"
       }
     }
   };
@@ -376,7 +435,8 @@
   document.addEventListener("DOMContentLoaded", init);
 
   function init() {
-    currentLang = resolveLanguage();
+    const resolved = resolveLanguage();
+    currentLang = resolved.lang;
     applyLanguage(currentLang, { persist: true, syncUrl: true });
     initLanguageSwitcher();
     initRevealAnimations();
@@ -387,6 +447,10 @@
     initCookieConsent();
     initContactForm();
     initCalendlyBooking();
+
+    if (resolved.source === "browser") {
+      applyGeoLanguageDefault();
+    }
   }
 
   function getPageName() {
@@ -463,21 +527,93 @@
     const params = new URLSearchParams(window.location.search);
     const queryLang = params.get("lang");
     if (SUPPORTED_LANGS.includes(queryLang)) {
-      return queryLang;
+      return { lang: queryLang, source: "query" };
     }
 
     const local = getStorageItem(LANG_KEY);
     if (SUPPORTED_LANGS.includes(local)) {
-      return local;
+      return { lang: local, source: "localStorage" };
     }
 
     const cookieLang = getCookie(LANG_KEY);
     if (SUPPORTED_LANGS.includes(cookieLang)) {
-      return cookieLang;
+      return { lang: cookieLang, source: "cookie" };
     }
 
+    return { lang: resolveBrowserLanguage(), source: "browser" };
+  }
+
+  function resolveBrowserLanguage() {
     const browserLang = (navigator.language || "en").toLowerCase();
     return browserLang.startsWith("pt") ? "pt" : "en";
+  }
+
+  function hasExplicitLanguagePreference() {
+    const params = new URLSearchParams(window.location.search);
+    const queryLang = params.get("lang");
+    if (SUPPORTED_LANGS.includes(queryLang)) {
+      return true;
+    }
+
+    const local = getStorageItem(LANG_KEY);
+    if (SUPPORTED_LANGS.includes(local)) {
+      return true;
+    }
+
+    const cookieLang = getCookie(LANG_KEY);
+    return SUPPORTED_LANGS.includes(cookieLang);
+  }
+
+  async function applyGeoLanguageDefault() {
+    try {
+      const countryCode = await detectCountryCode();
+      if (!countryCode || hasExplicitLanguagePreference()) {
+        return;
+      }
+
+      const geoLang = PORTUGUESE_COUNTRY_CODES.has(countryCode) ? "pt" : "en";
+      if (geoLang === currentLang) {
+        return;
+      }
+
+      applyLanguage(geoLang, { persist: true, syncUrl: true });
+      populateTrackingFields();
+    } catch (_error) {
+      // Ignore geo lookup failures and keep browser-derived default.
+    }
+  }
+
+  async function detectCountryCode() {
+    const primaryResponse = await fetchWithTimeout("https://ipapi.co/json/", 1800);
+    const primaryCode = (primaryResponse?.country_code || "").toUpperCase();
+    if (primaryCode) {
+      return primaryCode;
+    }
+
+    const fallbackResponse = await fetchWithTimeout("https://ipwho.is/", 1800);
+    const fallbackCode = (fallbackResponse?.country_code || "").toUpperCase();
+    return fallbackCode;
+  }
+
+  async function fetchWithTimeout(url, timeoutMs) {
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
+
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        cache: "no-store",
+        signal: controller.signal
+      });
+      if (!response.ok) {
+        return null;
+      }
+      return await response.json();
+    } catch (_error) {
+      return null;
+    } finally {
+      window.clearTimeout(timeoutId);
+    }
   }
 
   function initLanguageSwitcher() {

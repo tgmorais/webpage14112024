@@ -1491,7 +1491,26 @@ textarea {
 .footer-wrap {
   padding: 1.2rem 0 1.6rem;
   display: grid;
-  gap: 0.45rem;
+  gap: 0.6rem;
+}
+
+.footer-funding {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.footer-funding-label {
+  margin: 0;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text-body);
+}
+
+.footer-funding-logo {
+  display: block;
+  width: min(100%, 560px);
+  height: auto;
 }
 
 .footer-tagline,
@@ -1995,6 +2014,163 @@ textarea {
   padding-left: 1.1rem;
 }
 
+.projects-main {
+  padding-top: 1.4rem;
+}
+
+.projects-section {
+  max-width: 980px;
+}
+
+.projects-list {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.project-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 1.05rem;
+  box-shadow: 0 10px 28px rgba(13, 66, 51, 0.08);
+}
+
+.project-card h2 {
+  margin: 0.25rem 0 0.5rem;
+  color: var(--text-strong);
+  font-family: "Space Grotesk", "Avenir Next", sans-serif;
+}
+
+.project-card h3 {
+  margin: 1rem 0 0.5rem;
+  color: var(--text-strong);
+  font-family: "Space Grotesk", "Avenir Next", sans-serif;
+}
+
+.project-card p {
+  margin: 0.45rem 0;
+}
+
+.project-card ul {
+  margin: 0.25rem 0 0.7rem;
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(35, 130, 94, 0.35);
+  background: rgba(35, 130, 94, 0.11);
+  color: #0f6b4d;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.24rem 0.58rem;
+}
+
+.project-meta {
+  margin: 0.8rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.project-meta div {
+  border: 1px solid #d7e5de;
+  border-radius: 12px;
+  background: #f7fbf9;
+  padding: 0.6rem 0.65rem;
+}
+
+.project-meta dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.project-meta dd {
+  margin: 0.2rem 0 0;
+  color: var(--text-strong);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.project-subtitle {
+  margin: 0.75rem 0 0.35rem;
+  font-size: 0.93rem;
+  color: var(--text-strong);
+  font-family: "Space Grotesk", "Avenir Next", sans-serif;
+}
+
+.project-accordion {
+  border: 1px solid #d7e5de;
+  border-radius: 12px;
+  background: #f7fbf9;
+  margin: 0.55rem 0;
+  overflow: hidden;
+}
+
+.project-accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.72rem 0.78rem;
+  color: var(--text-strong);
+  font-weight: 600;
+  font-family: "Space Grotesk", "Avenir Next", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.project-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.project-accordion summary::after {
+  content: "+";
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 999px;
+  border: 1px solid #c3d8ce;
+  color: #1f6f53;
+  font-size: 1rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.project-accordion[open] summary::after {
+  content: "\2212";
+}
+
+.project-accordion-body {
+  border-top: 1px solid #dde9e3;
+  padding: 0.1rem 0.78rem 0.68rem;
+}
+
+.project-accordion-body p {
+  margin: 0.45rem 0;
+}
+
+.project-accordion-body .project-subtitle:first-child {
+  margin-top: 0.45rem;
+}
+
+.project-partners {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.project-actions {
+  margin-top: 0.95rem;
+}
+
 .hidden {
   display: none !important;
 }
@@ -2482,6 +2658,14 @@ textarea {
 
   .cookie-actions .btn {
     flex: 1;
+  }
+
+  .project-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-funding-logo {
+    width: min(100%, 440px);
   }
 
   .productivity-modal-card {
