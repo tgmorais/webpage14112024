@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VirtuaCrop | SOC Dashboard</title>
+    <meta
+      name="description"
+      content="Operational dashboard for Soil Organic Carbon classes with Leaflet and GeoTIFF rendering."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="organic-matter.css" />
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/georaster@1.6.4/dist/georaster.browser.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/georaster-layer-for-leaflet@3.10.0/dist/georaster-layer-for-leaflet.min.js"></script>
+    <script src="https://unpkg.com/georaster"></script>
+    <script defer src="organic-matter.js"></script>
+  </head>
+  <body>
+    <div class="soc-dashboard">
+      <aside class="soc-sidebar" aria-label="Main sidebar">
+        <a class="soc-brand" href="index.html" aria-label="VirtuaCrop home">
+          <img src="Logo_final.png" alt="VirtuaCrop" />
+        </a>
+
+        <nav class="soc-nav" aria-label="Platform sections">
+          <button class="soc-nav-btn is-active" type="button" aria-label="SOC">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4.8 18.5h14.4M7 18.5V13l5-2.8 5 2.8v5.5M9.2 14.6h5.6M9.2 16.8h5.6" />
+            </svg>
+          </button>
+          <button class="soc-nav-btn" type="button" aria-label="Biomass">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4.5 18.5h15M8 18.5v-7m4 7v-10m4 10v-5" />
+            </svg>
+          </button>
+          <button class="soc-nav-btn" type="button" aria-label="NDVI">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 17h16M6.5 17V8.5m5.5 8.5V6m5.5 11V10.5" />
+            </svg>
+          </button>
+          <button class="soc-nav-btn" type="button" aria-label="Settings">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M10.1 4.7h3.8l.5 2.1c.5.2 1 .5 1.5.8l2-.7 1.9 3.3-1.6 1.4c0 .3.1.6.1.9s0 .6-.1.9l1.6 1.4-1.9 3.3-2-.7c-.5.3-1 .6-1.5.8l-.5 2.1h-3.8l-.5-2.1c-.5-.2-1-.5-1.5-.8l-2 .7-1.9-3.3 1.6-1.4c0-.3-.1-.6-.1-.9s0-.6.1-.9L4.7 10l1.9-3.3 2 .7c.5-.3 1-.6 1.5-.8zM12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z"
+              />
+            </svg>
+          </button>
+        </nav>
+      </aside>
+
+      <main class="soc-main">
+        <section class="soc-kpi-grid" aria-label="SOC key indicators">
+          <article class="soc-kpi-card">
+            <h2>Average SOC</h2>
+            <p id="soc-mean">-</p>
+            <small>Mean of valid raster pixels</small>
+          </article>
+          <article class="soc-kpi-card">
+            <h2>Mapped Area</h2>
+            <p id="soc-total-area">-</p>
+            <small>Approximate area in hectares</small>
+          </article>
+          <article class="soc-kpi-card">
+            <h2>Valid Pixels</h2>
+            <p id="soc-valid-pixels">-</p>
+            <small>Pixels used for SOC analysis</small>
+          </article>
+          <article class="soc-kpi-card">
+            <h2>Dominant Class</h2>
+            <p id="soc-dominant-class">-</p>
+            <small>Largest share in class distribution</small>
+          </article>
+        </section>
+
+        <section class="soc-content-grid">
+          <article class="soc-map-card">
+            <header class="soc-card-head">
+              <div>
+                <p>Spatial layer</p>
+                <h2>SOC Map View</h2>
+              </div>
+              <span id="om-map-status" class="soc-status-pill" aria-live="polite">Loading GeoTIFF...</span>
+            </header>
+
+            <div class="soc-map-wrap">
+              <div id="om-map" class="soc-map" role="img" aria-label="SOC map"></div>
+              <div class="soc-map-legend" aria-label="SOC legend on map">
+                <h3>SOC classes (%)</h3>
+                <div class="soc-legend-items">
+                  <div class="soc-legend-item">
+                    <span style="background:#3d1f0f"></span>
+                    <strong>0.6 - 0.8</strong>
+                  </div>
+                  <div class="soc-legend-item">
+                    <span style="background:#8c4f24"></span>
+                    <strong>0.8 - 1.2</strong>
+                  </div>
+                  <div class="soc-legend-item">
+                    <span style="background:#c4733d"></span>
+                    <strong>1.2 - 1.4</strong>
+                  </div>
+                  <div class="soc-legend-item">
+                    <span style="background:#f19155"></span>
+                    <strong>&gt; 1.4</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="soc-side-card">
+            <header class="soc-card-head">
+              <div>
+                <p>Distribution</p>
+                <h2>Class Breakdown</h2>
+              </div>
+            </header>
+            <div id="soc-class-bars" class="soc-class-bars"></div>
+          </article>
+        </section>
+
+        <section class="soc-table-card">
+          <header class="soc-card-head">
+            <div>
+              <p>Operational table</p>
+              <h2>SOC by Class</h2>
+            </div>
+          </header>
+          <div class="soc-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Class</th>
+                  <th>Pixel Count</th>
+                  <th>Share</th>
+                  <th>Approx. Area (ha)</th>
+                </tr>
+              </thead>
+              <tbody id="soc-class-table-body">
+                <tr>
+                  <td colspan="4">Loading distribution...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="distribution-modal" class="soc-modal hidden" aria-hidden="true">
+      <div class="soc-modal-card" role="dialog" aria-modal="true" aria-labelledby="distribution-title">
+        <div class="soc-modal-head">
+          <h2 id="distribution-title">SOC Distribution by Class</h2>
+          <button id="close-distribution" type="button" class="soc-btn-quiet">Close</button>
+        </div>
+        <p class="soc-modal-note">
+          Pixel share and approximate area are computed from valid raster values and grouped by SOC class breaks.
+        </p>
+        <div id="distribution-list" class="soc-distribution-list"></div>
+      </div>
+    </div>
+  </body>
+</html>
