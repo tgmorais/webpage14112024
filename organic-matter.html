@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VirtuaCrop | SOC Dashboard</title>
+    <title data-i18n-title="metaTitle">VirtuaCrop | SOC Dashboard</title>
     <meta
       name="description"
+      data-i18n-meta="metaDescription"
       content="Operational dashboard for Soil Organic Carbon classes with Leaflet and GeoTIFF rendering."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -56,26 +57,37 @@
       </aside>
 
       <main class="soc-main">
+        <header class="soc-page-head">
+          <div>
+            <p class="soc-page-kicker" data-i18n="pageKicker">Soil intelligence</p>
+            <h1 class="soc-page-title" data-i18n="pageTitle">Soil Organic Carbon Dashboard</h1>
+          </div>
+          <div class="lang-switch" role="group" aria-label="Language switcher">
+            <button type="button" class="lang-btn" data-lang-toggle="pt">PT</button>
+            <button type="button" class="lang-btn" data-lang-toggle="en">EN</button>
+          </div>
+        </header>
+
         <section class="soc-kpi-grid" aria-label="SOC key indicators">
           <article class="soc-kpi-card">
-            <h2>Average SOC</h2>
+            <h2 data-i18n="kpiAverageTitle">Average SOC</h2>
             <p id="soc-mean">-</p>
-            <small>Mean of valid raster pixels</small>
+            <small data-i18n="kpiAverageDesc">Mean of valid raster pixels</small>
           </article>
           <article class="soc-kpi-card">
-            <h2>Mapped Area</h2>
+            <h2 data-i18n="kpiAreaTitle">Mapped Area</h2>
             <p id="soc-total-area">-</p>
-            <small>Approximate area in hectares</small>
+            <small data-i18n="kpiAreaDesc">Approximate area in hectares</small>
           </article>
           <article class="soc-kpi-card">
-            <h2>Valid Pixels</h2>
+            <h2 data-i18n="kpiPixelsTitle">Valid Pixels</h2>
             <p id="soc-valid-pixels">-</p>
-            <small>Pixels used for SOC analysis</small>
+            <small data-i18n="kpiPixelsDesc">Pixels used for SOC analysis</small>
           </article>
           <article class="soc-kpi-card">
-            <h2>Dominant Class</h2>
+            <h2 data-i18n="kpiDominantTitle">Dominant Class</h2>
             <p id="soc-dominant-class">-</p>
-            <small>Largest share in class distribution</small>
+            <small data-i18n="kpiDominantDesc">Largest share in class distribution</small>
           </article>
         </section>
 
@@ -83,8 +95,8 @@
           <article class="soc-map-card">
             <header class="soc-card-head">
               <div>
-                <p>Spatial layer</p>
-                <h2>SOC Map View</h2>
+                <p data-i18n="mapSectionKicker">Spatial layer</p>
+                <h2 data-i18n="mapSectionTitle">SOC Map View</h2>
               </div>
               <span id="om-map-status" class="soc-status-pill" aria-live="polite">Loading GeoTIFF...</span>
             </header>
@@ -92,7 +104,7 @@
             <div class="soc-map-wrap">
               <div id="om-map" class="soc-map" role="img" aria-label="SOC map"></div>
               <div class="soc-map-legend" aria-label="SOC legend on map">
-                <h3>SOC classes (%)</h3>
+                <h3 data-i18n="legendTitle">SOC classes (%)</h3>
                 <div class="soc-legend-items">
                   <div class="soc-legend-item">
                     <span style="background:#3d1f0f"></span>
@@ -118,8 +130,8 @@
           <article class="soc-side-card">
             <header class="soc-card-head">
               <div>
-                <p>Distribution</p>
-                <h2>Class Breakdown</h2>
+                <p data-i18n="distributionKicker">Distribution</p>
+                <h2 data-i18n="distributionTitle">Class Breakdown</h2>
               </div>
             </header>
             <div id="soc-class-bars" class="soc-class-bars"></div>
@@ -129,23 +141,23 @@
         <section class="soc-table-card">
           <header class="soc-card-head">
             <div>
-              <p>Operational table</p>
-              <h2>SOC by Class</h2>
+              <p data-i18n="tableKicker">Operational table</p>
+              <h2 data-i18n="tableTitle">SOC by Class</h2>
             </div>
           </header>
           <div class="soc-table-wrap">
             <table>
               <thead>
                 <tr>
-                  <th>Class</th>
-                  <th>Pixel Count</th>
-                  <th>Share</th>
-                  <th>Approx. Area (ha)</th>
+                  <th data-i18n="tableColClass">Class</th>
+                  <th data-i18n="tableColPixels">Pixel Count</th>
+                  <th data-i18n="tableColShare">Share</th>
+                  <th data-i18n="tableColArea">Approx. Area (ha)</th>
                 </tr>
               </thead>
               <tbody id="soc-class-table-body">
                 <tr>
-                  <td colspan="4">Loading distribution...</td>
+                  <td colspan="4" data-i18n="tableLoading">Loading distribution...</td>
                 </tr>
               </tbody>
             </table>
@@ -157,10 +169,10 @@
     <div id="distribution-modal" class="soc-modal hidden" aria-hidden="true">
       <div class="soc-modal-card" role="dialog" aria-modal="true" aria-labelledby="distribution-title">
         <div class="soc-modal-head">
-          <h2 id="distribution-title">SOC Distribution by Class</h2>
-          <button id="close-distribution" type="button" class="soc-btn-quiet">Close</button>
+          <h2 id="distribution-title" data-i18n="modalTitle">SOC Distribution by Class</h2>
+          <button id="close-distribution" type="button" class="soc-btn-quiet" data-i18n="closeBtn">Close</button>
         </div>
-        <p class="soc-modal-note">
+        <p class="soc-modal-note" data-i18n="modalNote">
           Pixel share and approximate area are computed from valid raster values and grouped by SOC class breaks.
         </p>
         <div id="distribution-list" class="soc-distribution-list"></div>

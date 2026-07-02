@@ -1,5 +1,90 @@
 (() => {
+  const LANG_KEY = "vc_lang";
+  const SUPPORTED_LANGS = ["pt", "en"];
   const TIFF_PATH = "assets/data/DHL_2025-03-31_OM.tif";
+  let currentLang = "en";
+
+  const I18N = {
+    pt: {
+      metaTitle: "VirtuaCrop | Dashboard SOC",
+      metaDescription: "Dashboard operacional para classes de Carbono Orgânico do Solo com Leaflet e GeoTIFF.",
+      pageKicker: "Inteligência de solo",
+      pageTitle: "Dashboard de Carbono Orgânico do Solo",
+      kpiAverageTitle: "SOC médio",
+      kpiAverageDesc: "Média dos pixels válidos do raster",
+      kpiAreaTitle: "Área mapeada",
+      kpiAreaDesc: "Área aproximada em hectares",
+      kpiPixelsTitle: "Pixels válidos",
+      kpiPixelsDesc: "Pixels usados na análise de SOC",
+      kpiDominantTitle: "Classe dominante",
+      kpiDominantDesc: "Maior quota na distribuição por classe",
+      mapSectionKicker: "Camada espacial",
+      mapSectionTitle: "Mapa de SOC",
+      legendTitle: "Classes SOC (%)",
+      distributionKicker: "Distribuição",
+      distributionTitle: "Distribuição por classe",
+      tableKicker: "Tabela operacional",
+      tableTitle: "SOC por classe",
+      tableColClass: "Classe",
+      tableColPixels: "N.º de pixels",
+      tableColShare: "Quota",
+      tableColArea: "Área aprox. (ha)",
+      tableLoading: "A carregar distribuição...",
+      modalTitle: "Distribuição de SOC por classe",
+      closeBtn: "Fechar",
+      modalNote: "A quota de pixels e a área aproximada são calculadas com valores válidos do raster e agrupadas por classe de SOC.",
+      mapStatusFileBlocked: "Abra esta página via http://localhost (file:// bloqueia o carregamento do GeoTIFF no Chrome).",
+      mapStatusNoLeaflet: "Leaflet não está disponível.",
+      mapStatusNoRasterLibs: "As bibliotecas de raster não estão disponíveis.",
+      mapStatusLoading: "A carregar GeoTIFF...",
+      mapStatusLoaded: "GeoTIFF carregado (CRS {crs})",
+      mapStatusError: "Erro no carregamento do mapa: {message}",
+      noDistribution: "Sem dados de distribuição SOC disponíveis.",
+      modalTotals: "Total de pixels válidos: {pixels} · Área mapeada aprox.: {area} ha",
+      unitPx: "px",
+      unitHa: "ha"
+    },
+    en: {
+      metaTitle: "VirtuaCrop | SOC Dashboard",
+      metaDescription: "Operational dashboard for Soil Organic Carbon classes with Leaflet and GeoTIFF rendering.",
+      pageKicker: "Soil intelligence",
+      pageTitle: "Soil Organic Carbon Dashboard",
+      kpiAverageTitle: "Average SOC",
+      kpiAverageDesc: "Mean of valid raster pixels",
+      kpiAreaTitle: "Mapped Area",
+      kpiAreaDesc: "Approximate area in hectares",
+      kpiPixelsTitle: "Valid Pixels",
+      kpiPixelsDesc: "Pixels used for SOC analysis",
+      kpiDominantTitle: "Dominant Class",
+      kpiDominantDesc: "Largest share in class distribution",
+      mapSectionKicker: "Spatial layer",
+      mapSectionTitle: "SOC Map View",
+      legendTitle: "SOC classes (%)",
+      distributionKicker: "Distribution",
+      distributionTitle: "Class Breakdown",
+      tableKicker: "Operational table",
+      tableTitle: "SOC by Class",
+      tableColClass: "Class",
+      tableColPixels: "Pixel Count",
+      tableColShare: "Share",
+      tableColArea: "Approx. Area (ha)",
+      tableLoading: "Loading distribution...",
+      modalTitle: "SOC Distribution by Class",
+      closeBtn: "Close",
+      modalNote: "Pixel share and approximate area are computed from valid raster values and grouped by SOC class breaks.",
+      mapStatusFileBlocked: "Open this page via http://localhost (file:// blocks GeoTIFF loading in Chrome).",
+      mapStatusNoLeaflet: "Leaflet is not available.",
+      mapStatusNoRasterLibs: "Raster libraries are not available.",
+      mapStatusLoading: "Loading GeoTIFF...",
+      mapStatusLoaded: "GeoTIFF loaded (CRS {crs})",
+      mapStatusError: "Map loading error: {message}",
+      noDistribution: "No SOC distribution data available.",
+      modalTotals: "Total valid pixels: {pixels} · Approx. mapped area: {area} ha",
+      unitPx: "px",
+      unitHa: "ha"
+    }
+  };
+
   const CLASS_CONFIG = [
     { key: "c1", label: "0.6 - 0.8", color: "#3d1f0f", min: 0.6, max: 0.8 },
     { key: "c2", label: "0.8 - 1.2", color: "#8c4f24", min: 0.8, max: 1.2 },
@@ -34,6 +119,7 @@
   document.addEventListener("DOMContentLoaded", init);
 
   function init() {
+    initLanguage();
     ui.mapStatus = document.getElementById("om-map-status");
     ui.openDistributionBtn = document.getElementById("open-distribution");
     ui.closeDistributionBtn = document.getElementById("close-distribution");
@@ -47,7 +133,7 @@
     ui.kpiDominantClass = document.getElementById("soc-dominant-class");
 
     if (window.location.protocol === "file:") {
-      setMapStatus("Open this page via http://localhost (file:// blocks GeoTIFF loading in Chrome).");
+      setMapStatus(t("mapStatusFileBlocked"));
       return;
     }
 
@@ -102,7 +188,7 @@
 
   function initMap() {
     if (!window.L) {
-      setMapStatus("Leaflet is not available.");
+      setMapStatus(t("mapStatusNoLeaflet"));
       return;
     }
 
@@ -157,11 +243,11 @@
   async function loadRasterAndRender() {
     const parser = getRasterParser();
     if (!state.map || !parser || typeof window.GeoRasterLayer !== "function") {
-      setMapStatus("Raster libraries are not available.");
+      setMapStatus(t("mapStatusNoRasterLibs"));
       return;
     }
 
-    setMapStatus("Loading GeoTIFF...");
+    setMapStatus(t("mapStatusLoading"));
 
     try {
       const arrayBuffer = await loadArrayBuffer(TIFF_PATH);
@@ -175,9 +261,9 @@
       renderDashboardPanels();
 
       const crs = String(state.georaster.projection || "unknown");
-      setMapStatus(`GeoTIFF loaded (CRS ${crs})`);
+      setMapStatus(t("mapStatusLoaded", { crs }));
     } catch (error) {
-      setMapStatus(`Map loading error: ${error?.message || "unknown error"}`);
+      setMapStatus(t("mapStatusError", { message: error?.message || "unknown error" }));
     }
   }
 
@@ -331,7 +417,7 @@
     }
 
     if (!state.distribution.length) {
-      ui.classBars.innerHTML = "<p>No SOC distribution data available.</p>";
+      ui.classBars.innerHTML = `<p>${t("noDistribution")}</p>`;
       return;
     }
 
@@ -359,7 +445,7 @@
     }
 
     if (!state.distribution.length) {
-      ui.classTableBody.innerHTML = "<tr><td colspan=\"4\">No SOC distribution data available.</td></tr>";
+      ui.classTableBody.innerHTML = `<tr><td colspan="4">${t("noDistribution")}</td></tr>`;
       return;
     }
 
@@ -420,7 +506,7 @@
     }
 
     if (!state.distribution.length || state.totalValidPixels <= 0) {
-      ui.distributionList.innerHTML = "<p>No SOC distribution data available.</p>";
+      ui.distributionList.innerHTML = `<p>${t("noDistribution")}</p>`;
       return;
     }
 
@@ -428,8 +514,8 @@
     const rowsHtml = state.distribution
       .map((item) => {
         const pctText = `${item.percentage.toFixed(1)}%`;
-        const pxText = `${item.pixelCount.toLocaleString()} px`;
-        const areaText = `${item.approxAreaHa.toFixed(1)} ha`;
+        const pxText = `${item.pixelCount.toLocaleString()} ${t("unitPx")}`;
+        const areaText = `${item.approxAreaHa.toFixed(1)} ${t("unitHa")}`;
         return `
           <article class="soc-dist-row">
             <div class="soc-dist-head">
@@ -445,8 +531,125 @@
       .join("");
 
     ui.distributionList.innerHTML = `
-      <p><strong>Total valid pixels:</strong> ${state.totalValidPixels.toLocaleString()} · <strong>Approx. mapped area:</strong> ${totalAreaHa.toFixed(1)} ha</p>
+      <p><strong>${t("modalTotals", {
+        pixels: state.totalValidPixels.toLocaleString(),
+        area: totalAreaHa.toFixed(1)
+      })}</strong></p>
       ${rowsHtml}
     `;
+  }
+
+  function initLanguage() {
+    const resolved = resolveLanguage();
+    currentLang = resolved;
+    applyLanguage(resolved);
+    bindLanguageSwitcher();
+  }
+
+  function bindLanguageSwitcher() {
+    document.querySelectorAll("[data-lang-toggle]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const next = button.getAttribute("data-lang-toggle");
+        if (!SUPPORTED_LANGS.includes(next)) {
+          return;
+        }
+        applyLanguage(next);
+        currentLang = next;
+        try {
+          localStorage.setItem(LANG_KEY, next);
+        } catch (_err) {}
+        setLangCookie(next);
+        syncLanguageInUrl(next);
+      });
+    });
+  }
+
+  function applyLanguage(lang) {
+    const safeLang = SUPPORTED_LANGS.includes(lang) ? lang : "en";
+    const dict = I18N[safeLang] || I18N.en;
+    document.documentElement.lang = safeLang;
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (dict[key]) {
+        el.textContent = dict[key];
+      }
+    });
+
+    const titleNode = document.querySelector("title[data-i18n-title]");
+    if (titleNode) {
+      const key = titleNode.getAttribute("data-i18n-title");
+      if (dict[key]) {
+        titleNode.textContent = dict[key];
+      }
+    }
+
+    const metaDescription = document.querySelector('meta[data-i18n-meta="metaDescription"]');
+    if (metaDescription && dict.metaDescription) {
+      metaDescription.setAttribute("content", dict.metaDescription);
+    }
+
+    document.querySelectorAll("[data-lang-toggle]").forEach((button) => {
+      const active = button.getAttribute("data-lang-toggle") === safeLang;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  }
+
+  function resolveLanguage() {
+    const params = new URLSearchParams(window.location.search);
+    const queryLang = params.get("lang");
+    if (SUPPORTED_LANGS.includes(queryLang)) {
+      return queryLang;
+    }
+
+    try {
+      const localLang = localStorage.getItem(LANG_KEY);
+      if (SUPPORTED_LANGS.includes(localLang)) {
+        return localLang;
+      }
+    } catch (_err) {}
+
+    const cookieLang = getLangCookie();
+    if (SUPPORTED_LANGS.includes(cookieLang)) {
+      return cookieLang;
+    }
+
+    const browserLang = (navigator.language || "en").toLowerCase();
+    return browserLang.startsWith("pt") ? "pt" : "en";
+  }
+
+  function syncLanguageInUrl(lang) {
+    try {
+      const url = new URL(window.location.href);
+      if (url.protocol === "file:") {
+        return;
+      }
+      url.searchParams.set("lang", lang);
+      window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+    } catch (_err) {}
+  }
+
+  function setLangCookie(lang) {
+    document.cookie = `${LANG_KEY}=${encodeURIComponent(lang)}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Lax`;
+  }
+
+  function getLangCookie() {
+    const entries = document.cookie ? document.cookie.split(";") : [];
+    for (const entry of entries) {
+      const [rawKey, ...rest] = entry.trim().split("=");
+      if (rawKey === LANG_KEY) {
+        return decodeURIComponent(rest.join("="));
+      }
+    }
+    return null;
+  }
+
+  function t(key, vars = {}) {
+    const dict = I18N[currentLang] || I18N.en;
+    const template = dict[key] || I18N.en[key] || key;
+    return String(template).replace(/\{(\w+)\}/g, (_, name) => {
+      return Object.prototype.hasOwnProperty.call(vars, name) ? String(vars[name]) : `{${name}}`;
+    });
   }
 })();

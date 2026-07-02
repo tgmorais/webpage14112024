@@ -102,6 +102,62 @@ body {
   gap: 0.95rem;
 }
 
+.soc-page-head {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-panel);
+  box-shadow: var(--shadow);
+  padding: 0.72rem 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.soc-page-kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
+.soc-page-title {
+  margin: 0.26rem 0 0;
+  font: 700 1.24rem/1.08 "Space Grotesk", sans-serif;
+}
+
+.lang-switch {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.lang-btn {
+  border: 0;
+  border-right: 1px solid var(--line);
+  background: transparent;
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.33rem 0.56rem;
+  cursor: pointer;
+}
+
+.lang-btn:last-child {
+  border-right: 0;
+}
+
+.lang-btn.active {
+  background: #dbf2e8;
+  color: #234839;
+}
+
 .soc-topbar {
   border: 1px solid var(--line);
   border-radius: 16px;
