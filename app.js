@@ -93,6 +93,10 @@
         trustedEyebrow: "Confiam em nós",
         trustedTitle: "Organizações e parceiros com quem colaboramos.",
         trustedLead: "Entidades selecionadas associadas a projetos e colaborações.",
+        whatWeDoEyebrow: "O que fazemos",
+        whatWeDoTitle: "Parceiro líder em observação da Terra para o agronegócio.",
+        whatWeDoLead:
+          "Equipamos equipas de agronegócio com produtos de dados via satélite, análise com IA e resultados técnicos validados para aumentar produtividade, reduzir risco e apoiar decisões operacionais.",
         howEyebrow: "Como funciona",
         howTitle: "De múltiplas fontes EO para dados técnicos utilizáveis.",
         howLead: "Fluxo desenhado para transformar observação da Terra em datasets operacionais.",
@@ -297,6 +301,10 @@
         trustedEyebrow: "Trusted by",
         trustedTitle: "Organizations and partners we collaborate with.",
         trustedLead: "Selected entities connected to projects and collaborations.",
+        whatWeDoEyebrow: "What we do",
+        whatWeDoTitle: "Leading Earth Observation partner for agribusiness operations.",
+        whatWeDoLead:
+          "We equip agribusiness teams with satellite-driven data products, AI-powered analysis, and validated technical outputs to increase yields, reduce risk, and support operational decisions.",
         howEyebrow: "How it works",
         howTitle: "From multi-source EO data to usable technical datasets.",
         howLead: "A workflow designed to convert Earth Observation into operational agribusiness data.",

@@ -39,7 +39,6 @@
         <nav class="site-nav" aria-label="Primary navigation">
           <a href="#how" data-i18n="navHow">How it works</a>
           <a href="#solutions" data-i18n="navSolutions">Solutions</a>
-          <a href="#cases" data-i18n="navCases">Use cases</a>
           <a data-lang-href="projects.html" href="projects.html" data-i18n="navProjects">Projects</a>
           <a href="#contact" data-i18n="navContact">Contact</a>
         </nav>
@@ -55,8 +54,16 @@
     </header>
 
     <main id="top">
-      <section class="hero container">
-        <div class="hero-copy reveal">
+      <section class="hero container reveal">
+        <img
+          class="hero-bg-photo"
+          src="assets/photos/hero-farmland.jpg"
+          alt="Aerial view of agricultural fields"
+          width="1920"
+          height="1247"
+          loading="eager"
+        />
+        <div class="hero-copy">
           <p class="eyebrow" data-i18n="heroEyebrow">Data generation for agribusiness</p>
           <h1 data-i18n="heroTitle">Earth Observation + AI to generate actionable data for agribusiness operations.</h1>
           <p class="hero-lead" data-i18n="heroDescription">
@@ -66,134 +73,14 @@
             <button type="button" class="btn btn-primary" data-calendly-open data-calendly-source="hero" data-i18n="heroBookCallCta">
               Book a call
             </button>
-            <a href="#contact" class="btn btn-outline" data-i18n="heroPrimaryCta">Tell us what you need</a>
             <a href="#solutions" class="btn btn-outline" data-i18n="heroSecondaryCta">Explore solutions</a>
-          </div>
-
-          <div class="kpi-strip">
-            <p class="kpi-strip-title" data-i18n="kpiStripTitle">Outcome KPIs (replace with verified values)</p>
-            <ul class="hero-kpi-grid" aria-label="KPI placeholders">
-              <li class="kpi-card">
-                <span class="kpi-value" data-i18n="kpiMetric1Value">Metric value</span>
-                <span class="kpi-label" data-i18n="kpiMetric1Label">Metric label</span>
-              </li>
-              <li class="kpi-card">
-                <span class="kpi-value" data-i18n="kpiMetric2Value">Metric value</span>
-                <span class="kpi-label" data-i18n="kpiMetric2Label">Metric label</span>
-              </li>
-              <li class="kpi-card">
-                <span class="kpi-value" data-i18n="kpiMetric3Value">Metric value</span>
-                <span class="kpi-label" data-i18n="kpiMetric3Label">Metric label</span>
-              </li>
-            </ul>
           </div>
         </div>
 
-        <div class="hero-visual reveal">
-          <div class="hero-flow-shell" data-hero-flow>
-            <svg
-              class="hero-flow-svg"
-              viewBox="0 0 920 430"
-              role="img"
-              aria-labelledby="hero-flow-title hero-flow-desc"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title id="hero-flow-title" data-i18n="heroFlowSvgTitle">EO to AI to output workflow</title>
-              <desc id="hero-flow-desc" data-i18n="heroFlowSvgDesc">
-                Data sources feed the VirtuaCrop AI core, then output technical agribusiness datasets.
-              </desc>
-              <defs>
-                <linearGradient id="line-input-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#d76855" />
-                  <stop offset="100%" stop-color="#bf5243" />
-                </linearGradient>
-                <linearGradient id="line-output-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#2ca178" />
-                  <stop offset="100%" stop-color="#13ba8b" />
-                </linearGradient>
-                <radialGradient id="flow-glow-gradient" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#ffa08f" stop-opacity="0.35" />
-                  <stop offset="100%" stop-color="#ffa08f" stop-opacity="0" />
-                </radialGradient>
-              </defs>
-              <circle class="flow-glow" cx="460" cy="214" r="175" fill="url(#flow-glow-gradient)" />
-              <path class="flow-line flow-line-input" d="M225 80 C286 80 292 184 340 184" />
-              <path class="flow-line flow-line-input" d="M225 185 C286 185 292 200 340 200" />
-              <path class="flow-line flow-line-input" d="M225 290 C286 290 292 216 340 216" />
-              <path class="flow-line flow-line-output flow-line-output-main" d="M580 205 C654 205 640 205 692 205" />
-              <circle class="flow-node flow-node-input" cx="340" cy="200" r="9" />
-              <circle class="flow-node flow-node-output" cx="692" cy="205" r="10" />
-            </svg>
-
-            <article class="flow-card flow-card-input flow-card-input-a" style="--flow-delay: 0.1s">
-              <span class="flow-input-icon" aria-hidden="true">
-                <svg class="flow-input-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="m8.8 8 6.9 6.9-2.4 2.4-6.9-6.9z" />
-                  <path d="m9.9 6.9-2.1 2.1m8.4 8.4-2.1 2.1" />
-                  <path d="m4.2 19.8 3.2-3.2m9.2-9.2 3.2-3.2" />
-                  <path d="m11.4 10.6 2 2" />
-                </svg>
-              </span>
-              <p data-i18n="heroFlowInput1">Satellite</p>
-            </article>
-            <article class="flow-card flow-card-input flow-card-input-b" style="--flow-delay: 0.2s">
-              <span class="flow-input-icon" aria-hidden="true">
-                <svg class="flow-input-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.2 18h8a3 3 0 0 0 .2-6A4.6 4.6 0 0 0 6.8 10a3.5 3.5 0 0 0 .4 8Z" />
-                  <path d="M12 5.1V3.5m-4.7 3 1.1 1.1m7.2-1.1-1.1 1.1" />
-                </svg>
-              </span>
-              <p data-i18n="heroFlowInput2">Weather</p>
-            </article>
-            <article class="flow-card flow-card-input flow-card-input-c" style="--flow-delay: 0.3s">
-              <span class="flow-input-icon" aria-hidden="true">
-                <svg class="flow-input-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4.5 18.5h15" />
-                  <path d="M6.5 18.5V13l5.5-3 5.5 3v5.5" />
-                  <path d="M9.2 15.4h5.6m-5.6 2.2h5.6" />
-                </svg>
-              </span>
-              <p data-i18n="heroFlowInput3">Field data</p>
-            </article>
-
-            <article class="flow-card flow-card-core" style="--flow-delay: 0.45s">
-              <div class="flow-core-head">
-                <span class="flow-core-tag" data-i18n="heroFlowCoreTag">AI processing</span>
-                <span class="flow-core-state" aria-hidden="true"></span>
-              </div>
-              <div class="flow-core-processing" aria-hidden="true">
-                <div class="flow-core-chip"></div>
-                <div class="flow-core-pulse"></div>
-                <div class="flow-core-grid">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </article>
-            <div class="flow-bridge" aria-hidden="true"></div>
-
-            <article class="flow-card flow-card-output flow-card-output-report" style="--flow-delay: 0.7s">
-              <div class="flow-output-head">
-                <span class="flow-report-badge" aria-hidden="true">
-                  <svg class="flow-report-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7 2.5h8l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4A1.5 1.5 0 0 1 6.5 2.5H7Z" />
-                    <path d="M15 2.5V7h4" />
-                    <path d="M8.5 11h7M8.5 14h7M8.5 17h5" />
-                  </svg>
-                </span>
-                <div class="flow-output-copy">
-                  <span class="flow-output-kicker" data-i18n="heroFlowOutputKicker">Single deliverable</span>
-                  <p class="flow-output-title" data-i18n="heroFlowOutputTitle">Integrated technical report</p>
-                </div>
-              </div>
-            </article>
-          </div>
+        <div class="hero-photo-stat">
+          <p class="kpi-strip-title" data-i18n="kpiStripTitle">Resultados validados</p>
+          <span class="stat-value" data-i18n="kpiMetric1Value">120 mil+ ha</span>
+          <span class="stat-label" data-i18n="kpiMetric1Label">Área analisada</span>
         </div>
       </section>
 
@@ -243,6 +130,46 @@
         </div>
       </section>
 
+      <section class="section container">
+        <div class="dark-band reveal">
+          <div>
+            <p class="eyebrow" data-i18n="whatWeDoEyebrow">O que fazemos</p>
+            <h2 data-i18n="whatWeDoTitle">Parceiro líder em observação da Terra para o agronegócio.</h2>
+            <p data-i18n="whatWeDoLead">
+              Equipamos equipas de agronegócio com produtos de dados via satélite, análise com IA e resultados técnicos
+              validados para aumentar produtividade, reduzir risco e apoiar decisões operacionais.
+            </p>
+          </div>
+          <a href="#solutions" class="dark-band-cta" data-i18n="heroSecondaryCta">Ver soluções</a>
+        </div>
+
+        <div class="stat-band-dark reveal">
+          <ul class="stat-strip" aria-label="Key outcome metrics">
+            <li class="stat-card">
+              <span class="stat-value" data-i18n="kpiMetric1Value">120 mil+ ha</span>
+              <span class="stat-label" data-i18n="kpiMetric1Label">Área analisada</span>
+            </li>
+            <li class="stat-card">
+              <span class="stat-value" data-i18n="kpiMetric2Value">5k+ parcelas</span>
+              <span class="stat-label" data-i18n="kpiMetric2Label">Parcelas monitorizadas</span>
+            </li>
+            <li class="stat-card">
+              <span class="stat-value" data-i18n="kpiMetric3Value">&lt;48h</span>
+              <span class="stat-label" data-i18n="kpiMetric3Label">Tempo de entrega</span>
+            </li>
+          </ul>
+          <div class="stat-band-photo">
+            <img
+              src="assets/photos/stat-band-farmland.jpg"
+              alt="Aerial view of rolling farmland"
+              loading="lazy"
+              width="1200"
+              height="1850"
+            />
+          </div>
+        </div>
+      </section>
+
       <section id="how" class="section container reveal">
         <div class="section-head">
           <p class="eyebrow" data-i18n="howEyebrow">How it works</p>
@@ -252,128 +179,65 @@
           </p>
         </div>
 
-        <div class="card-grid three">
-          <article class="card">
-            <h3 data-i18n="howStep1Title">1. Data fusion</h3>
-            <p data-i18n="howStep1Body">
-              We integrate Sentinel-2, very high-resolution satellite data, aerial photography, and UAV (drone) data.
-            </p>
+        <div class="tech-grid reveal">
+          <article class="tech-card">
+            <img src="assets/photos/tech-satellite-1.jpg" alt="Satellite imagery of agricultural land parcels" loading="lazy" />
+            <div class="tech-card-top">
+              <span class="tech-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m8.8 8 6.9 6.9-2.4 2.4-6.9-6.9z" />
+                  <path d="m9.9 6.9-2.1 2.1m8.4 8.4-2.1 2.1" />
+                  <path d="m4.2 19.8 3.2-3.2m9.2-9.2 3.2-3.2" />
+                  <path d="m11.4 10.6 2 2" />
+                </svg>
+              </span>
+              <span class="tech-card-number">01</span>
+            </div>
+            <div class="tech-card-body">
+              <h3 data-i18n="howStep1Title">1. Data fusion</h3>
+              <p data-i18n="howStep1Body">
+                We integrate Sentinel-2, very high-resolution satellite data, aerial photography, and UAV (drone) data.
+              </p>
+            </div>
           </article>
-          <article class="card">
-            <h3 data-i18n="howStep2Title">2. AI interpretation</h3>
-            <p data-i18n="howStep2Body">
-              We apply AI models to estimate biomass, protein content, SOC, soil properties, and NDVI dynamics.
-            </p>
+          <article class="tech-card">
+            <img src="assets/photos/tech-satellite-2.jpg" alt="Processed satellite data showing classified land patterns" loading="lazy" />
+            <div class="tech-card-top">
+              <span class="tech-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="8" width="8" height="8" rx="1.4" />
+                  <path d="M12 3.5v3M12 17.5v3M3.5 12h3M17.5 12h3M6 6l2 2M18 6l-2 2M6 18l2-2M18 18l-2-2" />
+                </svg>
+              </span>
+              <span class="tech-card-number">02</span>
+            </div>
+            <div class="tech-card-body">
+              <h3 data-i18n="howStep2Title">2. AI interpretation</h3>
+              <p data-i18n="howStep2Body">
+                We apply AI models to estimate biomass, protein content, SOC, soil properties, and NDVI dynamics.
+              </p>
+            </div>
           </article>
-          <article class="card">
-            <h3 data-i18n="howStep3Title">3. Data delivery</h3>
-            <p data-i18n="howStep3Body">
-              We deliver maps, time series, and tabular outputs for operational and technical decisions.
-            </p>
+          <article class="tech-card">
+            <img src="assets/photos/tech-harvest.jpg" alt="Combine harvester operating in a wheat field" loading="lazy" />
+            <div class="tech-card-top">
+              <span class="tech-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 19h16" />
+                  <path d="M7 19V9.5l3.5-2.2L14 9.5l3-1.8V19" />
+                  <path d="M10.5 19v-4h2.5v4" />
+                </svg>
+              </span>
+              <span class="tech-card-number">03</span>
+            </div>
+            <div class="tech-card-body">
+              <h3 data-i18n="howStep3Title">3. Data delivery</h3>
+              <p data-i18n="howStep3Body">
+                We deliver maps, time series, and tabular outputs for operational and technical decisions.
+              </p>
+            </div>
           </article>
         </div>
-
-        <article class="support-visual how-visual reveal">
-          <div class="support-copy">
-            <h3 data-i18n="howVisualTitle">Operational fusion in one control layer</h3>
-            <p data-i18n="howVisualCaption">
-              Source harmonization, AI scoring, and quality checks stay connected before delivery.
-            </p>
-          </div>
-          <svg class="support-svg" viewBox="0 0 640 240" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="support-bg-grad-v2" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#f9fdfb" />
-                <stop offset="100%" stop-color="#edf7f2" />
-              </linearGradient>
-              <linearGradient id="support-core-grad-v2" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ffffff" />
-                <stop offset="100%" stop-color="#e4f3eb" />
-              </linearGradient>
-              <linearGradient id="support-flow-in-v2" x1="188" y1="120" x2="238" y2="120">
-                <stop offset="0%" stop-color="#dc6f5c" />
-                <stop offset="100%" stop-color="#cf5e49" />
-              </linearGradient>
-              <linearGradient id="support-flow-out-v2" x1="418" y1="120" x2="468" y2="120">
-                <stop offset="0%" stop-color="#2faa82" />
-                <stop offset="100%" stop-color="#2a986f" />
-              </linearGradient>
-              <filter id="support-glow-v2" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="2.8" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-
-            <rect x="2" y="2" width="636" height="236" rx="22" fill="url(#support-bg-grad-v2)" stroke="#caded4" stroke-width="2" />
-
-            <g opacity="0.35">
-              <path d="M34 90 H606" stroke="#dbeae2" stroke-width="1.5" />
-              <path d="M34 150 H606" stroke="#dbeae2" stroke-width="1.5" />
-              <path d="M214 34 V206" stroke="#dbeae2" stroke-width="1.5" />
-              <path d="M434 34 V206" stroke="#dbeae2" stroke-width="1.5" />
-            </g>
-
-            <g>
-              <rect x="34" y="40" width="158" height="42" rx="12" fill="#ffffff" stroke="#c3d9cf" stroke-width="2" />
-              <circle cx="54" cy="61" r="6" fill="#d56c57" />
-              <rect x="68" y="53" width="84" height="6" rx="3" fill="#d7e8df" />
-              <rect x="68" y="63" width="64" height="6" rx="3" fill="#e5f1eb" />
-            </g>
-            <g>
-              <rect x="34" y="99" width="158" height="42" rx="12" fill="#ffffff" stroke="#c3d9cf" stroke-width="2" />
-              <circle cx="54" cy="120" r="6" fill="#d56c57" />
-              <rect x="68" y="112" width="84" height="6" rx="3" fill="#d7e8df" />
-              <rect x="68" y="122" width="58" height="6" rx="3" fill="#e5f1eb" />
-            </g>
-            <g>
-              <rect x="34" y="158" width="158" height="42" rx="12" fill="#ffffff" stroke="#c3d9cf" stroke-width="2" />
-              <circle cx="54" cy="179" r="6" fill="#d56c57" />
-              <rect x="68" y="171" width="84" height="6" rx="3" fill="#d7e8df" />
-              <rect x="68" y="181" width="72" height="6" rx="3" fill="#e5f1eb" />
-            </g>
-
-            <rect x="232" y="50" width="194" height="140" rx="18" fill="#f4fbf8" stroke="#adcbbd" stroke-width="2" />
-            <rect x="252" y="70" width="154" height="100" rx="14" fill="url(#support-core-grad-v2)" stroke="#9fc4b4" stroke-width="2" />
-            <circle cx="329" cy="120" r="26" fill="#ffffff" stroke="#8dbca8" stroke-width="2.5" />
-            <circle cx="329" cy="120" r="9" fill="#2da37c" filter="url(#support-glow-v2)" />
-            <path d="M282 94 C294 82 312 76 329 76 C346 76 364 82 376 94" fill="none" stroke="#b8d8ca" stroke-width="2.5" stroke-linecap="round" />
-            <path d="M282 146 C294 158 312 164 329 164 C346 164 364 158 376 146" fill="none" stroke="#b8d8ca" stroke-width="2.5" stroke-linecap="round" />
-
-            <g>
-              <rect x="468" y="52" width="138" height="34" rx="10" fill="#f2fbf7" stroke="#a9d4bf" stroke-width="2" />
-              <rect x="486" y="63" width="70" height="6" rx="3" fill="#b6dcc8" />
-              <rect x="486" y="73" width="50" height="6" rx="3" fill="#d6ecdf" />
-            </g>
-            <g>
-              <rect x="468" y="103" width="138" height="34" rx="10" fill="#f2fbf7" stroke="#a9d4bf" stroke-width="2" />
-              <rect x="486" y="114" width="70" height="6" rx="3" fill="#b6dcc8" />
-              <rect x="486" y="124" width="56" height="6" rx="3" fill="#d6ecdf" />
-            </g>
-            <g>
-              <rect x="468" y="154" width="138" height="34" rx="10" fill="#f2fbf7" stroke="#a9d4bf" stroke-width="2" />
-              <rect x="486" y="165" width="70" height="6" rx="3" fill="#b6dcc8" />
-              <rect x="486" y="175" width="44" height="6" rx="3" fill="#d6ecdf" />
-            </g>
-
-            <path d="M192 61 C220 61 214 90 232 90" fill="none" stroke="url(#support-flow-in-v2)" stroke-width="3.8" stroke-linecap="round" />
-            <path d="M192 120 C222 120 214 120 232 120" fill="none" stroke="url(#support-flow-in-v2)" stroke-width="3.8" stroke-linecap="round" />
-            <path d="M192 179 C220 179 214 150 232 150" fill="none" stroke="url(#support-flow-in-v2)" stroke-width="3.8" stroke-linecap="round" />
-
-            <path d="M426 94 C450 94 448 69 468 69" fill="none" stroke="url(#support-flow-out-v2)" stroke-width="3.8" stroke-linecap="round" />
-            <path d="M426 120 C452 120 448 120 468 120" fill="none" stroke="url(#support-flow-out-v2)" stroke-width="3.8" stroke-linecap="round" />
-            <path d="M426 146 C450 146 448 171 468 171" fill="none" stroke="url(#support-flow-out-v2)" stroke-width="3.8" stroke-linecap="round" />
-
-            <circle cx="232" cy="90" r="4.5" fill="#cf5e49" />
-            <circle cx="232" cy="120" r="4.5" fill="#cf5e49" />
-            <circle cx="232" cy="150" r="4.5" fill="#cf5e49" />
-            <circle cx="426" cy="94" r="4.5" fill="#2a986f" />
-            <circle cx="426" cy="120" r="4.5" fill="#2a986f" />
-            <circle cx="426" cy="146" r="4.5" fill="#2a986f" />
-          </svg>
-        </article>
       </section>
 
       <section id="solutions" class="section container reveal">
@@ -385,10 +249,11 @@
           </p>
         </div>
 
-        <div class="card-grid four">
-          <article class="card card-tone-a">
-            <div class="solution-media" aria-hidden="true">
-              <span class="solution-icon">
+        <div class="card-grid four tech-grid-solutions reveal">
+          <article class="tech-card">
+            <img src="assets/photos/tech-drone.jpg" alt="" loading="lazy" />
+            <div class="tech-card-top">
+              <span class="tech-card-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4 19h16" />
                   <path d="M6.5 14.5 9.6 11.5 12.5 13.6 17.5 8.7" />
@@ -398,31 +263,23 @@
                   <rect x="15" y="10.8" width="2.5" height="8" rx="0.8" />
                 </svg>
               </span>
-              <span class="solution-picture">
-                <svg viewBox="0 0 164 44" xmlns="http://www.w3.org/2000/svg">
-                  <rect class="pic-base" x="0.5" y="0.5" width="163" height="43" rx="10.5" />
-                  <path
-                    class="pic-fill"
-                    d="M0 31 C20 26 39 36 58 30 C77 24 94 23 111 28 C128 33 144 24 164 18 V44 H0 Z"
-                  />
-                  <path class="pic-line" d="M12 30 L40 24 L66 28 L98 17 L152 22" />
-                  <circle class="pic-dot" cx="98" cy="17" r="3" />
-                </svg>
-              </span>
             </div>
-            <h3 data-i18n="solution1Title">Productivity/Biomass and protein</h3>
-            <p data-i18n="solution1Body">
-              Estimate productivity, biomass, and quality to compare parcels and support management decisions.
-            </p>
-            <div class="solution-actions">
-              <button id="open-biomass-map" type="button" class="btn btn-quiet solution-action-btn" data-i18n="solution1MapBtn">
-                Ver
-              </button>
+            <div class="tech-card-body">
+              <h3 data-i18n="solution1Title">Productivity/Biomass and protein</h3>
+              <p data-i18n="solution1Body">
+                Estimate productivity, biomass, and quality to compare parcels and support management decisions.
+              </p>
+              <div class="solution-actions">
+                <button id="open-biomass-map" type="button" class="btn btn-quiet solution-action-btn" data-i18n="solution1MapBtn">
+                  Ver
+                </button>
+              </div>
             </div>
           </article>
-          <article class="card card-tone-b">
-            <div class="solution-media" aria-hidden="true">
-              <span class="solution-icon">
+          <article class="tech-card">
+            <img src="assets/photos/solution-soil.jpg" alt="" loading="lazy" />
+            <div class="tech-card-top">
+              <span class="tech-card-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4 8.5h16" />
                   <path d="M4 12h16" />
@@ -430,30 +287,23 @@
                   <path d="M7 19c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0" />
                 </svg>
               </span>
-              <span class="solution-picture">
-                <svg viewBox="0 0 164 44" xmlns="http://www.w3.org/2000/svg">
-                  <rect class="pic-base" x="0.5" y="0.5" width="163" height="43" rx="10.5" />
-                  <path class="pic-fill" d="M0 27 C24 20 48 25 70 22 C95 18 121 23 164 14 V44 H0 Z" />
-                  <rect class="pic-fill-alt" x="14" y="10" width="42" height="7" rx="3.5" />
-                  <rect class="pic-fill-alt" x="14" y="20" width="78" height="7" rx="3.5" />
-                  <rect class="pic-fill-alt" x="14" y="30" width="118" height="6" rx="3" />
-                  <path class="pic-line-soft" d="M112 11 H150" />
-                </svg>
-              </span>
             </div>
-            <h3 data-i18n="solution2Title">Soil property estimation</h3>
-            <p data-i18n="solution2Body">
-              Generate soil property layers for technical zoning and agronomic strategy support.
-            </p>
-            <div class="solution-actions">
-              <button id="open-soil-map" type="button" class="btn btn-quiet solution-action-btn" data-i18n="solution2MapBtn">
-                Ver
-              </button>
+            <div class="tech-card-body">
+              <h3 data-i18n="solution2Title">Soil property estimation</h3>
+              <p data-i18n="solution2Body">
+                Generate soil property layers for technical zoning and agronomic strategy support.
+              </p>
+              <div class="solution-actions">
+                <button id="open-soil-map" type="button" class="btn btn-quiet solution-action-btn" data-i18n="solution2MapBtn">
+                  Ver
+                </button>
+              </div>
             </div>
           </article>
-          <article class="card card-tone-c">
-            <div class="solution-media" aria-hidden="true">
-              <span class="solution-icon">
+          <article class="tech-card">
+            <img src="assets/photos/solution-ndvi.jpg" alt="" loading="lazy" />
+            <div class="tech-card-top">
+              <span class="tech-card-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4 19h16" />
                   <path d="M7 17v-3" />
@@ -462,57 +312,39 @@
                   <path d="M5 10.5 9 8.5 12.5 11 18.5 6.5" />
                 </svg>
               </span>
-              <span class="solution-picture">
-                <svg viewBox="0 0 164 44" xmlns="http://www.w3.org/2000/svg">
-                  <rect class="pic-base" x="0.5" y="0.5" width="163" height="43" rx="10.5" />
-                  <path class="pic-fill" d="M0 35 C24 28 49 38 76 29 C102 21 126 29 164 20 V44 H0 Z" />
-                  <rect class="pic-fill-alt" x="18" y="24" width="10" height="12" rx="2.5" />
-                  <rect class="pic-fill-alt" x="34" y="20" width="10" height="16" rx="2.5" />
-                  <rect class="pic-fill-alt" x="50" y="16" width="10" height="20" rx="2.5" />
-                  <path class="pic-line" d="M14 29 L40 23 L66 26 L98 15 L148 19" />
-                  <circle class="pic-dot" cx="98" cy="15" r="2.8" />
-                </svg>
-              </span>
             </div>
-            <h3 data-i18n="solution3Title">NDVI time series</h3>
-            <p data-i18n="solution3Body">
-              Build NDVI histories for performance analysis, seasonality tracking, and change detection, with 2.5 m spatial-resolution imagery (based on Sentinel-2 super-resolution).
-            </p>
-            <div class="solution-actions">
-              <button id="open-ndvi-compare" type="button" class="btn btn-quiet solution-action-btn" data-i18n="solution3MapBtn">
-                See
-              </button>
+            <div class="tech-card-body">
+              <h3 data-i18n="solution3Title">NDVI time series</h3>
+              <p data-i18n="solution3Body">
+                Build NDVI histories for performance analysis, seasonality tracking, and change detection, with 2.5 m spatial-resolution imagery (based on Sentinel-2 super-resolution).
+              </p>
+              <div class="solution-actions">
+                <button id="open-ndvi-compare" type="button" class="btn btn-quiet solution-action-btn" data-i18n="solution3MapBtn">
+                  See
+                </button>
+              </div>
             </div>
           </article>
-          <article class="card card-tone-d">
-            <div class="solution-media" aria-hidden="true">
-              <span class="solution-icon">
+          <article class="tech-card">
+            <img src="assets/photos/solution-weather.jpg" alt="" loading="lazy" />
+            <div class="tech-card-top">
+              <span class="tech-card-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M6 14a3.5 3.5 0 0 1 3.4-3.5 4.2 4.2 0 0 1 8 .8 2.9 2.9 0 0 1 .6 5.7H7.3A2.8 2.8 0 0 1 6 14Z" />
                   <path d="M13.2 14.4 11 18h2.6l-1.7 3.4" />
                 </svg>
               </span>
-              <span class="solution-picture">
-                <svg viewBox="0 0 164 44" xmlns="http://www.w3.org/2000/svg">
-                  <rect class="pic-base" x="0.5" y="0.5" width="163" height="43" rx="10.5" />
-                  <path class="pic-fill" d="M0 34 C22 30 43 39 66 33 C90 27 120 34 164 24 V44 H0 Z" />
-                  <path
-                    class="pic-line-soft"
-                    d="M28 18 C28 14 31 12 34 12 C35 9 38 8 41 8 C45 8 48 10 49 13 C52 13 55 15 55 18 C55 21 52 23 49 23 H34 C31 23 28 21 28 18 Z"
-                  />
-                  <path class="pic-line" d="M113 13 L104 26 H114 L107 35" />
-                  <circle class="pic-dot" cx="132" cy="13" r="2.6" />
-                </svg>
-              </span>
             </div>
-            <h3 data-i18n="solution4Title">Automatic weather alerts days in advance</h3>
-            <p data-i18n="solution4Body">
-              Receive automated weather alerts several days in advance to plan operations and reduce weather risk.
-            </p>
-            <div class="solution-actions">
-              <button id="open-weather-alerts" type="button" class="btn btn-quiet solution-action-btn" data-i18n="solution4Btn">
-                See
-              </button>
+            <div class="tech-card-body">
+              <h3 data-i18n="solution4Title">Automatic weather alerts days in advance</h3>
+              <p data-i18n="solution4Body">
+                Receive automated weather alerts several days in advance to plan operations and reduce weather risk.
+              </p>
+              <div class="solution-actions">
+                <button id="open-weather-alerts" type="button" class="btn btn-quiet solution-action-btn" data-i18n="solution4Btn">
+                  See
+                </button>
+              </div>
             </div>
           </article>
         </div>
@@ -655,60 +487,6 @@
         </div>
       </div>
 
-      <section id="cases" class="section container reveal">
-        <div class="section-head">
-          <p class="eyebrow" data-i18n="casesEyebrow">Use cases</p>
-          <h2 data-i18n="casesTitle">Data outputs for real agribusiness workflows.</h2>
-          <p class="section-lead" data-i18n="casesLead">Examples of direct use of VirtuaCrop EO + AI data products.</p>
-        </div>
-
-        <div class="case-grid">
-          <article class="case-card">
-            <h3 data-i18n="case1Title">Parcel-level productivity management</h3>
-            <p data-i18n="case1Body">
-              Use biomass and protein estimates to compare parcels and support field management decisions.
-            </p>
-          </article>
-          <article class="case-card">
-            <h3 data-i18n="case2Title">Large-scale soil characterization</h3>
-            <p data-i18n="case2Body">
-              Use soil property maps to identify spatial variability and prioritize technical actions.
-            </p>
-          </article>
-          <article class="case-card">
-            <h3 data-i18n="case3Title">Historical NDVI performance tracking</h3>
-            <p data-i18n="case3Body">
-              Track vegetation dynamics over time to support technical reporting and business planning.
-            </p>
-          </article>
-        </div>
-
-        <article class="support-visual cases-visual reveal">
-          <div class="support-copy">
-            <h3 data-i18n="casesVisualTitle">Deployment-ready data outputs</h3>
-            <p data-i18n="casesVisualCaption">
-              Map layers, time series, and parcel insights are prepared for business and technical teams.
-            </p>
-          </div>
-          <svg class="support-svg" viewBox="0 0 640 240" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <rect class="support-frame" x="2" y="2" width="636" height="236" rx="22" />
-            <rect class="support-panel" x="36" y="38" width="170" height="164" rx="14" />
-            <path class="support-map-line" d="M58 72 L98 54 L140 82 L180 62" />
-            <path class="support-map-line" d="M58 122 L98 102 L140 132 L180 112" />
-            <circle class="support-map-point" cx="140" cy="82" r="6" />
-            <rect class="support-panel" x="236" y="38" width="172" height="164" rx="14" />
-            <path class="support-chart-line" d="M258 160 L288 126 L320 138 L350 90 L386 112" />
-            <rect class="support-bar" x="260" y="78" width="20" height="74" rx="8" />
-            <rect class="support-bar" x="292" y="96" width="20" height="56" rx="8" />
-            <rect class="support-bar" x="324" y="114" width="20" height="38" rx="8" />
-            <rect class="support-panel support-panel-highlight" x="438" y="38" width="166" height="164" rx="14" />
-            <rect class="support-chip support-chip-out" x="460" y="68" width="122" height="26" rx="9" />
-            <rect class="support-chip support-chip-out" x="460" y="108" width="122" height="26" rx="9" />
-            <rect class="support-chip support-chip-out" x="460" y="148" width="122" height="26" rx="9" />
-          </svg>
-        </article>
-      </section>
-
       <section id="contact" class="section container contact-section reveal">
         <div class="contact-copy">
           <p class="eyebrow" data-i18n="contactEyebrow">Contact</p>
@@ -800,6 +578,9 @@
           <a href="#top" data-i18n="footerBackTop">Back to top</a>
         </div>
         <p class="footer-meta" data-i18n="footerRights">© VirtuaCrop - 2026. All rights reserved.</p>
+        <p class="footer-meta footer-credit">
+          Imagery: CSIRO, ESA &amp; contributors via Wikimedia Commons (CC BY / CC BY-SA).
+        </p>
       </div>
     </footer>
 
