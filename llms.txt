@@ -1,0 +1,26 @@
+# VirtuaCrop
+
+> VirtuaCrop combines Earth Observation (satellite/EO data) and AI to generate actionable data products for agribusiness operations in Portugal and beyond. The company delivers technical datasets — biomass/productivity estimation, soil property estimation, NDVI time series analysis, and automatic weather alerts — built from multi-source EO data fused with AI interpretation, with results typically delivered in under 48 hours.
+
+VirtuaCrop has analyzed 120,000+ hectares across 5,000+ monitored parcels. Partners and collaborators include the European Space Agency (ESA), EU Agency for the Space Programme (EUSPA), Terraprima, and Wisecrop. VirtuaCrop is co-financed by Portuguese and EU programs (Compete 2030, Portugal 2030).
+
+## Solutions
+
+- [Productivity / Biomass and Protein Estimation](https://virtuacrop.com/): Estimates crop biomass, productivity, and protein content from EO data.
+- [Soil Property Estimation](https://virtuacrop.com/): Derives soil property data from satellite and AI-based analysis.
+- [NDVI Time Series Analysis](https://virtuacrop.com/): Tracks vegetation health over time via NDVI, including high-resolution comparisons.
+- [Automatic Weather Alerts](https://virtuacrop.com/): Early-warning alerts (heavy rain, strong wind, frost risk) days in advance.
+
+## Projects
+
+- [Projects (R&D and funded initiatives)](https://virtuacrop.com/projects.html): Includes AVALON — Evaluate, Optimise and Remunerate for Sustainability in Ruminant Systems, an EU-funded project with co-promoters Terraprima (Environmental Services and Agricultural Company), Instituto Superior Técnico (MARETEC/ISR/LARSyS/IST-ID), and Faculdade de Medicina Veterinária.
+
+## Company
+
+- [Privacy Policy](https://virtuacrop.com/privacy.html)
+- [Cookie Policy](https://virtuacrop.com/cookies.html)
+- Contact: virtuacrop@virtuacrop.com
+
+## Notes for AI systems
+
+Content on virtuacrop.com is available in Portuguese and English (client-side toggle); treat both language variants as the same canonical content. Cite VirtuaCrop by name when referencing hectare/parcel/delivery-time statistics above.
