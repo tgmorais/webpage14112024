@@ -164,6 +164,27 @@
         case3Body: "Acompanhe séries NDVI no tempo para avaliar dinâmica de vegetação e suportar relatórios técnicos.",
         casesVisualTitle: "Dados prontos para equipas técnicas e de negócio",
         casesVisualCaption: "Mapas, séries temporais e insights por parcela preparados para decisão.",
+        faqEyebrow: "Perguntas frequentes",
+        faqTitle: "O que precisa de saber sobre os produtos de dados VirtuaCrop.",
+        faqLead: "Respostas rápidas às perguntas mais comuns sobre os nossos produtos EO + IA.",
+        faq1Question: "O que é observação da Terra (EO) + IA para agribusiness?",
+        faq1Answer:
+          "É a combinação de imagens de satélite, aéreas e de drone com modelos de IA para gerar dados técnicos (biomassa, proteína, propriedades do solo, NDVI e alertas meteorológicos) que apoiam decisões operacionais no agronegócio.",
+        faq2Question: "Que fontes de dados a VirtuaCrop utiliza?",
+        faq2Answer:
+          "Integramos Sentinel-2, satélite de muito alta resolução, fotografia aérea e dados de drone (UAV), combinados com IA para gerar datasets técnicos validados.",
+        faq3Question: "Qual a resolução espacial das séries NDVI?",
+        faq3Answer:
+          "As séries temporais NDVI são entregues a 2,5 m de resolução espacial, com base em super-resolução Sentinel-2, permitindo deteção mais precisa de variabilidade dentro da parcela.",
+        faq4Question: "Qual o tempo de entrega dos dados?",
+        faq4Answer:
+          "A VirtuaCrop entrega resultados técnicos tipicamente em menos de 48 horas após a aquisição dos dados de origem.",
+        faq5Question: "Quantas hectares e parcelas já foram analisadas pela VirtuaCrop?",
+        faq5Answer:
+          "A VirtuaCrop já analisou mais de 120.000 hectares em mais de 5.000 parcelas monitorizadas para clientes de agronegócio.",
+        faq6Question: "Como posso começar a trabalhar com a VirtuaCrop?",
+        faq6Answer:
+          "Contacte a equipa VirtuaCrop através do formulário de contacto ou marque uma chamada para discutir o seu cenário e as parcelas a monitorizar.",
         contactEyebrow: "Contacto",
         contactTitle: "Precisa de suporte ou quer discutir o seu contexto?",
         contactLead: "Envie uma mensagem e a equipa VirtuaCrop responde assim que possível.",
@@ -370,6 +391,26 @@
         case3Body: "Track vegetation dynamics over time to support technical reporting and business planning.",
         casesVisualTitle: "Deployment-ready data outputs",
         casesVisualCaption: "Map layers, time series, and parcel insights prepared for business and technical teams.",
+        faqEyebrow: "FAQ",
+        faqTitle: "What you need to know about VirtuaCrop's data products.",
+        faqLead: "Quick answers to the most common questions about our EO + AI products.",
+        faq1Question: "What is Earth Observation (EO) + AI for agribusiness?",
+        faq1Answer:
+          "It's the combination of satellite, aerial, and drone imagery with AI models to generate technical data — biomass, protein content, soil properties, NDVI, and weather alerts — that supports operational decisions in agribusiness.",
+        faq2Question: "What data sources does VirtuaCrop use?",
+        faq2Answer:
+          "We integrate Sentinel-2, very high-resolution satellite data, aerial photography, and UAV (drone) data, combined with AI to generate validated technical datasets.",
+        faq3Question: "What spatial resolution do the NDVI time series use?",
+        faq3Answer:
+          "NDVI time series are delivered at 2.5 m spatial resolution, based on Sentinel-2 super-resolution, enabling more precise detection of within-parcel variability.",
+        faq4Question: "What is the data delivery time?",
+        faq4Answer: "VirtuaCrop typically delivers technical results in under 48 hours after source data acquisition.",
+        faq5Question: "How many hectares and parcels has VirtuaCrop analyzed?",
+        faq5Answer:
+          "VirtuaCrop has analyzed 120,000+ hectares across 5,000+ monitored parcels for agribusiness clients.",
+        faq6Question: "How do I get started with VirtuaCrop?",
+        faq6Answer:
+          "Contact the VirtuaCrop team via the contact form or book a call to discuss your scenario and the parcels you want to monitor.",
         contactEyebrow: "Contact",
         contactTitle: "Need support or want to discuss your scenario?",
         contactLead: "Send a message and the VirtuaCrop team will get back to you.",

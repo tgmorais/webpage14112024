@@ -945,6 +945,48 @@ body {
   max-width: 62ch;
 }
 
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 1rem 1.25rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-strong);
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::before {
+  content: "+";
+  display: inline-block;
+  width: 1.1em;
+  margin-right: 0.5rem;
+  color: var(--line-strong);
+}
+
+.faq-item[open] summary::before {
+  content: "\2212";
+}
+
+.faq-item p {
+  margin: 0.75rem 0 0;
+  color: var(--text-muted);
+}
+
 .card-grid {
   display: grid;
   gap: 1rem;
