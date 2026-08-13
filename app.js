@@ -42,6 +42,7 @@
         footerCookies: "Política de Cookies",
         footerManageCookies: "Gerir cookies",
         footerBackTop: "Voltar ao topo",
+        footerLinkedIn: "LinkedIn",
         footerRights: "© VirtuaCrop - 2026. Todos os direitos reservados.",
         cookieTitle: "Definições de cookies",
         cookieBody:
@@ -271,6 +272,7 @@
         footerCookies: "Cookie Policy",
         footerManageCookies: "Manage cookies",
         footerBackTop: "Back to top",
+        footerLinkedIn: "LinkedIn",
         footerRights: "© VirtuaCrop - 2026. All rights reserved.",
         cookieTitle: "Cookie settings",
         cookieBody:
