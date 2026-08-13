@@ -43,6 +43,7 @@
         footerManageCookies: "Gerir cookies",
         footerBackTop: "Voltar ao topo",
         footerLinkedIn: "LinkedIn",
+        footerLastUpdated: "Última atualização: 13 de agosto de 2026",
         footerRights: "© VirtuaCrop - 2026. Todos os direitos reservados.",
         cookieTitle: "Definições de cookies",
         cookieBody:
@@ -273,6 +274,7 @@
         footerManageCookies: "Manage cookies",
         footerBackTop: "Back to top",
         footerLinkedIn: "LinkedIn",
+        footerLastUpdated: "Last updated: August 13, 2026",
         footerRights: "© VirtuaCrop - 2026. All rights reserved.",
         cookieTitle: "Cookie settings",
         cookieBody:
