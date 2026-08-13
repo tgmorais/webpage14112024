@@ -33,6 +33,7 @@
         navSolutions: "Soluções",
         navCases: "Casos",
         navProjects: "Projetos",
+        navAbout: "Equipa",
         navContact: "Contacto",
         navBookCallBtn: "Marcar chamada",
         navContactBtn: "Fale connosco",
@@ -253,6 +254,14 @@
         project1Partner3: "Instituto Superior Técnico (IST-ID)",
         project1Partner4: "Faculdade de Medicina Veterinária (FMV)",
         project1SourceLink: "Ver página oficial do projeto"
+      },
+      about: {
+        metaTitle: "Equipa | VirtuaCrop",
+        metaDescription:
+          "Conheça a equipa fundadora da VirtuaCrop: Tiago Morais e Ricardo Teixeira.",
+        aboutEyebrow: "Equipa",
+        aboutTitle: "Quem está por trás da VirtuaCrop.",
+        aboutLead: "A VirtuaCrop foi concebida, desenhada e desenvolvida por dois cofundadores com formação avançada em engenharia ambiental e uma década de experiência combinada no setor agroalimentar."
       }
     },
     en: {
@@ -264,6 +273,7 @@
         navSolutions: "Solutions",
         navCases: "Use cases",
         navProjects: "Projects",
+        navAbout: "Team",
         navContact: "Contact",
         navBookCallBtn: "Book a call",
         navContactBtn: "Talk to us",
@@ -481,6 +491,13 @@
         project1Partner3: "Instituto Superior Tecnico (IST-ID)",
         project1Partner4: "Faculty of Veterinary Medicine (FMV)",
         project1SourceLink: "View official project page"
+      },
+      about: {
+        metaTitle: "Team | VirtuaCrop",
+        metaDescription: "Meet the VirtuaCrop founding team: Tiago Morais and Ricardo Teixeira.",
+        aboutEyebrow: "Team",
+        aboutTitle: "Who's behind VirtuaCrop.",
+        aboutLead: "VirtuaCrop was conceived, designed, and developed by two co-founders with advanced training in environmental engineering and a decade of combined experience in the agri-food sector."
       }
     }
   };

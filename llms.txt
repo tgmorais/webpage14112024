@@ -15,6 +15,10 @@ VirtuaCrop has analyzed 120,000+ hectares across 5,000+ monitored parcels. Partn
 
 - [Projects (R&D and funded initiatives)](https://virtuacrop.com/projects.html): Includes AVALON — Evaluate, Optimise and Remunerate for Sustainability in Ruminant Systems, an EU-funded project with co-promoters Terraprima (Environmental Services and Agricultural Company), Instituto Superior Técnico (MARETEC/ISR/LARSyS/IST-ID), and Faculdade de Medicina Veterinária.
 
+## Team
+
+- [Team](https://virtuacrop.com/about.html): VirtuaCrop was founded by Tiago Morais (PhD, Environmental Engineering; machine learning, remote sensing, biophysical modeling) and Ricardo Teixeira (PhD, Environmental Engineering; MSc Economics; 10+ years in the agri-food sector).
+
 ## Company
 
 - [Privacy Policy](https://virtuacrop.com/privacy.html)

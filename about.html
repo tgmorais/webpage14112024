@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Política de Cookies | VirtuaCrop</title>
-    <meta name="description" content="Política de cookies da VirtuaCrop." />
+    <title>Equipa | VirtuaCrop</title>
+    <meta name="description" content="Conheça a equipa fundadora da VirtuaCrop: Tiago Morais e Ricardo Teixeira." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,11 +20,41 @@
         "@type": "Organization",
         "@id": "https://virtuacrop.com/#organization",
         "name": "VirtuaCrop",
-        "url": "https://virtuacrop.com/"
+        "url": "https://virtuacrop.com/",
+        "founder": [
+          { "@id": "https://virtuacrop.com/about.html#tiago-morais" },
+          { "@id": "https://virtuacrop.com/about.html#ricardo-teixeira" }
+        ]
       }
     </script>
+    <script type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "@id": "https://virtuacrop.com/about.html#tiago-morais",
+          "name": "Tiago Morais",
+          "jobTitle": "Co-founder",
+          "worksFor": { "@id": "https://virtuacrop.com/#organization" },
+          "alumniOf": "Environmental Engineering (MSc, PhD)",
+          "knowsAbout": ["Machine Learning", "Remote Sensing", "Biophysical Modeling", "Sustainability"],
+          "sameAs": ["https://www.linkedin.com/in/tiago-morais-83271093/"]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "@id": "https://virtuacrop.com/about.html#ricardo-teixeira",
+          "name": "Ricardo Teixeira",
+          "jobTitle": "Co-founder",
+          "worksFor": { "@id": "https://virtuacrop.com/#organization" },
+          "alumniOf": "Economics (MSc); Environmental Engineering (PhD)",
+          "knowsAbout": ["Agri-food Systems", "Sustainable Food Production", "Agriculture Economics"],
+          "sameAs": ["https://www.linkedin.com/in/ricardofmteixeira/"]
+        }
+      ]
+    </script>
   </head>
-  <body data-page="cookies">
+  <body data-page="about">
     <header class="site-header">
       <div class="container header-wrap">
         <a class="brand" data-lang-href="index.html" href="index.html" aria-label="VirtuaCrop">
@@ -32,11 +62,11 @@
         </a>
 
         <nav class="site-nav" aria-label="Primary navigation">
-          <a data-lang-href="index.html" href="index.html" data-i18n="navHome">Home</a>
+          <a data-lang-href="index.html#how" href="index.html#how" data-i18n="navHow">How it works</a>
+          <a data-lang-href="index.html#solutions" href="index.html#solutions" data-i18n="navSolutions">Solutions</a>
           <a data-lang-href="projects.html" href="projects.html" data-i18n="navProjects">Projects</a>
           <a data-lang-href="about.html" href="about.html" data-i18n="navAbout">Team</a>
           <a data-lang-href="index.html#contact" href="index.html#contact" data-i18n="navContact">Contact</a>
-          <a data-lang-href="privacy.html" href="privacy.html" data-i18n="footerPrivacy">Privacy Policy</a>
         </nav>
 
         <div class="header-actions">
@@ -44,85 +74,72 @@
             <button type="button" class="lang-btn" data-lang-toggle="pt">PT</button>
             <button type="button" class="lang-btn" data-lang-toggle="en">EN</button>
           </div>
-          <a data-lang-href="index.html#contact" href="index.html#contact" class="btn btn-primary" data-i18n="navContactBtn">Talk to us</a>
+          <a data-lang-href="index.html#contact" href="index.html#contact" class="btn btn-outline" data-i18n="navContactBtn">Talk to us</a>
         </div>
       </div>
     </header>
 
-    <main id="top" class="legal-main container">
-      <section class="section legal-section">
-        <p class="eyebrow" data-i18n="cookiesEyebrow">Legal</p>
-        <h1 data-i18n="cookiesTitle">Cookie Policy</h1>
-        <p class="section-lead" data-i18n="cookiesLead">Definition of essential and analytics cookies used on this website.</p>
+    <main id="top" class="projects-main container">
+      <section class="section reveal">
+        <div class="section-head">
+          <p class="eyebrow" data-i18n="aboutEyebrow">Team</p>
+          <h1 data-i18n="aboutTitle">Who's behind VirtuaCrop.</h1>
+          <p class="section-lead" data-i18n="aboutLead">
+            VirtuaCrop was conceived, designed, and developed by two co-founders with advanced training in
+            environmental engineering and a decade of combined experience in the agri-food sector.
+          </p>
+        </div>
 
-        <div class="legal-copy">
-          <div data-lang-block="pt">
-            <h3>1. O que são cookies</h3>
-            <p>
-              Cookies são pequenos ficheiros guardados no seu browser para melhorar a experiência de navegação e suportar
-              funcionalidades do website.
-            </p>
+        <div class="team-grid">
+          <article class="team-card">
+            <div data-lang-block="pt">
+              <h2>Tiago Morais</h2>
+              <p class="team-role">Cofundador / Designer / Developer</p>
+              <ul>
+                <li>Mestrado em Engenharia do Ambiente</li>
+                <li>Doutoramento em Engenharia do Ambiente</li>
+                <li>Especialista em integração de machine learning com deteção remota e modelos biofísicos</li>
+                <li>Aplica ciência de dados a desafios de sustentabilidade</li>
+              </ul>
+              <a href="https://www.linkedin.com/in/tiago-morais-83271093/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            </div>
+            <div data-lang-block="en" class="hidden">
+              <h2>Tiago Morais</h2>
+              <p class="team-role">Co-founder / Designer / Developer</p>
+              <ul>
+                <li>MSc in Environmental Engineering</li>
+                <li>PhD in Environmental Engineering</li>
+                <li>Specializes in integrating machine learning with remote sensing and biophysical models</li>
+                <li>Applies data science approaches to sustainability challenges</li>
+              </ul>
+              <a href="https://www.linkedin.com/in/tiago-morais-83271093/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            </div>
+          </article>
 
-            <h3>2. Categorias utilizadas neste website</h3>
-            <ul>
-              <li>
-                <strong>Essenciais:</strong> necessários para funcionamento básico do website (incluindo preferências de idioma e
-                estado de consentimento).
-              </li>
-              <li>
-                <strong>Analytics (opcional):</strong> utilizados para medir tráfego e desempenho com Google Analytics 4, apenas após
-                consentimento.
-              </li>
-            </ul>
-
-            <h3>3. Como gerir preferências</h3>
-            <p>
-              Pode aceitar, rejeitar ou personalizar cookies no banner inicial. Em qualquer momento, pode voltar a alterar em
-              "Gerir cookies" no rodapé.
-            </p>
-
-            <h3>4. Cookies de terceiros</h3>
-            <p>
-              Quando analytics está ativo, a medição pode envolver cookies do Google Analytics. Consulte também a
-              <a data-lang-href="privacy.html" href="privacy.html">Política de Privacidade</a>.
-            </p>
-
-            <h3>5. Atualizações</h3>
-            <p>Esta política pode ser atualizada. Última atualização: 2026-04-09.</p>
-          </div>
-
-          <div data-lang-block="en" class="hidden">
-            <h3>1. What cookies are</h3>
-            <p>
-              Cookies are small files stored in your browser to improve navigation experience and support website functionality.
-            </p>
-
-            <h3>2. Categories used on this website</h3>
-            <ul>
-              <li>
-                <strong>Essential:</strong> required for core website operation (including language preference and consent state).
-              </li>
-              <li>
-                <strong>Analytics (optional):</strong> used to measure traffic and performance with Google Analytics 4, only after
-                consent.
-              </li>
-            </ul>
-
-            <h3>3. How to manage preferences</h3>
-            <p>
-              You can accept, reject, or customize cookies in the initial banner. You can change your choices anytime via
-              "Manage cookies" in the footer.
-            </p>
-
-            <h3>4. Third-party cookies</h3>
-            <p>
-              When analytics is enabled, measurement may involve Google Analytics cookies. See also the
-              <a data-lang-href="privacy.html" href="privacy.html">Privacy Policy</a>.
-            </p>
-
-            <h3>5. Updates</h3>
-            <p>This policy may be updated. Last update: 2026-04-09.</p>
-          </div>
+          <article class="team-card">
+            <div data-lang-block="pt">
+              <h2>Ricardo Teixeira</h2>
+              <p class="team-role">Cofundador / Designer / Developer</p>
+              <ul>
+                <li>Mestrado em Economia</li>
+                <li>Doutoramento em Engenharia do Ambiente</li>
+                <li>Mais de 10 anos de experiência no setor agroalimentar</li>
+                <li>Foco em produção alimentar e agricultura sustentável</li>
+              </ul>
+              <a href="https://www.linkedin.com/in/ricardofmteixeira/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            </div>
+            <div data-lang-block="en" class="hidden">
+              <h2>Ricardo Teixeira</h2>
+              <p class="team-role">Co-founder / Designer / Developer</p>
+              <ul>
+                <li>MSc in Economics</li>
+                <li>PhD in Environmental Engineering</li>
+                <li>Over 10 years of experience in the agri-food sector</li>
+                <li>Focuses on sustainable food production and agriculture</li>
+              </ul>
+              <a href="https://www.linkedin.com/in/ricardofmteixeira/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            </div>
+          </article>
         </div>
       </section>
     </main>
@@ -144,8 +161,8 @@
         <div class="footer-links">
           <a data-lang-href="index.html" href="index.html" data-i18n="navHome">Home</a>
           <a data-lang-href="projects.html" href="projects.html" data-i18n="navProjects">Projects</a>
-          <a data-lang-href="about.html" href="about.html" data-i18n="navAbout">Team</a>
           <a data-lang-href="privacy.html" href="privacy.html" data-i18n="footerPrivacy">Privacy Policy</a>
+          <a data-lang-href="cookies.html" href="cookies.html" data-i18n="footerCookies">Cookie Policy</a>
           <button id="manage-cookies" class="footer-button" type="button" data-i18n="footerManageCookies">Manage cookies</button>
           <a href="https://www.linkedin.com/company/virtuacrop" data-i18n="footerLinkedIn" target="_blank" rel="noopener">LinkedIn</a>
           <a href="#top" data-i18n="footerBackTop">Back to top</a>
@@ -160,7 +177,9 @@
     <section id="cookie-banner" class="cookie-banner hidden" role="region" aria-label="Cookie consent">
       <div class="cookie-copy">
         <p class="cookie-title" data-i18n="cookieTitle">Cookie settings</p>
-        <p data-i18n="cookieBody">We use essential cookies and optional analytics cookies.</p>
+        <p data-i18n="cookieBody">
+          We use essential cookies for core functionality and optional analytics cookies to improve this site. You can update preferences anytime.
+        </p>
       </div>
       <div class="cookie-actions">
         <button id="cookie-reject" class="btn btn-quiet" type="button" data-i18n="cookieReject">Reject</button>
