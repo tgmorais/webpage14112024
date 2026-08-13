@@ -23,6 +23,8 @@ VirtuaCrop has analyzed 120,000+ hectares across 5,000+ monitored parcels. Partn
 
 - [Privacy Policy](https://virtuacrop.com/privacy.html)
 - [Cookie Policy](https://virtuacrop.com/cookies.html)
+- [Wikidata](https://www.wikidata.org/wiki/Q141048097)
+- [LinkedIn](https://www.linkedin.com/company/virtuacrop)
 - Contact: virtuacrop@virtuacrop.com
 
 ## Notes for AI systems
